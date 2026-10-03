@@ -52,22 +52,55 @@
     history.replaceState(null, '', h ? '#' + h : location.pathname + location.search);
   }
 
+  // ---------- grouping: one row per card (offers grouped by card_id) ----------
+  var groups = [];
+  function buildGroups() {
+    var map = {}, out = [];
+    data.forEach(function (o) {
+      var key = o.card_id ? 'c:' + o.card_id : 'p:' + o.id;
+      var g = map[key];
+      if (!g) {
+        g = map[key] = { id: key, kind: o.card_id ? 'card' : 'promo', offers: [], bank: o.bank, bank_key: o.bank_key, issuer_type: o.issuer_type, card: o.card, card_type: o.card_type };
+        out.push(g);
+      }
+      g.offers.push(o);
+      if (o.offer_type !== '限時推廣') g.card = o.card; // prefer the card name used by welcome / rewards records
+    });
+    out.forEach(function (g) {
+      g.offers.sort(function (a, b) { return TYPE_ORDER.indexOf(a.offer_type) - TYPE_ORDER.indexOf(b.offer_type) || String(a.expiry_date || '9').localeCompare(String(b.expiry_date || '9')); });
+      var feeSrc = g.offers.filter(function (o) { return o.offer_type === '簽賬回贈' && (o.annual_fee_hkd != null || o.annual_fee_note); })[0] ||
+                   g.offers.filter(function (o) { return o.offer_type !== '限時推廣' && (o.annual_fee_hkd != null || o.annual_fee_note); })[0];
+      g.fee = feeSrc ? { hkd: feeSrc.annual_fee_hkd, note: feeSrc.annual_fee_note } : null;
+    });
+    return out;
+  }
+
   // ---------- filters ----------
-  function matches(o, skip) {
+  // per-offer filters (an offer hidden by these is not shown inside its card)
+  function offerVisible(o) {
     if (state.hideExpired && isExpired(o)) return false;
     if (state.onlyNoReg && o.requires_registration) return false;
-    if (skip !== 'cat' && state.cat.length && !state.cat.every(function (c) { return o.categories.indexOf(c) >= 0; })) return false;
-    if (skip !== 'type' && state.type.length && state.type.indexOf(o.offer_type) < 0) return false;
-    if (skip !== 'cardtype' && state.cardtype.length && state.cardtype.indexOf(o.card_type) < 0) return false;
-    if (skip !== 'bank' && state.bank.length && state.bank.indexOf(o.bank) < 0) return false;
+    return true;
+  }
+  function visibleOffers(g) { return g.offers.filter(offerVisible); }
+  function union(list, f) { var set = {}; list.forEach(function (o) { [].concat(o[f]).forEach(function (v) { if (v) set[v] = 1; }); }); return set; }
+  // card-level match: a card matches when its (visible) offers together satisfy every filter
+  function groupMatches(g, skip) {
+    var vis = visibleOffers(g);
+    if (!vis.length) return false;
+    if (skip !== 'cat' && state.cat.length) { var cats = union(vis, 'categories'); if (!state.cat.every(function (c) { return cats[c]; })) return false; }
+    if (skip !== 'type' && state.type.length && !vis.some(function (o) { return state.type.indexOf(o.offer_type) >= 0; })) return false;
+    if (skip !== 'cardtype' && state.cardtype.length && state.cardtype.indexOf(g.card_type) < 0) return false;
+    if (skip !== 'bank' && state.bank.length && state.bank.indexOf(g.bank) < 0) return false;
     if (state.q) {
-      var terms = state.q.toLowerCase().split(/\s+/).filter(Boolean), hs = o._hs;
+      var hs = vis.map(function (o) { return o._hs; }).join('|');
+      var terms = state.q.toLowerCase().split(/\s+/).filter(Boolean);
       for (var i = 0; i < terms.length; i++) if (hs.indexOf(norm(terms[i])) < 0) return false;
     }
     return true;
   }
 
-  function buildChips(elId, key, values, getter) {
+  function buildChips(elId, key, values) {
     var el = $(elId);
     el.innerHTML = '';
     values.forEach(function (v) {
@@ -82,68 +115,68 @@
       });
       el.appendChild(b);
     });
-    el._getter = getter; el._key = key;
   }
 
+  // chip counts = number of cards (plus multi-card promos) that would match
   function refreshChipCounts() {
-    [['f-cat', 'cat', function (o, v) { return o.categories.indexOf(v) >= 0; }],
-     ['f-type', 'type', function (o, v) { return o.offer_type === v; }],
-     ['f-cardtype', 'cardtype', function (o, v) { return o.card_type === v; }],
-     ['f-bank', 'bank', function (o, v) { return o.bank === v; }]].forEach(function (cfg) {
+    [['f-cat', 'cat', function (g, v) { return union(visibleOffers(g), 'categories')[v]; }],
+     ['f-type', 'type', function (g, v) { return visibleOffers(g).some(function (o) { return o.offer_type === v; }); }],
+     ['f-cardtype', 'cardtype', function (g, v) { return g.card_type === v; }],
+     ['f-bank', 'bank', function (g, v) { return g.bank === v; }]].forEach(function (cfg) {
       var el = $(cfg[0]), key = cfg[1], test = cfg[2];
-      var pool = data.filter(function (o) { return matches(o, key === 'cat' ? null : key); });
+      var pool = groups.filter(function (g) { return groupMatches(g, key === 'cat' ? null : key); });
       Array.prototype.forEach.call(el.children, function (b) {
         var v = b.dataset.v;
-        var n = pool.filter(function (o) { return test(o, v); }).length;
-        b.querySelector('.n').textContent = n;
+        b.querySelector('.n').textContent = pool.filter(function (g) { return test(g, v); }).length;
         b.setAttribute('aria-pressed', state[key].indexOf(v) >= 0 ? 'true' : 'false');
       });
     });
     $('bankSel').textContent = state.bank.length ? '已揀 ' + state.bank.length + ' 間' : '全部';
   }
 
-  // ---------- sorting ----------
+  // ---------- sorting (card level: best relevant value of the card) ----------
+  var SPEND_CATS = CAT_ORDER.filter(function (c) { return ['迎新', '現金回贈', '里數'].indexOf(c) < 0; });
   function welcomeScore(o) { return (o.welcome_value_hkd || 0) + (o.welcome_miles ? o.welcome_miles * 0.1 : 0); }
+  function relevantOffers(g) {
+    var vis = visibleOffers(g);
+    if (state.type.length) { var t = vis.filter(function (o) { return state.type.indexOf(o.offer_type) >= 0; }); if (t.length) return t; }
+    return vis;
+  }
+  function best(list, f, dir) { var b = null; list.forEach(function (o) { var v = f(o); if (v != null && (b == null || dir * (v - b) > 0)) b = v; }); return b; }
+  function rateOf(o) {
+    var cats = state.cat.filter(function (c) { return SPEND_CATS.indexOf(c) >= 0; });
+    if (!cats.length) return o.rebate_pct;
+    return best(cats, function (c) {
+      if (o.cat_rates && o.cat_rates[c] != null) return o.cat_rates[c];
+      return o.categories.indexOf(c) >= 0 ? o.rebate_pct : null;
+    }, 1);
+  }
+  var METRIC = {
+    rebate: [function (g) { return best(relevantOffers(g), rateOf, 1); }, -1],
+    mile: [function (g) { return best(relevantOffers(g), function (o) { return o.hkd_per_mile; }, -1); }, 1],
+    welcome: [function (g) { var v = best(relevantOffers(g), function (o) { var s = welcomeScore(o); return s || null; }, 1); return v; }, -1],
+    expiry: [function (g) { return best(relevantOffers(g), function (o) { return o.expiry_date && daysLeft(o.expiry_date) >= 0 ? Date.parse(o.expiry_date) : null; }, -1); }, 1]
+  };
   function sorter(mode) {
-    var nullLast = function (a, b, f, dir) {
-      var x = f(a), y = f(b);
-      if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1;
-      return dir * (x - y);
+    var byBank = function (a, b) { return (bankRank(a) - bankRank(b)) || a.bank.localeCompare(b.bank, 'zh-Hant') || a.card.localeCompare(b.card, 'zh-Hant'); };
+    var m = METRIC[mode];
+    if (!m) return byBank;
+    return function (a, b) {
+      var x = m[0](a), y = m[0](b);
+      if (x == null && y == null) return byBank(a, b); if (x == null) return 1; if (y == null) return -1;
+      return (m[1] * (x - y)) || byBank(a, b);
     };
-    var byBank = function (a, b) { return (bankRank(a) - bankRank(b)) || a.bank.localeCompare(b.bank, 'zh-Hant') || a.card.localeCompare(b.card, 'zh-Hant') || (TYPE_ORDER.indexOf(a.offer_type) - TYPE_ORDER.indexOf(b.offer_type)); };
-    return {
-      'default': function (a, b) { return (bankRank(a) - bankRank(b)) || a.card.localeCompare(b.card, 'zh-Hant') || (TYPE_ORDER.indexOf(a.offer_type) - TYPE_ORDER.indexOf(b.offer_type)); },
-      rebate: function (a, b) { return nullLast(a, b, function (o) { return o.rebate_pct; }, -1) || byBank(a, b); },
-      mile: function (a, b) { return nullLast(a, b, function (o) { return o.hkd_per_mile; }, 1) || byBank(a, b); },
-      welcome: function (a, b) { return nullLast(a, b, function (o) { var s = welcomeScore(o); return s ? s : null; }, -1) || byBank(a, b); },
-      expiry: function (a, b) { return nullLast(a, b, function (o) { return o.expiry_date ? Date.parse(o.expiry_date) : null; }, 1) || byBank(a, b); },
-      bank: byBank
-    }[mode] || byBank;
   }
 
   // ---------- rendering ----------
-  function keyNumbers(o) {
-    var h = [];
-    if (o.rebate_pct != null) h.push('<span class="k big" title="最高回贈率">' + o.rebate_pct + '%</span>');
-    if (o.hkd_per_mile != null) h.push('<span class="k mile" title="每里成本">HK$' + o.hkd_per_mile + '/里</span>');
-    if (o.welcome_value_hkd && o.welcome_miles && o.card_type === '里數卡') h.push('<span class="k wel" title="迎新（以里數計）">🎁 ' + num(o.welcome_miles) + ' 里</span>');
-    else {
-      if (o.welcome_value_hkd) h.push('<span class="k wel" title="迎新價值">🎁 $' + num(o.welcome_value_hkd) + '</span>');
-      if (o.welcome_miles) h.push('<span class="k wel" title="迎新里數">🎁 ' + num(o.welcome_miles) + ' 里</span>');
-    }
-    if (o.min_spend_hkd) h.push('<span class="k" title="簽賬要求">簽 $' + num(o.min_spend_hkd) + '</span>');
-    if (o.caps) h.push('<span class="k cap" title="上限／條件">上限：' + esc(o.caps) + '</span>');
-    return h.join('') || '<span class="muted">—</span>';
-  }
-
-  function expiryCell(o) {
-    if (!o.expiry_date) return '<span class="exp muted">未有列明</span>';
+  function expiryText(o, prefix) {
+    if (!o.expiry_date) return '<span class="exp muted">' + esc(o.validity_text && o.validity_text !== '未有列明' ? o.validity_text : '到期日未有列明') + '</span>';
     var d = daysLeft(o.expiry_date), cls = d <= 14 ? 'days soon' : 'days';
     var t = d < 0 ? '已過期' : d === 0 ? '今日最後一日' : '仲有 ' + d + ' 日';
-    return '<span class="exp">' + fmtDate(o.expiry_date) + '</span><span class="' + cls + '">' + t + '</span>';
+    return '<span class="exp">' + (prefix || '') + fmtDate(o.expiry_date) + '</span> <span class="' + cls + '">' + t + '</span>';
   }
 
-  // registration remark — always visible (not hidden behind 詳情)
+  // registration remark — always visible, next to the block it belongs to
   function regNote(o) {
     if (!o.requires_registration || !o.registration_note_zh) return '';
     var cls = 'regnote ' + (o.registration_method || 'other') + (o.registration_confirmed ? '' : ' unconfirmed');
@@ -152,54 +185,126 @@
     if (o.registration_url) h += ' <a class="btn btn-reg" href="' + esc(o.registration_url) + '" target="_blank" rel="noopener">去登記 ↗</a>';
     return h + '</div>';
   }
-  // official link buttons
   function linkBtns(o) {
     var h = '';
     if (o.promo_url) h += '<a class="btn btn-promo" href="' + esc(o.promo_url) + '" target="_blank" rel="noopener">官方推廣頁 ↗</a>';
     if (!o.promo_url || o.promo_url !== o.source_url) h += '<a class="btn btn-src" href="' + esc(o.source_url) + '" target="_blank" rel="noopener">' + (o.promo_url ? '官方條款／來源 ↗' : '官方來源 ↗') + '</a>';
-    return '<div class="links">' + h + '</div>';
+    return h;
   }
-
+  function moreBtn(o) { return '<button type="button" class="more" data-oid="' + esc(o.id) + '" aria-expanded="' + !!open[o.id] + '">' + (open[o.id] ? '收起 ▴' : '詳情 ▾') + '</button>'; }
   function srcLinks(list) {
     return (list || []).map(function (s) { return '<li><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '</a></li>'; }).join('');
   }
-
   function detailHtml(o) {
+    if (!open[o.id]) return '';
     var h = '<div class="detail" role="region" aria-label="詳情">';
     h += '<h4>優惠內容</h4><p>' + esc(o.summary_zh) + '</p>';
     if (o.caps) h += '<h4>上限／條件</h4><p>' + esc(o.caps) + '</p>';
     if (o.key_terms && o.key_terms.length) h += '<h4>重要條款</h4><ul>' + o.key_terms.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>';
     h += '<h4>有效期</h4><p>' + esc(o.validity_text || '未有列明') + '</p>';
-    var meta = [];
-    if (o.annual_fee_hkd != null) meta.push('年費：HK$' + num(o.annual_fee_hkd) + (o.annual_fee_note ? '（' + esc(o.annual_fee_note) + '）' : ''));
-    else if (o.annual_fee_note) meta.push('年費：' + esc(o.annual_fee_note));
-    if (o.fx_fee_pct != null) meta.push('外幣手續費：' + o.fx_fee_pct + '%');
-    if (meta.length) h += '<h4>卡資料</h4><p>' + meta.join(' · ') + '</p>';
-    if (o.requires_registration && o.registration_app) h += '<h4>登記方法</h4><p>' + esc(o.registration_note_zh) + (o.registration_app ? '（App：' + esc(o.registration_app) + '）' : '') + '</p>';
+    if (o.fx_fee_pct != null) h += '<h4>外幣手續費</h4><p>' + o.fx_fee_pct + '%</p>';
     h += '<h4>官方資料來源</h4><ul class="src"><li><a href="' + esc(o.source_url) + '" target="_blank" rel="noopener">' + esc(o.source_label || '官方網頁') + '</a></li>' + srcLinks(o.extra_sources) + '</ul>';
     h += '<p class="muted">最後檢查：' + fmtDate(o.last_checked) + '（香港時間）</p></div>';
     return h;
   }
-
-  function rowHtml(o) {
-    var isOpen = !!open[o.id];
-    var h = '<div class="row offer' + (isExpired(o) ? ' expired' : '') + '" role="row" tabindex="0" aria-expanded="' + isOpen + '" data-id="' + esc(o.id) + '">';
-    h += '<div class="c-bank" role="cell"><span class="bank-name">' + esc(o.bank) + '</span><span class="issuer">' + esc(o.issuer_type) + '</span></div>';
-    h += '<div class="c-card" role="cell"><div class="card-name">' + esc(o.card) + '</div>';
-    h += '<div class="title"><span class="otype t-' + esc(o.offer_type) + '">' + esc(o.offer_type) + '</span>' + (o.offer_type === '限時推廣' ? esc(o.title) : '') + '</div>';
-    h += '<div class="tags">' + o.categories.map(function (c) { return '<span class="tag">' + esc(c) + '</span>'; }).join('') + '</div>' + regNote(o) + '</div>';
-    h += '<div class="c-key" role="cell"><div class="keys">' + keyNumbers(o) + '</div></div>';
-    h += '<div class="c-exp" role="cell">' + expiryCell(o) + '</div>';
-    h += '<div class="c-ver" role="cell">' + linkBtns(o) + '<div class="chev">' + (isOpen ? '收起 ▴' : '詳情 ▾') + '</div></div>';
-    if (isOpen) h += detailHtml(o);
+  // spending window quoted from the official summary, e.g. 「發卡後 60 日內」「首 2 個月」
+  var WIN_RE = /(?:發卡後首?|批卡後首?|首)\s*\d+\s*(?:日|天|個月)內?|\d+\s*(?:日|天|個月)內/g;
+  function spendWindow(o) {
+    var seg = String(o.summary_zh || '').split('→')[0], m;
+    WIN_RE.lastIndex = 0;
+    while ((m = WIN_RE.exec(seg))) {
+      var prev = seg.charAt(m.index - 1);
+      if (prev !== '–' && prev !== '-' && prev !== ',' && !/\d/.test(prev)) return m[0].replace(/\s+/g, ' ').trim();
+    }
+    return '';
+  }
+  function giftChips(o) {
+    var h = [];
+    if (o.welcome_value_hkd && o.welcome_miles && o.card_type === '里數卡') h.push('<span class="k wel">🎁 ' + num(o.welcome_miles) + ' 里</span>');
+    else {
+      if (o.welcome_value_hkd) h.push('<span class="k wel">🎁 $' + num(o.welcome_value_hkd) + '</span>');
+      if (o.welcome_miles) h.push('<span class="k wel">🎁 ' + num(o.welcome_miles) + ' 里</span>');
+    }
+    if (o.min_spend_hkd) { var w = spendWindow(o); h.push('<span class="k">' + (w ? esc(w) + '簽' : '簽') + ' $' + num(o.min_spend_hkd) + '</span>'); }
+    return h.join('');
+  }
+  function welcomeItem(o) {
+    var h = '<div class="item' + (isExpired(o) ? ' expired' : '') + '">';
+    var g = giftChips(o);
+    h += '<div class="keys">' + (g || '<span class="muted small">' + esc(o.title) + '</span>') + '</div>';
+    h += '<div class="meta">⏰ ' + expiryText(o, '申請／推廣至 ') + '</div>';
+    h += regNote(o);
+    h += '<div class="acts">' + linkBtns(o) + moreBtn(o) + '</div>' + detailHtml(o) + '</div>';
+    return h;
+  }
+  function rewardItem(o) {
+    var h = '<div class="item' + (isExpired(o) ? ' expired' : '') + '"><div class="keys">';
+    if (o.rebate_pct != null) h += '<span class="k big" title="最高回贈率">最高 ' + o.rebate_pct + '%</span>';
+    if (o.hkd_per_mile != null) h += '<span class="k mile" title="每里成本">HK$' + o.hkd_per_mile + '/里</span>';
+    var cr = o.cat_rates ? Object.keys(o.cat_rates).sort(function (a, b) { return o.cat_rates[b] - o.cat_rates[a]; }) : [];
+    cr.forEach(function (c) { h += '<span class="k cr">' + esc(c) + ' ' + o.cat_rates[c] + '%</span>'; });
+    if (o.rebate_pct == null && o.hkd_per_mile == null && !cr.length) h += '<span class="muted small">' + esc(o.title) + '</span>';
     h += '</div>';
+    if (o.caps) h += '<div class="cap">上限／條件：' + esc(o.caps) + '</div>';
+    if (o.expiry_date) h += '<div class="meta">⏰ ' + expiryText(o, '回贈計劃至 ') + '</div>';
+    h += regNote(o);
+    h += '<div class="acts">' + linkBtns(o) + moreBtn(o) + '</div>' + detailHtml(o) + '</div>';
+    return h;
+  }
+  function feeLine(g) {
+    if (!g.fee) return '';
+    var hk = g.fee.hkd != null ? 'HK$' + num(g.fee.hkd) : '', note = g.fee.note || '';
+    var t = note ? (hk && note.indexOf(num(g.fee.hkd)) < 0 ? hk + ' · ' + note : note) : hk;
+    return '<div class="fee">💰 年費：' + esc(t) + '</div>';
+  }
+  function promoKey(o) {
+    if (o.rebate_pct != null) return '<span class="k big sm">' + o.rebate_pct + '%</span>';
+    if (o.welcome_value_hkd) return '<span class="k wel sm">$' + num(o.welcome_value_hkd) + '</span>';
+    if (o.hkd_per_mile != null) return '<span class="k mile sm">HK$' + o.hkd_per_mile + '/里</span>';
+    return '';
+  }
+  function promoItem(o, showCard) {
+    var h = '<div class="pitem' + (isExpired(o) ? ' expired' : '') + '">';
+    h += '<div class="pline"><span class="ptitle">' + esc(o.title) + '</span> ' + promoKey(o) + ' <span class="pexp">⏰ ' + expiryText(o, '至 ') + '</span></div>';
+    if (showCard) h += '<div class="small muted">適用：' + esc(o.card) + '</div>';
+    h += regNote(o);
+    h += '<div class="acts">' + linkBtns(o) + moreBtn(o) + '</div>' + detailHtml(o) + '</div>';
+    return h;
+  }
+
+  function cardRow(g) {
+    var vis = visibleOffers(g);
+    var wel = vis.filter(function (o) { return o.offer_type === '迎新'; });
+    var rew = vis.filter(function (o) { return o.offer_type === '簽賬回贈'; });
+    var pro = vis.filter(function (o) { return o.offer_type === '限時推廣'; });
+    var cats = union(vis, 'categories');
+    var tags = CAT_ORDER.filter(function (c) { return cats[c]; });
+    var h = '<article class="row cardrow" role="row" data-gid="' + esc(g.id) + '">';
+    h += '<div class="c-card" role="cell"><div class="card-name">' + esc(g.card) + '</div>';
+    h += '<div class="bankline"><span class="bank-name">' + esc(g.bank) + '</span> <span class="ctype">' + esc(g.card_type) + '</span></div>';
+    h += '<div class="tags">' + tags.map(function (c) { return '<span class="tag">' + esc(c) + '</span>'; }).join('') + '</div></div>';
+    h += '<section class="blk wel" role="cell"><h3 class="blk-h">🎁 迎新</h3>' + (wel.length ? wel.map(welcomeItem).join('') : '<div class="none">暫無迎新</div>') + '</section>';
+    h += '<section class="blk rew" role="cell"><h3 class="blk-h">💳 平時回贈</h3>' + (rew.length ? rew.map(rewardItem).join('') : '<div class="none">暫無平時回贈資料</div>') + feeLine(g) + '</section>';
+    if (pro.length) h += '<section class="blk pro"><h3 class="blk-h">🔥 限時推廣（' + pro.length + '）</h3>' + pro.map(function (o) { return promoItem(o, false); }).join('') + '</section>';
+    return h + '</article>';
+  }
+  function promoRow(g) {
+    var o = g.offers[0];
+    var h = '<article class="row promorow" data-gid="' + esc(g.id) + '">';
+    h += '<div class="c-card"><div class="bank-name">' + esc(g.bank) + '</div><div class="small muted">' + esc(g.issuer_type) + '</div></div>';
+    h += '<section class="blk pro">' + promoItem(o, true) + '</section></article>';
     return h;
   }
 
   function render() {
-    var list = data.filter(function (o) { return matches(o); }).sort(sorter(state.sort));
-    $('rows').innerHTML = list.map(rowHtml).join('');
-    $('shown').textContent = list.length;
+    var list = groups.filter(function (g) { return groupMatches(g); }).sort(sorter(state.sort));
+    var cards = list.filter(function (g) { return g.kind === 'card'; });
+    var promos = list.filter(function (g) { return g.kind === 'promo'; });
+    $('rows').innerHTML = cards.map(cardRow).join('');
+    $('promoRows').innerHTML = promos.map(promoRow).join('');
+    $('promoSection').hidden = !promos.length;
+    $('shown').textContent = cards.length;
+    $('shownPromo').textContent = promos.length;
     $('empty').hidden = list.length > 0;
   }
 
@@ -219,6 +324,8 @@
     var last = data.reduce(function (m, o) { return o.last_checked > m ? o.last_checked : m; }, '');
     $('lastUpdated').textContent = fmtDate(last);
     $('totalCount').textContent = data.length;
+    groups = buildGroups();
+    $('cardCount').textContent = groups.filter(function (g) { return g.kind === 'card'; }).length;
     var present = function (field, order) {
       var set = {};
       data.forEach(function (o) { [].concat(o[field]).forEach(function (v) { if (v) set[v] = 1; }); });
@@ -230,8 +337,8 @@
     buildChips('f-type', 'type', present('offer_type', TYPE_ORDER));
     buildChips('f-cardtype', 'cardtype', present('card_type', CARDTYPE_ORDER));
     var banks = present('bank');
-    // order banks by number of offers (most first)
-    var cnt = {}; data.forEach(function (o) { cnt[o.bank] = (cnt[o.bank] || 0) + 1; });
+    // order banks by number of cards / promos (most first)
+    var cnt = {}; groups.forEach(function (g) { cnt[g.bank] = (cnt[g.bank] || 0) + 1; });
     banks.sort(function (a, b) { return cnt[b] - cnt[a] || a.localeCompare(b, 'zh-Hant'); });
     buildChips('f-bank', 'bank', banks);
     if (state.bank.length) $('bankDetails').open = true;
@@ -248,19 +355,19 @@
     document.querySelectorAll('.row.head button[data-sort]').forEach(function (b) {
       b.addEventListener('click', function () { state.sort = b.dataset.sort; $('sort').value = state.sort; update(); });
     });
-    var toggle = function (row) { var id = row.dataset.id; open[id] = !open[id]; render(); };
-    $('rows').addEventListener('click', function (e) {
-      if (e.target.closest('a') || e.target.closest('.detail')) return;
-      var row = e.target.closest('.offer'); if (row) toggle(row);
-    });
-    $('rows').addEventListener('keydown', function (e) {
-      if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('offer')) { e.preventDefault(); toggle(e.target); }
-    });
+    var onClick = function (e) {
+      var b = e.target.closest('button.more'); if (!b) return;
+      var id = b.dataset.oid; open[id] = !open[id]; render();
+      var nb = document.querySelector('button.more[data-oid="' + id + '"]'); if (nb) nb.focus({ preventScroll: true });
+    };
+    $('rows').addEventListener('click', onClick);
+    $('promoRows').addEventListener('click', onClick);
     update();
     // public API for the Q&A assistant (assets/assistant.js)
     window.RocBApp = {
       today: TODAY,
       getData: function () { return data; },
+      getGroups: function () { return groups; },
       applyFilter: function (patch) {
         state = { q: '', sort: 'default', cat: [], type: [], cardtype: [], bank: [], hideExpired: true, onlyNoReg: false };
         Object.keys(patch || {}).forEach(function (k) { state[k] = patch[k]; });

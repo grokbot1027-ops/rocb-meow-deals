@@ -42,61 +42,73 @@ main{max-width:1200px;margin:0 auto;padding:0 12px 24px}
 .link-btn{background:none;border:0;color:#b5531a;text-decoration:underline;cursor:pointer;font:inherit;padding:0}
 .result-count{margin:6px 0 0;font-size:.85rem;color:var(--muted)}
 
-/* table on desktop */
+/* card list: one row per card (desktop) / one card (mobile) */
 .table{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-.row{display:grid;grid-template-columns:140px minmax(240px,1.7fr) minmax(200px,1.3fr) 110px 132px;gap:10px;padding:10px 14px;border-top:1px solid var(--line);align-items:start}
-.row.head{background:#ffeedd;font-size:.8rem;font-weight:700;color:var(--muted);border-top:0;position:sticky}
+.row{display:grid;grid-template-columns:220px minmax(0,1fr) minmax(0,1.15fr);gap:12px;padding:12px 14px;border-top:1px solid var(--line);align-items:start}
+.row.head{background:#ffeedd;font-size:.8rem;font-weight:700;color:var(--muted);border-top:0;padding:8px 14px}
 .row.head button{background:none;border:0;font:inherit;color:inherit;cursor:pointer;padding:0}
 .row.head button::after{content:" ⇅";opacity:.5}
-.offer{cursor:pointer}
-.offer:hover{background:#fffaf3}
-.offer.expired{opacity:.55}
-.bank-name{font-weight:700;font-size:.9rem}
-.issuer{display:block;font-size:.72rem;color:var(--muted)}
-.card-name{font-weight:700}
-.otype{display:inline-block;font-size:.7rem;padding:1px 7px;border-radius:6px;margin-right:4px;color:#fff;vertical-align:1px}
-.otype.t-迎新{background:#e8505b}.otype.t-簽賬回贈{background:#3c9d8f}.otype.t-限時推廣{background:#7b6cd9}
-.title{font-size:.88rem;color:var(--ink)}
-.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.cardrow:hover{background:#fffcf7}
+.bank-name{font-weight:700;font-size:.85rem}
+.bankline{margin-top:2px;font-size:.8rem}
+.ctype{font-size:.7rem;background:#eef6f8;border:1px solid #d3e8ee;color:#36707e;border-radius:6px;padding:0 6px;white-space:nowrap}
+.card-name{font-weight:800;font-size:1rem;line-height:1.35}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .tag{font-size:.7rem;background:#fff1e3;border:1px solid #f4d2ad;border-radius:999px;padding:0 7px;color:#9a5a24}
+.small{font-size:.78rem}
+.blk{border-radius:12px;padding:8px 10px;min-width:0}
+.blk.wel{background:#fff6f7;border:1px solid #ffdbe1}
+.blk.rew{background:#f4fbf8;border:1px solid #cdeedd}
+.blk.pro{grid-column:2/-1;background:#f6f4ff;border:1px solid #ddd8fb}
+.blk-h{margin:0 0 4px;font-size:.78rem;font-weight:800;letter-spacing:.03em}
+.blk.wel .blk-h{color:#b8334a}.blk.rew .blk-h{color:#1d7a51}.blk.pro .blk-h{color:#5b4cc4}
+.none{font-size:.82rem;color:var(--muted);padding:2px 0}
+.item+.item{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.item.expired,.pitem.expired{opacity:.55}
 .keys{display:flex;flex-wrap:wrap;gap:5px}
-.k{font-size:.82rem;border-radius:8px;padding:2px 8px;background:#f3f8fb;border:1px solid #d5e9f0;white-space:nowrap}
-.k.big{font-size:1rem;font-weight:800;background:#e9fbf3;border-color:#b5e9d1;color:#1d7a51}
+.k{font-size:.82rem;border-radius:8px;padding:2px 8px;background:#fff;border:1px solid #d5e9f0;white-space:nowrap}
+.k.big{font-size:.98rem;font-weight:800;background:#e9fbf3;border-color:#b5e9d1;color:#1d7a51}
 .k.mile{font-weight:800;background:#eef0ff;border-color:#cfd4ff;color:#3f49b8}
-.k.wel{font-weight:700;background:#fff0f2;border-color:#ffc9d2;color:#b8334a}
-.k.reg{background:#fff7e0;border-color:#f6dc8f;color:#8a6200}
-.k.cap{white-space:normal;font-size:.75rem;color:var(--muted);background:#fafafa;border-color:#eee}
-.exp{font-size:.85rem}
-.days{display:block;font-size:.72rem;color:var(--muted)}
+.k.wel{font-weight:800;font-size:.98rem;background:#fff0f2;border-color:#ffc9d2;color:#b8334a}
+.k.cr{font-size:.75rem;background:#fff;border-color:#cdeedd;color:#2a6e52}
+.k.sm{font-size:.78rem;padding:1px 6px}
+.cap{font-size:.75rem;color:var(--muted);margin-top:4px}
+.meta{font-size:.78rem;margin-top:4px}
+.fee{font-size:.78rem;margin-top:6px;color:#6a4a2f}
+.exp{font-size:.78rem}
+.days{font-size:.72rem;color:var(--muted)}
 .days.soon{color:var(--bad);font-weight:700}
-.ver{font-size:.75rem;font-weight:700;border-radius:8px;padding:2px 7px;display:inline-block}
-.ver.official{background:#e6f6ee;color:var(--ok)}
-.detail{grid-column:1/-1;background:#fffaf3;border:1.5px dashed var(--line);border-radius:12px;padding:10px 12px;font-size:.88rem;cursor:auto}
-.detail h4{margin:6px 0 2px;font-size:.8rem;color:var(--muted)}
+.acts{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:5px}
+.more{border:0;background:none;color:var(--muted);font:inherit;font-size:.75rem;cursor:pointer;padding:2px 4px}
+.more:hover{color:var(--brand-d)}
+.pitem+.pitem{margin-top:6px;padding-top:6px;border-top:1px dashed #ddd8fb}
+.pline{font-size:.85rem;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.ptitle{font-weight:700}
+.pexp{font-size:.75rem}
+.promo-section{margin-top:18px}
+.sec-h{font-size:1.05rem;margin:0 0 8px 4px}
+.sec-h small{font-size:.75rem;font-weight:400;color:var(--muted)}
+.promorow{grid-template-columns:220px minmax(0,1fr)}
+.promorow .blk.pro{grid-column:auto}
+.detail{background:#fffaf3;border:1.5px dashed var(--line);border-radius:12px;padding:8px 10px;font-size:.84rem;margin-top:6px}
+.detail h4{margin:6px 0 2px;font-size:.78rem;color:var(--muted)}
 .detail ul{margin:2px 0;padding-left:20px}
 .detail p{margin:2px 0}
 .src a{word-break:break-all}
-.chev{font-size:.75rem;color:var(--muted)}
 .empty{text-align:center;padding:30px;font-size:1.1rem}
 .site-footer{text-align:center;font-size:.8rem;padding:10px 16px 30px;color:var(--ink)}
 .site-footer p{margin:3px 0}
 
-/* mobile compact cards */
+/* mobile: one compact card per credit card */
 @media (max-width:820px){
   h1{font-size:1.4rem}
   .logo{width:60px;height:60px}
-  .controls{position:static}
   .row.head{display:none}
-  .table{background:transparent;box-shadow:none}
-  #rows{display:flex;flex-direction:column;gap:10px}
-  .row{grid-template-columns:1fr auto;grid-template-areas:"card ver" "keys keys" "bank exp";gap:6px 10px;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:0;padding:12px}
-  .c-bank{grid-area:bank;display:flex;gap:6px;align-items:baseline}
-  .c-card{grid-area:card}
-  .c-key{grid-area:keys}
-  .c-exp{grid-area:exp;text-align:right}
-  .c-ver{grid-area:ver;text-align:right}
-  .days{display:inline;margin-left:4px}
-  .issuer{display:inline}
+  .table{background:transparent;box-shadow:none;overflow:visible}
+  #rows,#promoRows{display:flex;flex-direction:column;gap:12px}
+  .row,.promorow{grid-template-columns:1fr;gap:8px;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:0;padding:12px}
+  .blk.pro{grid-column:auto}
+  .blk{padding:7px 9px}
   .fg-label{min-width:56px}
   .filter-group .chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
   .bank-group .chips{flex-wrap:wrap}
@@ -145,23 +157,14 @@ main{max-width:1200px;margin:0 auto;padding:0 12px 24px}
 }
 
 /* registration remark (always visible) + official link buttons */
-.regnote{margin-top:7px;padding:6px 9px;border-radius:9px;background:#fff6cc;border:1px solid #f1d46a;color:#6b4e00;font-size:.8rem;line-height:1.45;font-weight:600}
-.regnote.app .regtxt::before{content:"";}
-.regnote.web{background:#fff8dc}
+.regnote{margin-top:6px;padding:5px 8px;border-radius:9px;background:#fff6cc;border:1px solid #f1d46a;color:#6b4e00;font-size:.78rem;line-height:1.45;font-weight:600}
 .regnote.unconfirmed{background:#fff3e6;border-color:#f3c48b;color:#7a4a00}
 .regdl{font-weight:400}
-.btn{display:inline-block;font-size:.75rem;font-weight:700;text-decoration:none;border-radius:8px;padding:4px 8px;margin:2px 0;white-space:nowrap}
+.btn{display:inline-block;font-size:.74rem;font-weight:700;text-decoration:none;border-radius:8px;padding:3px 8px;white-space:nowrap}
 .btn-reg{background:#e8a200;color:#fff;margin-left:4px}
 .btn-reg:hover{background:#c98a00}
-.links{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
 .btn-promo{background:var(--brand);color:#fff}
 .btn-promo:hover{background:var(--brand-d)}
-.btn-src{background:#f3ece4;color:#6a4a2f;border:1px solid #e6d6c4}
-@media (max-width:820px){
-  .links{flex-direction:row;flex-wrap:wrap;justify-content:flex-end}
-  .row{grid-template-areas:"card card" "keys keys" "links links" "bank exp"}
-  .c-ver{grid-area:links;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:6px}
-  .c-ver .links{justify-content:flex-start}
-}
+.btn-src{background:#fff;color:#6a4a2f;border:1px solid #e6d6c4}
 .qa-reg{margin-top:4px;padding:5px 8px;border-radius:8px;background:#fff6cc;border:1px solid #f1d46a;color:#6b4e00;font-size:.8rem;font-weight:600}
 .qa-reg a{color:#8a5a00}

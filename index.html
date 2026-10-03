@@ -15,7 +15,7 @@
     <div>
       <h1>Roc B 喵喵著數</h1>
       <p class="subtitle">Roc B Meow Deals · 香港信用卡優惠一頁睇晒</p>
-      <p class="updated">資料最後更新：<strong id="lastUpdated">—</strong>（香港時間）· 共 <strong id="totalCount">0</strong> 項優惠</p>
+      <p class="updated">資料最後更新：<strong id="lastUpdated">—</strong>（香港時間）· 共 <strong id="cardCount">0</strong> 張卡、<strong id="totalCount">0</strong> 項優惠</p>
     </div>
   </div>
 </header>
@@ -64,19 +64,21 @@
       <label><input type="checkbox" id="onlyNoReg"> 唔使登記</label>
       <button type="button" id="reset" class="link-btn">清除所有篩選</button>
     </div>
-    <p class="result-count" aria-live="polite"><span id="shown">0</span> 項符合條件</p>
+    <p class="result-count" aria-live="polite"><span id="shown">0</span> 張卡符合條件（另有 <span id="shownPromo">0</span> 個多卡／全行限時推廣）· 每張卡一行，迎新、平時回贈同限時推廣分開顯示</p>
   </section>
 
   <section aria-label="優惠列表">
     <div class="table" id="list" role="table" aria-label="信用卡優惠">
       <div class="row head" role="row">
-        <div role="columnheader" class="c-bank"><button data-sort="bank">銀行</button></div>
-        <div role="columnheader" class="c-card">信用卡／優惠</div>
-        <div role="columnheader" class="c-key"><button data-sort="rebate">關鍵數字</button></div>
-        <div role="columnheader" class="c-exp"><button data-sort="expiry">到期</button></div>
-        <div role="columnheader" class="c-ver">官方連結</div>
+        <div role="columnheader" class="c-card"><button data-sort="bank">信用卡</button></div>
+        <div role="columnheader" class="blk-col"><button data-sort="welcome">🎁 迎新</button></div>
+        <div role="columnheader" class="blk-col"><button data-sort="rebate">💳 平時回贈</button></div>
       </div>
       <div id="rows"></div>
+    </div>
+    <div id="promoSection" class="promo-section" hidden>
+      <h2 class="sec-h">🔥 銀行／多卡限時推廣 <small>（適用於多張卡或全行信用卡，唔屬於單一張卡）</small></h2>
+      <div class="table"><div id="promoRows"></div></div>
     </div>
     <p id="empty" class="empty" hidden>😿 搵唔到符合條件嘅優惠，試下減少篩選？</p>
   </section>
@@ -84,7 +86,7 @@
 
 <footer class="site-footer">
   <p>🐾 Roc B 喵喵著數 · 資料只供參考，以銀行官方條款為準 · 數字唔係理財建議</p>
-  <p class="muted">「回贈 %」為該卡／推廣所列最高回贈率（通常有上限及條件）；「每里成本」為最低 HK$ 兌 1 里。</p>
+  <p class="muted">「最高 %」為該卡／推廣所列最高回贈率（通常有上限及條件）；「每里成本」為最低 HK$ 兌 1 里。按回贈／每里成本／迎新／到期排序時，用每張卡最好嘅相關數字。</p>
 </footer>
 <script src="assets/app.js"></script>
 <script src="assets/assistant.js"></script>
