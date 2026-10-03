@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Roc B 喵喵">
+  <title>Roc B 喵喵</title>
+  <!-- tail -->
+  <path d="M100 104c14-2 22-14 18-26-2-6-9-6-9 0 0 8-5 14-13 15z" fill="#f6a04d" stroke="#5b3a29" stroke-width="3" stroke-linejoin="round"/>
+  <!-- body -->
+  <ellipse cx="64" cy="100" rx="34" ry="22" fill="#f6a04d" stroke="#5b3a29" stroke-width="3"/>
+  <ellipse cx="64" cy="104" rx="18" ry="13" fill="#fff4e6"/>
+  <!-- ears -->
+  <path d="M26 44 L30 10 L54 30 Z" fill="#f6a04d" stroke="#5b3a29" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M102 44 L98 10 L74 30 Z" fill="#f6a04d" stroke="#5b3a29" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M32 36 L34 19 L46 30 Z" fill="#ffb7c5"/>
+  <path d="M96 36 L94 19 L82 30 Z" fill="#ffb7c5"/>
+  <!-- head -->
+  <ellipse cx="64" cy="56" rx="42" ry="34" fill="#f6a04d" stroke="#5b3a29" stroke-width="3"/>
+  <!-- stripes -->
+  <path d="M64 23v10M54 25l2 8M74 25l-2 8" stroke="#d97b28" stroke-width="4" stroke-linecap="round"/>
+  <!-- muzzle -->
+  <ellipse cx="64" cy="68" rx="20" ry="14" fill="#fff4e6"/>
+  <!-- eyes -->
+  <ellipse cx="46" cy="54" rx="6.5" ry="8" fill="#3b2418"/>
+  <ellipse cx="82" cy="54" rx="6.5" ry="8" fill="#3b2418"/>
+  <circle cx="48.5" cy="50.5" r="2.6" fill="#fff"/>
+  <circle cx="84.5" cy="50.5" r="2.6" fill="#fff"/>
+  <!-- blush -->
+  <ellipse cx="34" cy="67" rx="7" ry="4" fill="#ff8fa3" opacity=".6"/>
+  <ellipse cx="94" cy="67" rx="7" ry="4" fill="#ff8fa3" opacity=".6"/>
+  <!-- nose + mouth -->
+  <path d="M60 62h8l-4 4.5z" fill="#ff6f91" stroke="#5b3a29" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M64 66.5c0 4-3 6-6 5M64 66.5c0 4 3 6 6 5" fill="none" stroke="#5b3a29" stroke-width="2" stroke-linecap="round"/>
+  <!-- whiskers -->
+  <path d="M40 66l-16-3M40 71l-16 2M88 66l16-3M88 71l16 2" stroke="#5b3a29" stroke-width="2" stroke-linecap="round"/>
+  <!-- collar with B tag -->
+  <path d="M38 84c16 8 36 8 52 0" fill="none" stroke="#e8505b" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="64" cy="94" r="9" fill="#ffd34d" stroke="#5b3a29" stroke-width="2.5"/>
+  <text x="64" y="98.5" text-anchor="middle" font-family="Arial Rounded MT Bold, Arial, sans-serif" font-weight="700" font-size="12" fill="#5b3a29">B</text>
+  <!-- little credit card in paw -->
+  <g transform="rotate(-12 100 108)">
+    <rect x="86" y="98" width="28" height="18" rx="3" fill="#6cc3d5" stroke="#5b3a29" stroke-width="2.5"/>
+    <rect x="86" y="102" width="28" height="4" fill="#5b3a29"/>
+    <rect x="90" y="109" width="8" height="3" rx="1" fill="#fff"/>
+  </g>
+  <circle cx="92" cy="110" r="6" fill="#f6a04d" stroke="#5b3a29" stroke-width="2.5"/>
+</svg>

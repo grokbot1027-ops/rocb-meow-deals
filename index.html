@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roc B 喵喵著數｜香港信用卡優惠一覽</title>
+<meta name="description" content="Roc B 喵喵著數（Roc B Meow Deals）：一頁睇晒香港信用卡迎新、餐飲、網購、現金回贈、飛行里數優惠，資料來自銀行官網。">
+<link rel="icon" type="image/svg+xml" href="assets/rocb-cat.svg">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">
+    <img class="logo" src="assets/rocb-cat.svg" alt="Roc B 貓貓標誌" width="72" height="72">
+    <div>
+      <h1>Roc B 喵喵著數</h1>
+      <p class="subtitle">Roc B Meow Deals · 香港信用卡優惠一頁睇晒</p>
+      <p class="updated">資料最後更新：<strong id="lastUpdated">—</strong>（香港時間）· 共 <strong id="totalCount">0</strong> 項優惠</p>
+    </div>
+  </div>
+</header>
+
+<aside class="disclaimer" role="note">
+  <strong>⚠️ 免責聲明：</strong>本網站資料只供參考，全部整理自各銀行／發卡機構官方網頁及條款。所有優惠受相關銀行條款及細則約束，隨時可能更改或提早結束；本網站唔構成任何理財建議。每項優惠都附官方推廣頁或官方條款連結，申請前請務必到官方網頁核實最新詳情。標示 📱／🌐 嘅優惠要先登記，請留意登記方法同限期。
+</aside>
+
+<main>
+  <section class="controls" aria-label="搜尋及篩選">
+    <div class="search-row">
+      <label class="search">
+        <span aria-hidden="true">🔍</span>
+        <input id="q" type="search" placeholder="搜尋卡名、銀行、商戶（例如：淘寶、日本、Asia Miles、超市）" autocomplete="off">
+      </label>
+      <label class="sort">排序
+        <select id="sort">
+          <option value="default">預設（主要銀行先）</option>
+          <option value="rebate">回贈 % 高至低</option>
+          <option value="mile">每里成本 低至高</option>
+          <option value="welcome">迎新價值 高至低</option>
+          <option value="expiry">到期日 近至遠</option>
+          <option value="bank">銀行</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="filter-group">
+      <span class="fg-label">類別</span>
+      <div class="chips" id="f-cat"></div>
+    </div>
+    <div class="filter-group">
+      <span class="fg-label">優惠類型</span>
+      <div class="chips" id="f-type"></div>
+    </div>
+    <div class="filter-group">
+      <span class="fg-label">卡種</span>
+      <div class="chips" id="f-cardtype"></div>
+    </div>
+    <details class="filter-group bank-group" id="bankDetails">
+      <summary><span class="fg-label">銀行／發卡機構</span> <span id="bankSel" class="muted">全部</span></summary>
+      <div class="chips" id="f-bank"></div>
+    </details>
+    <div class="toggles">
+      <label><input type="checkbox" id="hideExpired" checked> 隱藏已過期</label>
+      <label><input type="checkbox" id="onlyNoReg"> 唔使登記</label>
+      <button type="button" id="reset" class="link-btn">清除所有篩選</button>
+    </div>
+    <p class="result-count" aria-live="polite"><span id="shown">0</span> 項符合條件</p>
+  </section>
+
+  <section aria-label="優惠列表">
+    <div class="table" id="list" role="table" aria-label="信用卡優惠">
+      <div class="row head" role="row">
+        <div role="columnheader" class="c-bank"><button data-sort="bank">銀行</button></div>
+        <div role="columnheader" class="c-card">信用卡／優惠</div>
+        <div role="columnheader" class="c-key"><button data-sort="rebate">關鍵數字</button></div>
+        <div role="columnheader" class="c-exp"><button data-sort="expiry">到期</button></div>
+        <div role="columnheader" class="c-ver">官方連結</div>
+      </div>
+      <div id="rows"></div>
+    </div>
+    <p id="empty" class="empty" hidden>😿 搵唔到符合條件嘅優惠，試下減少篩選？</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>🐾 Roc B 喵喵著數 · 資料只供參考，以銀行官方條款為準 · 數字唔係理財建議</p>
+  <p class="muted">「回贈 %」為該卡／推廣所列最高回贈率（通常有上限及條件）；「每里成本」為最低 HK$ 兌 1 里。</p>
+</footer>
+<script src="assets/app.js"></script>
+<script src="assets/assistant.js"></script>
+</body>
+</html>
