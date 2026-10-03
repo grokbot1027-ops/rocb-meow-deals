@@ -52,3 +52,9 @@ git add data/offers.json && git commit -m "data: refresh offers $(TZ=Asia/Hong_K
 - 改咗回贈率、上限或者到期日之後，記得同步更新 `cat_rates`、`rebate_cap_hkd`、`cap_period`、`min_spend_for_rate_hkd`。唔肯定嘅數就填 `null`，**唔好估**。小助手只會講 offers.json 入面有嘅數字。
 - 加咗新類別或者新銀行，要喺 `assets/assistant.js` 嘅 `CAT_SYN`／`BANK_SYN` 補返同義詞。
 - 改完喺瀏覽器 console 試下 `RocBAssistant.answer('網購')`、`RocBAssistant.answer('儲 Asia Miles')`，睇下排名合唔合理。
+
+## 滙豐「最紅自主獎賞」（每年更新）
+
+- 官方頁：https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/ （類別、商戶名單、登記限期）；條款 PDF 係圖片，要 OCR（`pdftoppm -r 300` + `tesseract -l chi_tra+eng`）。
+- 商戶名單喺頁面 tab 入面；中英文版次序唔同，`merchants` 同 `merchants_en` 分開存，唔好按次序配對。
+- 合資格卡睇條款「Eligible Credit Card」一條（2026 年：Red、EveryMile、Privé 除外）。

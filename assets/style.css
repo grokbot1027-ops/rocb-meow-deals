@@ -168,3 +168,21 @@ main{max-width:1200px;margin:0 auto;padding:0 12px 24px}
 .btn-src{background:#fff;color:#6a4a2f;border:1px solid #e6d6c4}
 .qa-reg{margin-top:4px;padding:5px 8px;border-radius:8px;background:#fff6cc;border:1px solid #f1d46a;color:#6b4e00;font-size:.8rem;font-weight:600}
 .qa-reg a{color:#8a5a00}
+.rcats{margin-top:6px;background:#fff;border:1px solid #cdeedd;border-radius:10px;padding:5px 8px}
+.rc-h{font-size:.74rem;font-weight:700;color:#2a6e52;margin-bottom:2px}
+.rc{border-top:1px dashed #e3f1ea;font-size:.8rem}
+.rc:first-of-type{border-top:0}
+.rc summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:2px 6px;align-items:baseline;padding:3px 0}
+.rc summary::-webkit-details-marker{display:none}
+.rc-rate{font-weight:800;color:#1d7a51}
+.rc-other{font-size:.72rem;color:var(--muted)}
+.rc-cats{font-size:.7rem;color:#9a5a24}
+.rc-more{margin-left:auto;font-size:.7rem;color:var(--muted)}
+.rc[open] .rc-more{color:var(--brand-d)}
+.rc-body{font-size:.76rem;padding:2px 0 6px}
+.rc-body p{margin:2px 0}
+.rc-g{margin:3px 0;line-height:1.5}
+.qa-choice{margin-top:4px;padding:5px 8px;border-radius:8px;background:#eef9f3;border:1px solid #bfe6d1;color:#1f5e43;font-size:.8rem;font-weight:600}
+.qa-merch{background:#f3f0ff;border:1px solid #d9d2fb;border-radius:10px;padding:6px 8px;margin:6px 0;font-size:.82rem}
+.qa-merch ul{margin:4px 0;padding-left:18px}
+.qa-sub{font-weight:700;margin:8px 0 2px;color:#1f5e43}

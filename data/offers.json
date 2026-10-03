@@ -80,7 +80,8 @@
     "key_terms": [
       "網上繳費、電子錢包、保險、八達通增值都唔計 4%",
       "經電子錢包喺指定商戶簽唔計 8%",
-      "13 個月內取消卡會扣回迎新"
+      "13 個月內取消卡會扣回迎新",
+      "唔適用於「最紅自主獎賞」（2026 條款第 25 條）"
     ],
     "caps": "網購 4% 只計每月首 HK$10,000；指定商戶 8% 只計每月首 HK$1,250",
     "validity_text": "Red 卡獎賞計劃 01/07/2026–31/12/2026",
@@ -120,7 +121,63 @@
     "registration_url": null,
     "registration_deadline": null,
     "registration_note_zh": null,
-    "registration_confirmed": null
+    "registration_confirmed": null,
+    "reward_categories": [
+      {
+        "name": "指定商戶",
+        "name_en": "Designated merchants",
+        "site_cats": [
+          "餐飲",
+          "購物",
+          "海外",
+          "日本",
+          "交通",
+          "生活"
+        ],
+        "rate_pct": 8,
+        "rate_note": "每曆月首 HK$1,250 簽賬 8%，之後 0.4%；唔使揀類別",
+        "desc": "Red 卡指定本地及海外商戶（官方產品頁「查看商戶名單」）；經電子錢包喺指定商戶簽唔計 8%",
+        "merchants": {
+          "指定本地商戶": [
+            "香港壽司郎",
+            "譚仔三哥米線",
+            "譚仔雲南米線",
+            "Bakehouse",
+            "Decathlon Hong Kong",
+            "NAMCO",
+            "TAITO STATION",
+            "Sephora",
+            "@cosme STORE",
+            "@cosme HONG KONG",
+            "3COINS"
+          ],
+          "指定海外商戶": [
+            "Suica（JR EAST 東日本旅客鐵道）",
+            "南韓 OLIVE YOUNG",
+            "Mobile Tmoney",
+            "日本 FamilyMart"
+          ]
+        },
+        "requires_choice": false,
+        "rate_if_not_chosen_pct": null,
+        "merchants_en": null
+      },
+      {
+        "name": "網上購物",
+        "name_en": "Online",
+        "site_cats": [
+          "網購"
+        ],
+        "rate_pct": 4,
+        "rate_note": "每曆月首 HK$10,000 網上簽賬 4%，之後 0.4%；唔使揀類別",
+        "desc": "網上簽賬（網上繳費、電子錢包、保險、八達通增值唔計）",
+        "merchants": null,
+        "requires_choice": false,
+        "rate_if_not_chosen_pct": null,
+        "merchants_en": null
+      }
+    ],
+    "merchant_list_url": "https://www.hsbc.com.hk/zh-hk/credit-cards/products/red/"
   },
   {
     "id": "hsbc-everymile-welcome",
@@ -205,7 +262,8 @@
       "海外推廣要先登記，登記前簽賬唔計",
       "電子錢包唔計指定商戶 2.5%",
       "外幣手續費 1.95% 要計入每里成本",
-      "冇附屬卡"
+      "冇附屬卡",
+      "唔適用於「最紅自主獎賞」（2026 條款第 25 條）"
     ],
     "caps": "海外推廣額外回贈每期上限 $225，全期 $450",
     "validity_text": "EveryMile 獎賞計劃推廣期 2026年7月1日至2026年12月31日",
@@ -316,20 +374,29 @@
     "card_id": "hsbc-vs",
     "card_type": "現金回贈卡",
     "offer_type": "簽賬回贈",
-    "title": "滙豐 Visa Signature 卡 簽賬回贈",
+    "title": "最紅自主獎賞自選類別最高 3.6%（Visa Signature 額外 3X）",
     "categories": [
       "現金回贈",
+      "餐飲",
       "海外",
-      "餐飲"
+      "超市",
+      "交通",
+      "內地／澳門",
+      "日本",
+      "電子產品",
+      "購物",
+      "生活"
     ],
-    "summary_zh": "「最紅自主獎賞」自選類別最高 3.6%（2.4% + Visa Signature 額外 1.2%）；其他 0.4%",
+    "summary_zh": "「最紅自主獎賞」5 大類別（賞滋味、賞世界、賞享受、賞家居、賞購物）：Visa Signature 卡喺所有類別自動有額外 3X（1.2%），再將額外 5X 全部放喺自選類別就有 3.6%（0.4% 基本 + 2% + 1.2%）；冇揀嘅類別 1.6%；類別以外 0.4%。",
     "key_terms": [
-      "要喺 Reward+ App 分配「獎賞錢」類別先有高回贈",
-      "電子錢包、繳費唔計"
+      "5 大類別：賞滋味、賞世界、賞享受、賞家居、賞購物（官方條款第 5 條）",
+      "基本 1X =「獎賞錢」$1／HK$250（0.4%）；額外 5X = 2%",
+      "電子錢包（包括增值）、八達通／儲值卡增值、經滙豐網上／手機理財繳費、分期計劃月供等唔計（條款第 26 條）",
+      "Visa Signature 額外 3X「獎賞錢」喺「最紅自主獎賞」所有類別自動享有（產品頁註腳，推廣期至 31/12/2026）"
     ],
-    "caps": "最紅自主獎賞額外「獎賞錢」只計每年首 HK$100,000 簽賬",
-    "validity_text": "最紅自主獎賞 01/01/2026–31/12/2026",
-    "start_date": null,
+    "caps": "額外「獎賞錢」只計每年首 HK$100,000 合資格簽賬（即最多額外 $2,000「獎賞錢」）；5X 可以分開放唔同類別，登記後唔可以更改；Visa Signature 額外 3X 嘅上限官網未有列明",
+    "validity_text": "2026年1月1日至2026年12月31日（要喺 2026年10月31日或之前登記）",
+    "start_date": "2026-01-01",
     "expiry_date": "2026-12-31",
     "rebate_pct": 3.6,
     "hkd_per_mile": null,
@@ -341,20 +408,42 @@
     "fx_fee_pct": 1.95,
     "requires_registration": true,
     "source_url": "https://www.hsbc.com.hk/zh-hk/credit-cards/products/visa-signature/",
-    "source_label": "產品頁",
+    "source_label": "滙豐 Visa Signature 卡產品頁",
     "extra_sources": [
+      {
+        "label": "「最紅自主獎賞」官方頁（類別及商戶名單）",
+        "url": "https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/"
+      },
       {
         "label": "最紅自主獎賞",
         "url": "https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/"
       },
       {
-        "label": "最紅自主獎賞條款 PDF",
+        "label": "2026「最紅自主獎賞」條款及細則（PDF）",
         "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/tc/docs/credit-cards/rewards/2026-red-hot-rewards-of-your-choice-terms-and-conditions.pdf"
+      },
+      {
+        "label": "2026 Red Hot Rewards of Your Choice T&C (PDF, English prevails)",
+        "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/credit-cards/rewards/2026-red-hot-rewards-of-your-choice-terms-and-conditions.pdf"
+      },
+      {
+        "label": "最紅自主獎賞常見問題",
+        "url": "https://www.hsbc.com.hk/zh-hk/help/faq/credit-cards/rewards/"
       }
     ],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-04",
     "source_type": "official",
-    "cat_rates": null,
+    "cat_rates": {
+      "餐飲": 3.6,
+      "海外": 3.6,
+      "日本": 3.6,
+      "內地／澳門": 3.6,
+      "生活": 3.6,
+      "交通": 3.6,
+      "超市": 3.6,
+      "電子產品": 3.6,
+      "購物": 3.6
+    },
     "rebate_cap_hkd": null,
     "cap_period": null,
     "min_spend_for_rate_hkd": null,
@@ -362,8 +451,534 @@
     "registration_app": "滙豐 Reward+",
     "registration_url": "https://www.hsbc.com.hk/zh-hk/forms/red-hot-rewards-of-your-choice/",
     "registration_deadline": "2026-10-31",
-    "registration_note_zh": "📱 要喺「滙豐 Reward+」App（或滙豐網上登記表格）登記「最紅自主獎賞」並分配類別，先有額外回贈；登記限期 31/10/2026",
-    "registration_confirmed": true
+    "registration_note_zh": "📱 要喺「滙豐 Reward+」App（或滙豐網上登記表格）登記「最紅自主獎賞」並揀類別（登記後唔可以改）；5X 全放一個類別先有最高回贈；登記限期 31/10/2026",
+    "registration_confirmed": true,
+    "reward_categories": [
+      {
+        "name": "賞滋味",
+        "name_en": "Dining",
+        "site_cats": [
+          "餐飲"
+        ],
+        "rate_pct": 3.6,
+        "rate_note": "揀咗（5X 全放呢類）：3.6%｜冇揀：1.6%",
+        "desc": "香港餐廳及食肆簽賬（按 Visa／Mastercard／銀聯商戶編號）；酒席宴會、私人宴會、包場，以及酒店／百貨公司／會所內餐飲除外",
+        "merchants": null,
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 1.6,
+        "merchants_en": null
+      },
+      {
+        "name": "賞世界",
+        "name_en": "Overseas & Mainland China",
+        "site_cats": [
+          "海外",
+          "日本",
+          "內地／澳門"
+        ],
+        "rate_pct": 3.6,
+        "rate_note": "揀咗（5X 全放呢類）：3.6%｜冇揀：1.6%",
+        "desc": "海外、中國內地及澳門簽賬；喺香港或以港幣進行嘅簽賬唔計",
+        "merchants": null,
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 1.6,
+        "merchants_en": null
+      },
+      {
+        "name": "賞享受",
+        "name_en": "Lifestyle",
+        "site_cats": [
+          "生活",
+          "交通"
+        ],
+        "rate_pct": 3.6,
+        "rate_note": "揀咗（5X 全放呢類）：3.6%｜冇揀：1.6%",
+        "desc": "指定商戶：健身中心、電影院、娛樂消閒、旅行社、個人保健、交通運輸（只限名單上商戶嘅香港分店）",
+        "merchants": {
+          "健身中心": [
+            "Be Earth",
+            "Go24 Fitness",
+            "PURE Group",
+            "Snap Fitness",
+            "Square Fitness"
+          ],
+          "電影院": [
+            "CGV Cinemas",
+            "英皇戲院",
+            "Festival Grand Cinema",
+            "康怡戲院",
+            "皇室戲院",
+            "K11 Art House",
+            "MCL 院線",
+            "Movie Town",
+            "STAR Cinema"
+          ],
+          "娛樂消閒": [
+            "焙著你烘焙",
+            "購票通",
+            "太古城中心冰上皇宮",
+            "EF English Centers",
+            "青苗琴行",
+            "快達票",
+            "KKBOX",
+            "KKTix",
+            "Moov",
+            "Neway CEO Karaoke",
+            "康體通",
+            "通利琴行"
+          ],
+          "旅行社": [
+            "hutchgo",
+            "KKDay",
+            "Klook",
+            "美麗華旅遊",
+            "新華旅遊",
+            "Trip.com",
+            "永安旅遊",
+            "油麻地旅遊"
+          ],
+          "個人保健": [
+            "沐館",
+            "靜",
+            "日月按摩",
+            "TONI&GUY HONG KONG",
+            "梔 Zi Massage & Wellness"
+          ],
+          "交通運輸": [
+            "加德士",
+            "城巴",
+            "ESSO",
+            "易通行",
+            "香港電車",
+            "九巴",
+            "MTR",
+            "PIT",
+            "Shell",
+            "Shell Recharge",
+            "SINOPEC",
+            "Tesla"
+          ]
+        },
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 1.6,
+        "merchants_en": {
+          "Fitness": [
+            "Be Earth",
+            "Go24 Fitness",
+            "PURE Group",
+            "Snap Fitness",
+            "Square Fitness"
+          ],
+          "Cinemas": [
+            "CGV Cinemas",
+            "Emperor Cinemas",
+            "Festival Grand Cinema",
+            "Grand Kornhill Cinema",
+            "Grand Windsor Cinema",
+            "K11 Art House",
+            "MCL Cinemas",
+            "Movie Town",
+            "STAR Cinema"
+          ],
+          "Entertainment": [
+            "bakebe",
+            "Cityline (Hong Kong) Limited",
+            "Cityplaza Ice Palace",
+            "EF English Centers",
+            "Greenery Music",
+            "HKTicketing",
+            "KKBOX",
+            "KKTix",
+            "Moov",
+            "Neway CEO Karaoke",
+            "SmartPlay",
+            "Tom Lee Music"
+          ],
+          "Travel Agents": [
+            "hutchgo",
+            "KKDay",
+            "Klook",
+            "Miramar Travel",
+            "Sunflower Travel",
+            "Trip.com",
+            "Wing On Travel",
+            "YMT Travel"
+          ],
+          "Personal Wellness": [
+            "Moood Massage",
+            "shh massage",
+            "Sun and Moon Massage",
+            "TONI&GUY HONG KONG",
+            "Zi Massage & Wellness"
+          ],
+          "Transportation": [
+            "Caltex",
+            "Citybus",
+            "ESSO",
+            "HKeToll",
+            "HK Tramways",
+            "KMB",
+            "MTR",
+            "PIT",
+            "Shell",
+            "Shell Recharge",
+            "SINOPEC",
+            "Tesla"
+          ]
+        }
+      },
+      {
+        "name": "賞家居",
+        "name_en": "Home",
+        "site_cats": [
+          "超市",
+          "電子產品",
+          "生活"
+        ],
+        "rate_pct": 3.6,
+        "rate_note": "揀咗（5X 全放呢類）：3.6%｜冇揀：1.6%",
+        "desc": "指定商戶：超級市場、家居用品、電器、電訊公司、寵物護理（只限名單上商戶嘅香港分店）；電訊公司：用滙豐普通卡、滙豐金卡及滙豐銀聯雙幣信用卡網上繳費唔計",
+        "merchants": {
+          "超級市場": [
+            "759阿信屋",
+            "Big C",
+            "日記士多",
+            "Don Don Donki",
+            "大生生活超市",
+            "新鮮生活",
+            "GreenPrice",
+            "本灣水產",
+            "百佳超級市場",
+            "FUSION",
+            "TASTE",
+            "TASTE x FRESH",
+            "INTERNATIONAL",
+            "food le parc",
+            "GOURMET",
+            "GREAT FOOD HALL",
+            "多來買"
+          ],
+          "家居用品": [
+            "at.home",
+            "生活提案",
+            "生活工房",
+            "JHC真好城",
+            "KeyChain Pay",
+            "生活館",
+            "生活廊",
+            "蓆夢思",
+            "歐化寶",
+            "歐化傢俬"
+          ],
+          "電器": [
+            "生活影音",
+            "百老滙",
+            "BRUNO",
+            "中原電器",
+            "豐澤",
+            "J SELECT",
+            "人気电器店",
+            "Panasonic陳列室",
+            "Price網購",
+            "蘇寧",
+            "偉明電業",
+            "惠而浦網上商店W-Mall",
+            "衛訊",
+            "友和 YOHO"
+          ],
+          "電訊公司": [
+            "1O1O",
+            "3香港",
+            "csl",
+            "Club Sim",
+            "HKT 家居電話",
+            "網上行",
+            "Now TV",
+            "SmarTone",
+            "SUPREME"
+          ],
+          "寵物護理": [
+            "寵寵線",
+            "Petmium寵物百貨",
+            "Q-Pets",
+            "紅蘿蔔",
+            "The Dog’s Garden",
+            "Three Little Meow"
+          ]
+        },
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 1.6,
+        "merchants_en": {
+          "Supermarkets": [
+            "759 Store",
+            "Big C",
+            "Day Day Store",
+            "Don Don Donki",
+            "DS GROCERIES",
+            "FRESH",
+            "GreenPrice",
+            "Hong Kong Flavour",
+            "PARKnSHOP",
+            "FUSION",
+            "TASTE",
+            "TASTE x FRESH",
+            "INTERNATIONAL",
+            "food le parc",
+            "GOURMET",
+            "GREAT FOOD HALL",
+            "$mart"
+          ],
+          "Home and Furniture": [
+            "at.home",
+            "City Life",
+            "Home+ By Ella",
+            "Japan Home Centre (JHC)",
+            "KeyChain Pay",
+            "Life Kan",
+            "Life@HOME",
+            "SIMMONS",
+            "Ulfenbo",
+            "Ulferts"
+          ],
+          "Electronic Appliances": [
+            "AV Life",
+            "BROADWAY",
+            "BRUNO",
+            "Chung Yuen Electrical",
+            "FORTRESS",
+            "J SELECT",
+            "Ninki Denki",
+            "Panasonic Showroom",
+            "Price.com.hk",
+            "Suning",
+            "Wai Ming Electrical",
+            "Whirlpool Official Online Store W-Mall",
+            "Wilson Communications",
+            "YOHO"
+          ],
+          "Telecom Companies": [
+            "1O1O",
+            "3HK",
+            "csl",
+            "Club Sim",
+            "HKT HOME PHONE",
+            "NETVIGATOR",
+            "Now TV",
+            "SmarTone",
+            "SUPREME"
+          ],
+          "Pet Care": [
+            "Pet Line",
+            "Petmium Superstore",
+            "Q-Pets",
+            "Red Carrot",
+            "The Dog’s Garden",
+            "Three Little Meow"
+          ]
+        }
+      },
+      {
+        "name": "賞購物",
+        "name_en": "Shopping",
+        "site_cats": [
+          "購物"
+        ],
+        "rate_pct": 3.6,
+        "rate_note": "揀咗（5X 全放呢類）：3.6%｜冇揀：1.6%",
+        "desc": "指定商戶：百貨公司、書店、潮流服飾／配件、護膚美妝、保健護理、其他（只限名單上商戶嘅香港分店，百貨公司專櫃及特賣場除外）",
+        "merchants": {
+          "百貨公司": [
+            "AEON",
+            "AEON STYLE",
+            "AEON SUPERMARKET",
+            "APITA",
+            "Bento Express by AEON",
+            "中藝（香港）",
+            "C生活",
+            "千色Citistore",
+            "city'super",
+            "city'super neighbourhood",
+            "city'super LOG-ON",
+            "谷辰",
+            "HKTVmall",
+            "HARVEY NICHOLS",
+            "Living PLAZA by AEON",
+            "LOG-ON",
+            "MARKS & SPENCER",
+            "Mono Mono",
+            "先施百貨",
+            "崇光百貨",
+            "UNY 生活創富",
+            "永安百貨",
+            "一田"
+          ],
+          "書店": [
+            "中華書局",
+            "誠品書店",
+            "三聯書店",
+            "商務印書館"
+          ],
+          "潮流服飾 / 配件": [
+            "7 For All Mankind",
+            "agnès b.",
+            "BIRKENSTOCK",
+            "Brooks Brothers",
+            "Club Monaco",
+            "Columbia",
+            "Crocs",
+            "DECATHLON",
+            "ECCO",
+            "eGG Optical Boutique",
+            "Go Wild",
+            "GU",
+            "MISCH MASCH",
+            "NICAL",
+            "眼鏡88",
+            "ORiental Traffic",
+            "WA ORiental Traffic",
+            "ROCKPORT",
+            "SKECHERS",
+            "SPORT b.",
+            "Teva",
+            "Theory",
+            "TWIST",
+            "UGG",
+            "UNIQLO",
+            "ZALORA",
+            "Zoff"
+          ],
+          "護膚美妝": [
+            "@cosme STORE",
+            "BEAUTY AVENUE",
+            "法國嬌蘭",
+            "IPSA",
+            "JOYCE BEAUTY",
+            "mtm labo",
+            "TIME by mtm labo",
+            "SPA by mtm labo",
+            "NARS",
+            "莎莎",
+            "Serge Lutens",
+            "SHISEIDO",
+            "雪花秀"
+          ],
+          "保健護理": [
+            "南北行",
+            "OSIM",
+            "OTO",
+            "SLOWOOD",
+            "維特健靈",
+            "位元堂",
+            "屈臣氏"
+          ],
+          "其他": [
+            "agnes b. FLEURISTE",
+            "Cantevole",
+            "CASETiFY",
+            "La Bohéme",
+            "ROYCE'",
+            "屈臣氏酒窖"
+          ]
+        },
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 1.6,
+        "merchants_en": {
+          "Department Store": [
+            "AEON",
+            "AEON STYLE",
+            "AEON SUPERMARKET",
+            "APITA",
+            "Bento Express by AEON",
+            "Chinese Arts & Crafts (H.K.)",
+            "Citilife",
+            "Citistore",
+            "city'super",
+            "city'super neighbourhood",
+            "city'super LOG-ON",
+            "Guu San",
+            "HARVEY NICHOLS",
+            "HKTVmall",
+            "Living PLAZA by AEON",
+            "LOG-ON",
+            "MARKS & SPENCER",
+            "Mono Mono",
+            "Sincere Department Store",
+            "SOGO",
+            "UNY",
+            "Wing On Department Stores / Wing On Plus",
+            "YATA"
+          ],
+          "Bookstores": [
+            "Chung Hwa Book",
+            "eslite bookstore",
+            "Joint Publishing",
+            "The Commercial Press"
+          ],
+          "Fashion / Accessories": [
+            "7 For All Mankind",
+            "agnès b.",
+            "BIRKENSTOCK",
+            "Brooks Brothers",
+            "Club Monaco",
+            "Columbia",
+            "Crocs",
+            "DECATHLON",
+            "ECCO",
+            "eGG Optical Boutique",
+            "Go Wild",
+            "GU",
+            "MISCH MASCH",
+            "NICAL",
+            "OPTICAL 88",
+            "ORiental Traffic",
+            "WA ORiental Traffic",
+            "ROCKPORT",
+            "SKECHERS",
+            "SPORT b.",
+            "Teva",
+            "Theory",
+            "TWIST",
+            "UGG",
+            "UNIQLO",
+            "ZALORA",
+            "Zoff"
+          ],
+          "Beauty": [
+            "@cosme STORE",
+            "BEAUTY AVENUE",
+            "GUERLAIN",
+            "IPSA",
+            "JOYCE BEAUTY",
+            "mtm labo",
+            "TIME by mtm labo",
+            "SPA by mtm labo",
+            "NARS",
+            "Sa Sa",
+            "Serge Lutens",
+            "SHISEIDO",
+            "Sulwhasoo"
+          ],
+          "Wellness Grocery": [
+            "Nam Pei Hong",
+            "OSIM",
+            "OTO",
+            "SLOWOOD",
+            "Vita Green",
+            "Wai Yuen Tong",
+            "Watsons"
+          ],
+          "Others": [
+            "agnes b. FLEURISTE",
+            "Cantevole",
+            "CASETiFY",
+            "La Bohéme",
+            "ROYCE'",
+            "Watson's Wine"
+          ]
+        }
+      }
+    ],
+    "merchant_list_url": "https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/"
   },
   {
     "id": "hsbc-easy-welcome",
@@ -428,19 +1043,28 @@
     "card_id": "hsbc-easy",
     "card_type": "現金回贈卡",
     "offer_type": "簽賬回贈",
-    "title": "滙豐 easy 信用卡 簽賬回贈",
+    "title": "最紅自主獎賞自選類別最高 2.4%",
     "categories": [
       "現金回贈",
-      "超市"
+      "餐飲",
+      "海外",
+      "超市",
+      "交通",
+      "內地／澳門",
+      "日本",
+      "電子產品",
+      "購物",
+      "生活"
     ],
-    "summary_zh": "最紅自主獎賞：將額外「獎賞錢」倍數集中喺一個自選類別，全年最高 2.4%（只計每年首 HK$100,000 簽賬）。",
+    "summary_zh": "「最紅自主獎賞」5 大類別（賞滋味、賞世界、賞享受、賞家居、賞購物）：將額外 5X 全部放喺自選類別就有 2.4%（0.4% 基本 + 2%）；冇揀嘅類別同其他簽賬 0.4%。",
     "key_terms": [
-      "要登記並分配「獎賞錢」類別",
-      "分配後唔可以更改"
+      "5 大類別：賞滋味、賞世界、賞享受、賞家居、賞購物（官方條款第 5 條）",
+      "基本 1X =「獎賞錢」$1／HK$250（0.4%）；額外 5X = 2%",
+      "電子錢包（包括增值）、八達通／儲值卡增值、經滙豐網上／手機理財繳費、分期計劃月供等唔計（條款第 26 條）"
     ],
-    "caps": "最紅自主獎賞額外「獎賞錢」只計每年首 HK$100,000 簽賬",
-    "validity_text": "最紅自主獎賞 2026年1月1日至12月31日（登記限期 31/10/2026）",
-    "start_date": null,
+    "caps": "額外「獎賞錢」只計每年首 HK$100,000 合資格簽賬（即最多額外 $2,000「獎賞錢」）；5X 可以分開放唔同類別，登記後唔可以更改",
+    "validity_text": "2026年1月1日至2026年12月31日（要喺 2026年10月31日或之前登記）",
+    "start_date": "2026-01-01",
     "expiry_date": "2026-12-31",
     "rebate_pct": 2.4,
     "hkd_per_mile": null,
@@ -452,16 +1076,34 @@
     "fx_fee_pct": 1.95,
     "requires_registration": true,
     "source_url": "https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
-    "source_label": "滙豐最紅自主獎賞",
+    "source_label": "滙豐「最紅自主獎賞」官方頁",
     "extra_sources": [
       {
-        "label": "最紅自主獎賞條款 PDF",
+        "label": "2026「最紅自主獎賞」條款及細則（PDF）",
         "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/tc/docs/credit-cards/rewards/2026-red-hot-rewards-of-your-choice-terms-and-conditions.pdf"
+      },
+      {
+        "label": "2026 Red Hot Rewards of Your Choice T&C (PDF, English prevails)",
+        "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/credit-cards/rewards/2026-red-hot-rewards-of-your-choice-terms-and-conditions.pdf"
+      },
+      {
+        "label": "最紅自主獎賞常見問題",
+        "url": "https://www.hsbc.com.hk/zh-hk/help/faq/credit-cards/rewards/"
       }
     ],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-04",
     "source_type": "official",
-    "cat_rates": null,
+    "cat_rates": {
+      "餐飲": 2.4,
+      "海外": 2.4,
+      "日本": 2.4,
+      "內地／澳門": 2.4,
+      "生活": 2.4,
+      "交通": 2.4,
+      "超市": 2.4,
+      "電子產品": 2.4,
+      "購物": 2.4
+    },
     "rebate_cap_hkd": null,
     "cap_period": null,
     "min_spend_for_rate_hkd": null,
@@ -469,8 +1111,1142 @@
     "registration_app": "滙豐 Reward+",
     "registration_url": "https://www.hsbc.com.hk/zh-hk/forms/red-hot-rewards-of-your-choice/",
     "registration_deadline": "2026-10-31",
-    "registration_note_zh": "📱 要喺「滙豐 Reward+」App（或滙豐網上登記表格）登記「最紅自主獎賞」並分配類別，先有額外回贈；登記限期 31/10/2026",
-    "registration_confirmed": true
+    "registration_note_zh": "📱 要喺「滙豐 Reward+」App（或滙豐網上登記表格）登記「最紅自主獎賞」並揀類別（登記後唔可以改）；5X 全放一個類別先有最高回贈；登記限期 31/10/2026",
+    "registration_confirmed": true,
+    "reward_categories": [
+      {
+        "name": "賞滋味",
+        "name_en": "Dining",
+        "site_cats": [
+          "餐飲"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "香港餐廳及食肆簽賬（按 Visa／Mastercard／銀聯商戶編號）；酒席宴會、私人宴會、包場，以及酒店／百貨公司／會所內餐飲除外",
+        "merchants": null,
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": null
+      },
+      {
+        "name": "賞世界",
+        "name_en": "Overseas & Mainland China",
+        "site_cats": [
+          "海外",
+          "日本",
+          "內地／澳門"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "海外、中國內地及澳門簽賬；喺香港或以港幣進行嘅簽賬唔計",
+        "merchants": null,
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": null
+      },
+      {
+        "name": "賞享受",
+        "name_en": "Lifestyle",
+        "site_cats": [
+          "生活",
+          "交通"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "指定商戶：健身中心、電影院、娛樂消閒、旅行社、個人保健、交通運輸（只限名單上商戶嘅香港分店）",
+        "merchants": {
+          "健身中心": [
+            "Be Earth",
+            "Go24 Fitness",
+            "PURE Group",
+            "Snap Fitness",
+            "Square Fitness"
+          ],
+          "電影院": [
+            "CGV Cinemas",
+            "英皇戲院",
+            "Festival Grand Cinema",
+            "康怡戲院",
+            "皇室戲院",
+            "K11 Art House",
+            "MCL 院線",
+            "Movie Town",
+            "STAR Cinema"
+          ],
+          "娛樂消閒": [
+            "焙著你烘焙",
+            "購票通",
+            "太古城中心冰上皇宮",
+            "EF English Centers",
+            "青苗琴行",
+            "快達票",
+            "KKBOX",
+            "KKTix",
+            "Moov",
+            "Neway CEO Karaoke",
+            "康體通",
+            "通利琴行"
+          ],
+          "旅行社": [
+            "hutchgo",
+            "KKDay",
+            "Klook",
+            "美麗華旅遊",
+            "新華旅遊",
+            "Trip.com",
+            "永安旅遊",
+            "油麻地旅遊"
+          ],
+          "個人保健": [
+            "沐館",
+            "靜",
+            "日月按摩",
+            "TONI&GUY HONG KONG",
+            "梔 Zi Massage & Wellness"
+          ],
+          "交通運輸": [
+            "加德士",
+            "城巴",
+            "ESSO",
+            "易通行",
+            "香港電車",
+            "九巴",
+            "MTR",
+            "PIT",
+            "Shell",
+            "Shell Recharge",
+            "SINOPEC",
+            "Tesla"
+          ]
+        },
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": {
+          "Fitness": [
+            "Be Earth",
+            "Go24 Fitness",
+            "PURE Group",
+            "Snap Fitness",
+            "Square Fitness"
+          ],
+          "Cinemas": [
+            "CGV Cinemas",
+            "Emperor Cinemas",
+            "Festival Grand Cinema",
+            "Grand Kornhill Cinema",
+            "Grand Windsor Cinema",
+            "K11 Art House",
+            "MCL Cinemas",
+            "Movie Town",
+            "STAR Cinema"
+          ],
+          "Entertainment": [
+            "bakebe",
+            "Cityline (Hong Kong) Limited",
+            "Cityplaza Ice Palace",
+            "EF English Centers",
+            "Greenery Music",
+            "HKTicketing",
+            "KKBOX",
+            "KKTix",
+            "Moov",
+            "Neway CEO Karaoke",
+            "SmartPlay",
+            "Tom Lee Music"
+          ],
+          "Travel Agents": [
+            "hutchgo",
+            "KKDay",
+            "Klook",
+            "Miramar Travel",
+            "Sunflower Travel",
+            "Trip.com",
+            "Wing On Travel",
+            "YMT Travel"
+          ],
+          "Personal Wellness": [
+            "Moood Massage",
+            "shh massage",
+            "Sun and Moon Massage",
+            "TONI&GUY HONG KONG",
+            "Zi Massage & Wellness"
+          ],
+          "Transportation": [
+            "Caltex",
+            "Citybus",
+            "ESSO",
+            "HKeToll",
+            "HK Tramways",
+            "KMB",
+            "MTR",
+            "PIT",
+            "Shell",
+            "Shell Recharge",
+            "SINOPEC",
+            "Tesla"
+          ]
+        }
+      },
+      {
+        "name": "賞家居",
+        "name_en": "Home",
+        "site_cats": [
+          "超市",
+          "電子產品",
+          "生活"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "指定商戶：超級市場、家居用品、電器、電訊公司、寵物護理（只限名單上商戶嘅香港分店）；電訊公司：用滙豐普通卡、滙豐金卡及滙豐銀聯雙幣信用卡網上繳費唔計",
+        "merchants": {
+          "超級市場": [
+            "759阿信屋",
+            "Big C",
+            "日記士多",
+            "Don Don Donki",
+            "大生生活超市",
+            "新鮮生活",
+            "GreenPrice",
+            "本灣水產",
+            "百佳超級市場",
+            "FUSION",
+            "TASTE",
+            "TASTE x FRESH",
+            "INTERNATIONAL",
+            "food le parc",
+            "GOURMET",
+            "GREAT FOOD HALL",
+            "多來買"
+          ],
+          "家居用品": [
+            "at.home",
+            "生活提案",
+            "生活工房",
+            "JHC真好城",
+            "KeyChain Pay",
+            "生活館",
+            "生活廊",
+            "蓆夢思",
+            "歐化寶",
+            "歐化傢俬"
+          ],
+          "電器": [
+            "生活影音",
+            "百老滙",
+            "BRUNO",
+            "中原電器",
+            "豐澤",
+            "J SELECT",
+            "人気电器店",
+            "Panasonic陳列室",
+            "Price網購",
+            "蘇寧",
+            "偉明電業",
+            "惠而浦網上商店W-Mall",
+            "衛訊",
+            "友和 YOHO"
+          ],
+          "電訊公司": [
+            "1O1O",
+            "3香港",
+            "csl",
+            "Club Sim",
+            "HKT 家居電話",
+            "網上行",
+            "Now TV",
+            "SmarTone",
+            "SUPREME"
+          ],
+          "寵物護理": [
+            "寵寵線",
+            "Petmium寵物百貨",
+            "Q-Pets",
+            "紅蘿蔔",
+            "The Dog’s Garden",
+            "Three Little Meow"
+          ]
+        },
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": {
+          "Supermarkets": [
+            "759 Store",
+            "Big C",
+            "Day Day Store",
+            "Don Don Donki",
+            "DS GROCERIES",
+            "FRESH",
+            "GreenPrice",
+            "Hong Kong Flavour",
+            "PARKnSHOP",
+            "FUSION",
+            "TASTE",
+            "TASTE x FRESH",
+            "INTERNATIONAL",
+            "food le parc",
+            "GOURMET",
+            "GREAT FOOD HALL",
+            "$mart"
+          ],
+          "Home and Furniture": [
+            "at.home",
+            "City Life",
+            "Home+ By Ella",
+            "Japan Home Centre (JHC)",
+            "KeyChain Pay",
+            "Life Kan",
+            "Life@HOME",
+            "SIMMONS",
+            "Ulfenbo",
+            "Ulferts"
+          ],
+          "Electronic Appliances": [
+            "AV Life",
+            "BROADWAY",
+            "BRUNO",
+            "Chung Yuen Electrical",
+            "FORTRESS",
+            "J SELECT",
+            "Ninki Denki",
+            "Panasonic Showroom",
+            "Price.com.hk",
+            "Suning",
+            "Wai Ming Electrical",
+            "Whirlpool Official Online Store W-Mall",
+            "Wilson Communications",
+            "YOHO"
+          ],
+          "Telecom Companies": [
+            "1O1O",
+            "3HK",
+            "csl",
+            "Club Sim",
+            "HKT HOME PHONE",
+            "NETVIGATOR",
+            "Now TV",
+            "SmarTone",
+            "SUPREME"
+          ],
+          "Pet Care": [
+            "Pet Line",
+            "Petmium Superstore",
+            "Q-Pets",
+            "Red Carrot",
+            "The Dog’s Garden",
+            "Three Little Meow"
+          ]
+        }
+      },
+      {
+        "name": "賞購物",
+        "name_en": "Shopping",
+        "site_cats": [
+          "購物"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "指定商戶：百貨公司、書店、潮流服飾／配件、護膚美妝、保健護理、其他（只限名單上商戶嘅香港分店，百貨公司專櫃及特賣場除外）",
+        "merchants": {
+          "百貨公司": [
+            "AEON",
+            "AEON STYLE",
+            "AEON SUPERMARKET",
+            "APITA",
+            "Bento Express by AEON",
+            "中藝（香港）",
+            "C生活",
+            "千色Citistore",
+            "city'super",
+            "city'super neighbourhood",
+            "city'super LOG-ON",
+            "谷辰",
+            "HKTVmall",
+            "HARVEY NICHOLS",
+            "Living PLAZA by AEON",
+            "LOG-ON",
+            "MARKS & SPENCER",
+            "Mono Mono",
+            "先施百貨",
+            "崇光百貨",
+            "UNY 生活創富",
+            "永安百貨",
+            "一田"
+          ],
+          "書店": [
+            "中華書局",
+            "誠品書店",
+            "三聯書店",
+            "商務印書館"
+          ],
+          "潮流服飾 / 配件": [
+            "7 For All Mankind",
+            "agnès b.",
+            "BIRKENSTOCK",
+            "Brooks Brothers",
+            "Club Monaco",
+            "Columbia",
+            "Crocs",
+            "DECATHLON",
+            "ECCO",
+            "eGG Optical Boutique",
+            "Go Wild",
+            "GU",
+            "MISCH MASCH",
+            "NICAL",
+            "眼鏡88",
+            "ORiental Traffic",
+            "WA ORiental Traffic",
+            "ROCKPORT",
+            "SKECHERS",
+            "SPORT b.",
+            "Teva",
+            "Theory",
+            "TWIST",
+            "UGG",
+            "UNIQLO",
+            "ZALORA",
+            "Zoff"
+          ],
+          "護膚美妝": [
+            "@cosme STORE",
+            "BEAUTY AVENUE",
+            "法國嬌蘭",
+            "IPSA",
+            "JOYCE BEAUTY",
+            "mtm labo",
+            "TIME by mtm labo",
+            "SPA by mtm labo",
+            "NARS",
+            "莎莎",
+            "Serge Lutens",
+            "SHISEIDO",
+            "雪花秀"
+          ],
+          "保健護理": [
+            "南北行",
+            "OSIM",
+            "OTO",
+            "SLOWOOD",
+            "維特健靈",
+            "位元堂",
+            "屈臣氏"
+          ],
+          "其他": [
+            "agnes b. FLEURISTE",
+            "Cantevole",
+            "CASETiFY",
+            "La Bohéme",
+            "ROYCE'",
+            "屈臣氏酒窖"
+          ]
+        },
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": {
+          "Department Store": [
+            "AEON",
+            "AEON STYLE",
+            "AEON SUPERMARKET",
+            "APITA",
+            "Bento Express by AEON",
+            "Chinese Arts & Crafts (H.K.)",
+            "Citilife",
+            "Citistore",
+            "city'super",
+            "city'super neighbourhood",
+            "city'super LOG-ON",
+            "Guu San",
+            "HARVEY NICHOLS",
+            "HKTVmall",
+            "Living PLAZA by AEON",
+            "LOG-ON",
+            "MARKS & SPENCER",
+            "Mono Mono",
+            "Sincere Department Store",
+            "SOGO",
+            "UNY",
+            "Wing On Department Stores / Wing On Plus",
+            "YATA"
+          ],
+          "Bookstores": [
+            "Chung Hwa Book",
+            "eslite bookstore",
+            "Joint Publishing",
+            "The Commercial Press"
+          ],
+          "Fashion / Accessories": [
+            "7 For All Mankind",
+            "agnès b.",
+            "BIRKENSTOCK",
+            "Brooks Brothers",
+            "Club Monaco",
+            "Columbia",
+            "Crocs",
+            "DECATHLON",
+            "ECCO",
+            "eGG Optical Boutique",
+            "Go Wild",
+            "GU",
+            "MISCH MASCH",
+            "NICAL",
+            "OPTICAL 88",
+            "ORiental Traffic",
+            "WA ORiental Traffic",
+            "ROCKPORT",
+            "SKECHERS",
+            "SPORT b.",
+            "Teva",
+            "Theory",
+            "TWIST",
+            "UGG",
+            "UNIQLO",
+            "ZALORA",
+            "Zoff"
+          ],
+          "Beauty": [
+            "@cosme STORE",
+            "BEAUTY AVENUE",
+            "GUERLAIN",
+            "IPSA",
+            "JOYCE BEAUTY",
+            "mtm labo",
+            "TIME by mtm labo",
+            "SPA by mtm labo",
+            "NARS",
+            "Sa Sa",
+            "Serge Lutens",
+            "SHISEIDO",
+            "Sulwhasoo"
+          ],
+          "Wellness Grocery": [
+            "Nam Pei Hong",
+            "OSIM",
+            "OTO",
+            "SLOWOOD",
+            "Vita Green",
+            "Wai Yuen Tong",
+            "Watsons"
+          ],
+          "Others": [
+            "agnes b. FLEURISTE",
+            "Cantevole",
+            "CASETiFY",
+            "La Bohéme",
+            "ROYCE'",
+            "Watson's Wine"
+          ]
+        }
+      }
+    ],
+    "merchant_list_url": "https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/"
+  },
+  {
+    "id": "hsbc-gold-rewards",
+    "bank": "滙豐 HSBC",
+    "bank_key": "hsbc",
+    "issuer_type": "銀行",
+    "card": "滙豐滙財金卡",
+    "card_id": "hsbc-gold",
+    "card_type": "現金回贈卡",
+    "offer_type": "簽賬回贈",
+    "title": "最紅自主獎賞自選類別最高 2.4%",
+    "categories": [
+      "現金回贈",
+      "餐飲",
+      "海外",
+      "超市",
+      "交通",
+      "內地／澳門",
+      "日本",
+      "電子產品",
+      "購物",
+      "生活"
+    ],
+    "summary_zh": "「最紅自主獎賞」5 大類別（賞滋味、賞世界、賞享受、賞家居、賞購物）：將額外 5X 全部放喺自選類別就有 2.4%（0.4% 基本 + 2%）；冇揀嘅類別同其他簽賬 0.4%。",
+    "key_terms": [
+      "5 大類別：賞滋味、賞世界、賞享受、賞家居、賞購物（官方條款第 5 條）",
+      "基本 1X =「獎賞錢」$1／HK$250（0.4%）；額外 5X = 2%",
+      "電子錢包（包括增值）、八達通／儲值卡增值、經滙豐網上／手機理財繳費、分期計劃月供等唔計（條款第 26 條）",
+      "電訊公司：用滙豐普通卡、滙豐金卡及滙豐銀聯雙幣信用卡網上繳費唔計"
+    ],
+    "caps": "額外「獎賞錢」只計每年首 HK$100,000 合資格簽賬（即最多額外 $2,000「獎賞錢」）；5X 可以分開放唔同類別，登記後唔可以更改",
+    "validity_text": "2026年1月1日至2026年12月31日（要喺 2026年10月31日或之前登記）",
+    "start_date": "2026-01-01",
+    "expiry_date": "2026-12-31",
+    "rebate_pct": 2.4,
+    "hkd_per_mile": null,
+    "welcome_value_hkd": null,
+    "welcome_miles": null,
+    "min_spend_hkd": null,
+    "annual_fee_hkd": null,
+    "annual_fee_note": null,
+    "fx_fee_pct": null,
+    "requires_registration": true,
+    "source_url": "https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
+    "source_label": "滙豐「最紅自主獎賞」官方頁",
+    "extra_sources": [
+      {
+        "label": "2026「最紅自主獎賞」條款及細則（PDF）",
+        "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/tc/docs/credit-cards/rewards/2026-red-hot-rewards-of-your-choice-terms-and-conditions.pdf"
+      },
+      {
+        "label": "2026 Red Hot Rewards of Your Choice T&C (PDF, English prevails)",
+        "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/credit-cards/rewards/2026-red-hot-rewards-of-your-choice-terms-and-conditions.pdf"
+      },
+      {
+        "label": "最紅自主獎賞常見問題",
+        "url": "https://www.hsbc.com.hk/zh-hk/help/faq/credit-cards/rewards/"
+      }
+    ],
+    "last_checked": "2026-10-04",
+    "source_type": "official",
+    "cat_rates": {
+      "餐飲": 2.4,
+      "海外": 2.4,
+      "日本": 2.4,
+      "內地／澳門": 2.4,
+      "生活": 2.4,
+      "交通": 2.4,
+      "超市": 2.4,
+      "電子產品": 2.4,
+      "購物": 2.4
+    },
+    "rebate_cap_hkd": null,
+    "cap_period": null,
+    "min_spend_for_rate_hkd": null,
+    "registration_method": "app",
+    "registration_app": "滙豐 Reward+",
+    "registration_url": "https://www.hsbc.com.hk/zh-hk/forms/red-hot-rewards-of-your-choice/",
+    "registration_deadline": "2026-10-31",
+    "registration_note_zh": "📱 要喺「滙豐 Reward+」App（或滙豐網上登記表格）登記「最紅自主獎賞」並揀類別（登記後唔可以改）；5X 全放一個類別先有最高回贈；登記限期 31/10/2026",
+    "registration_confirmed": true,
+    "reward_categories": [
+      {
+        "name": "賞滋味",
+        "name_en": "Dining",
+        "site_cats": [
+          "餐飲"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "香港餐廳及食肆簽賬（按 Visa／Mastercard／銀聯商戶編號）；酒席宴會、私人宴會、包場，以及酒店／百貨公司／會所內餐飲除外",
+        "merchants": null,
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": null
+      },
+      {
+        "name": "賞世界",
+        "name_en": "Overseas & Mainland China",
+        "site_cats": [
+          "海外",
+          "日本",
+          "內地／澳門"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "海外、中國內地及澳門簽賬；喺香港或以港幣進行嘅簽賬唔計",
+        "merchants": null,
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": null
+      },
+      {
+        "name": "賞享受",
+        "name_en": "Lifestyle",
+        "site_cats": [
+          "生活",
+          "交通"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "指定商戶：健身中心、電影院、娛樂消閒、旅行社、個人保健、交通運輸（只限名單上商戶嘅香港分店）",
+        "merchants": {
+          "健身中心": [
+            "Be Earth",
+            "Go24 Fitness",
+            "PURE Group",
+            "Snap Fitness",
+            "Square Fitness"
+          ],
+          "電影院": [
+            "CGV Cinemas",
+            "英皇戲院",
+            "Festival Grand Cinema",
+            "康怡戲院",
+            "皇室戲院",
+            "K11 Art House",
+            "MCL 院線",
+            "Movie Town",
+            "STAR Cinema"
+          ],
+          "娛樂消閒": [
+            "焙著你烘焙",
+            "購票通",
+            "太古城中心冰上皇宮",
+            "EF English Centers",
+            "青苗琴行",
+            "快達票",
+            "KKBOX",
+            "KKTix",
+            "Moov",
+            "Neway CEO Karaoke",
+            "康體通",
+            "通利琴行"
+          ],
+          "旅行社": [
+            "hutchgo",
+            "KKDay",
+            "Klook",
+            "美麗華旅遊",
+            "新華旅遊",
+            "Trip.com",
+            "永安旅遊",
+            "油麻地旅遊"
+          ],
+          "個人保健": [
+            "沐館",
+            "靜",
+            "日月按摩",
+            "TONI&GUY HONG KONG",
+            "梔 Zi Massage & Wellness"
+          ],
+          "交通運輸": [
+            "加德士",
+            "城巴",
+            "ESSO",
+            "易通行",
+            "香港電車",
+            "九巴",
+            "MTR",
+            "PIT",
+            "Shell",
+            "Shell Recharge",
+            "SINOPEC",
+            "Tesla"
+          ]
+        },
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": {
+          "Fitness": [
+            "Be Earth",
+            "Go24 Fitness",
+            "PURE Group",
+            "Snap Fitness",
+            "Square Fitness"
+          ],
+          "Cinemas": [
+            "CGV Cinemas",
+            "Emperor Cinemas",
+            "Festival Grand Cinema",
+            "Grand Kornhill Cinema",
+            "Grand Windsor Cinema",
+            "K11 Art House",
+            "MCL Cinemas",
+            "Movie Town",
+            "STAR Cinema"
+          ],
+          "Entertainment": [
+            "bakebe",
+            "Cityline (Hong Kong) Limited",
+            "Cityplaza Ice Palace",
+            "EF English Centers",
+            "Greenery Music",
+            "HKTicketing",
+            "KKBOX",
+            "KKTix",
+            "Moov",
+            "Neway CEO Karaoke",
+            "SmartPlay",
+            "Tom Lee Music"
+          ],
+          "Travel Agents": [
+            "hutchgo",
+            "KKDay",
+            "Klook",
+            "Miramar Travel",
+            "Sunflower Travel",
+            "Trip.com",
+            "Wing On Travel",
+            "YMT Travel"
+          ],
+          "Personal Wellness": [
+            "Moood Massage",
+            "shh massage",
+            "Sun and Moon Massage",
+            "TONI&GUY HONG KONG",
+            "Zi Massage & Wellness"
+          ],
+          "Transportation": [
+            "Caltex",
+            "Citybus",
+            "ESSO",
+            "HKeToll",
+            "HK Tramways",
+            "KMB",
+            "MTR",
+            "PIT",
+            "Shell",
+            "Shell Recharge",
+            "SINOPEC",
+            "Tesla"
+          ]
+        }
+      },
+      {
+        "name": "賞家居",
+        "name_en": "Home",
+        "site_cats": [
+          "超市",
+          "電子產品",
+          "生活"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "指定商戶：超級市場、家居用品、電器、電訊公司、寵物護理（只限名單上商戶嘅香港分店）；電訊公司：用滙豐普通卡、滙豐金卡及滙豐銀聯雙幣信用卡網上繳費唔計",
+        "merchants": {
+          "超級市場": [
+            "759阿信屋",
+            "Big C",
+            "日記士多",
+            "Don Don Donki",
+            "大生生活超市",
+            "新鮮生活",
+            "GreenPrice",
+            "本灣水產",
+            "百佳超級市場",
+            "FUSION",
+            "TASTE",
+            "TASTE x FRESH",
+            "INTERNATIONAL",
+            "food le parc",
+            "GOURMET",
+            "GREAT FOOD HALL",
+            "多來買"
+          ],
+          "家居用品": [
+            "at.home",
+            "生活提案",
+            "生活工房",
+            "JHC真好城",
+            "KeyChain Pay",
+            "生活館",
+            "生活廊",
+            "蓆夢思",
+            "歐化寶",
+            "歐化傢俬"
+          ],
+          "電器": [
+            "生活影音",
+            "百老滙",
+            "BRUNO",
+            "中原電器",
+            "豐澤",
+            "J SELECT",
+            "人気电器店",
+            "Panasonic陳列室",
+            "Price網購",
+            "蘇寧",
+            "偉明電業",
+            "惠而浦網上商店W-Mall",
+            "衛訊",
+            "友和 YOHO"
+          ],
+          "電訊公司": [
+            "1O1O",
+            "3香港",
+            "csl",
+            "Club Sim",
+            "HKT 家居電話",
+            "網上行",
+            "Now TV",
+            "SmarTone",
+            "SUPREME"
+          ],
+          "寵物護理": [
+            "寵寵線",
+            "Petmium寵物百貨",
+            "Q-Pets",
+            "紅蘿蔔",
+            "The Dog’s Garden",
+            "Three Little Meow"
+          ]
+        },
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": {
+          "Supermarkets": [
+            "759 Store",
+            "Big C",
+            "Day Day Store",
+            "Don Don Donki",
+            "DS GROCERIES",
+            "FRESH",
+            "GreenPrice",
+            "Hong Kong Flavour",
+            "PARKnSHOP",
+            "FUSION",
+            "TASTE",
+            "TASTE x FRESH",
+            "INTERNATIONAL",
+            "food le parc",
+            "GOURMET",
+            "GREAT FOOD HALL",
+            "$mart"
+          ],
+          "Home and Furniture": [
+            "at.home",
+            "City Life",
+            "Home+ By Ella",
+            "Japan Home Centre (JHC)",
+            "KeyChain Pay",
+            "Life Kan",
+            "Life@HOME",
+            "SIMMONS",
+            "Ulfenbo",
+            "Ulferts"
+          ],
+          "Electronic Appliances": [
+            "AV Life",
+            "BROADWAY",
+            "BRUNO",
+            "Chung Yuen Electrical",
+            "FORTRESS",
+            "J SELECT",
+            "Ninki Denki",
+            "Panasonic Showroom",
+            "Price.com.hk",
+            "Suning",
+            "Wai Ming Electrical",
+            "Whirlpool Official Online Store W-Mall",
+            "Wilson Communications",
+            "YOHO"
+          ],
+          "Telecom Companies": [
+            "1O1O",
+            "3HK",
+            "csl",
+            "Club Sim",
+            "HKT HOME PHONE",
+            "NETVIGATOR",
+            "Now TV",
+            "SmarTone",
+            "SUPREME"
+          ],
+          "Pet Care": [
+            "Pet Line",
+            "Petmium Superstore",
+            "Q-Pets",
+            "Red Carrot",
+            "The Dog’s Garden",
+            "Three Little Meow"
+          ]
+        }
+      },
+      {
+        "name": "賞購物",
+        "name_en": "Shopping",
+        "site_cats": [
+          "購物"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "指定商戶：百貨公司、書店、潮流服飾／配件、護膚美妝、保健護理、其他（只限名單上商戶嘅香港分店，百貨公司專櫃及特賣場除外）",
+        "merchants": {
+          "百貨公司": [
+            "AEON",
+            "AEON STYLE",
+            "AEON SUPERMARKET",
+            "APITA",
+            "Bento Express by AEON",
+            "中藝（香港）",
+            "C生活",
+            "千色Citistore",
+            "city'super",
+            "city'super neighbourhood",
+            "city'super LOG-ON",
+            "谷辰",
+            "HKTVmall",
+            "HARVEY NICHOLS",
+            "Living PLAZA by AEON",
+            "LOG-ON",
+            "MARKS & SPENCER",
+            "Mono Mono",
+            "先施百貨",
+            "崇光百貨",
+            "UNY 生活創富",
+            "永安百貨",
+            "一田"
+          ],
+          "書店": [
+            "中華書局",
+            "誠品書店",
+            "三聯書店",
+            "商務印書館"
+          ],
+          "潮流服飾 / 配件": [
+            "7 For All Mankind",
+            "agnès b.",
+            "BIRKENSTOCK",
+            "Brooks Brothers",
+            "Club Monaco",
+            "Columbia",
+            "Crocs",
+            "DECATHLON",
+            "ECCO",
+            "eGG Optical Boutique",
+            "Go Wild",
+            "GU",
+            "MISCH MASCH",
+            "NICAL",
+            "眼鏡88",
+            "ORiental Traffic",
+            "WA ORiental Traffic",
+            "ROCKPORT",
+            "SKECHERS",
+            "SPORT b.",
+            "Teva",
+            "Theory",
+            "TWIST",
+            "UGG",
+            "UNIQLO",
+            "ZALORA",
+            "Zoff"
+          ],
+          "護膚美妝": [
+            "@cosme STORE",
+            "BEAUTY AVENUE",
+            "法國嬌蘭",
+            "IPSA",
+            "JOYCE BEAUTY",
+            "mtm labo",
+            "TIME by mtm labo",
+            "SPA by mtm labo",
+            "NARS",
+            "莎莎",
+            "Serge Lutens",
+            "SHISEIDO",
+            "雪花秀"
+          ],
+          "保健護理": [
+            "南北行",
+            "OSIM",
+            "OTO",
+            "SLOWOOD",
+            "維特健靈",
+            "位元堂",
+            "屈臣氏"
+          ],
+          "其他": [
+            "agnes b. FLEURISTE",
+            "Cantevole",
+            "CASETiFY",
+            "La Bohéme",
+            "ROYCE'",
+            "屈臣氏酒窖"
+          ]
+        },
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": {
+          "Department Store": [
+            "AEON",
+            "AEON STYLE",
+            "AEON SUPERMARKET",
+            "APITA",
+            "Bento Express by AEON",
+            "Chinese Arts & Crafts (H.K.)",
+            "Citilife",
+            "Citistore",
+            "city'super",
+            "city'super neighbourhood",
+            "city'super LOG-ON",
+            "Guu San",
+            "HARVEY NICHOLS",
+            "HKTVmall",
+            "Living PLAZA by AEON",
+            "LOG-ON",
+            "MARKS & SPENCER",
+            "Mono Mono",
+            "Sincere Department Store",
+            "SOGO",
+            "UNY",
+            "Wing On Department Stores / Wing On Plus",
+            "YATA"
+          ],
+          "Bookstores": [
+            "Chung Hwa Book",
+            "eslite bookstore",
+            "Joint Publishing",
+            "The Commercial Press"
+          ],
+          "Fashion / Accessories": [
+            "7 For All Mankind",
+            "agnès b.",
+            "BIRKENSTOCK",
+            "Brooks Brothers",
+            "Club Monaco",
+            "Columbia",
+            "Crocs",
+            "DECATHLON",
+            "ECCO",
+            "eGG Optical Boutique",
+            "Go Wild",
+            "GU",
+            "MISCH MASCH",
+            "NICAL",
+            "OPTICAL 88",
+            "ORiental Traffic",
+            "WA ORiental Traffic",
+            "ROCKPORT",
+            "SKECHERS",
+            "SPORT b.",
+            "Teva",
+            "Theory",
+            "TWIST",
+            "UGG",
+            "UNIQLO",
+            "ZALORA",
+            "Zoff"
+          ],
+          "Beauty": [
+            "@cosme STORE",
+            "BEAUTY AVENUE",
+            "GUERLAIN",
+            "IPSA",
+            "JOYCE BEAUTY",
+            "mtm labo",
+            "TIME by mtm labo",
+            "SPA by mtm labo",
+            "NARS",
+            "Sa Sa",
+            "Serge Lutens",
+            "SHISEIDO",
+            "Sulwhasoo"
+          ],
+          "Wellness Grocery": [
+            "Nam Pei Hong",
+            "OSIM",
+            "OTO",
+            "SLOWOOD",
+            "Vita Green",
+            "Wai Yuen Tong",
+            "Watsons"
+          ],
+          "Others": [
+            "agnes b. FLEURISTE",
+            "Cantevole",
+            "CASETiFY",
+            "La Bohéme",
+            "ROYCE'",
+            "Watson's Wine"
+          ]
+        }
+      }
+    ],
+    "merchant_list_url": "https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
+    "promo_url": null
   },
   {
     "id": "hsbc-pulse-welcome",
@@ -546,18 +2322,29 @@
     "title": "滙豐 Pulse 銀聯雙幣鑽石信用卡 簽賬回贈",
     "categories": [
       "現金回贈",
+      "餐飲",
       "海外",
-      "內地／澳門"
+      "超市",
+      "交通",
+      "內地／澳門",
+      "日本",
+      "電子產品",
+      "購物",
+      "生活"
     ],
-    "summary_zh": "內地／澳門二維碼或流動支付額外 2% + 最紅自主獎賞 2.4% = 最高 4.4%；人民幣及澳門幣交易免外幣手續費；內地指定城市地鐵最低 5 折",
+    "summary_zh": "「最紅自主獎賞」5 大類別：額外 5X 全放自選類別有 2.4%。揀「賞世界」再加內地／澳門二維碼或流動支付額外 2% = 最高 4.4%；人民幣及澳門幣交易免 1.95% 外幣手續費。",
     "key_terms": [
-      "4.4% 需要將最紅自主獎賞分配到「賞世界」",
-      "只限人民幣／澳門幣免手續費，其他外幣照收"
+      "5 大類別：賞滋味、賞世界、賞享受、賞家居、賞購物（官方條款第 5 條）",
+      "基本 1X =「獎賞錢」$1／HK$250（0.4%）；額外 5X = 2%",
+      "電子錢包（包括增值）、八達通／儲值卡增值、經滙豐網上／手機理財繳費、分期計劃月供等唔計（條款第 26 條）",
+      "4.4% 要將 5X 放「賞世界」兼喺內地／澳門用二維碼或流動支付",
+      "只限人民幣／澳門幣免手續費，其他外幣照收",
+      "電訊公司：用滙豐普通卡、滙豐金卡及滙豐銀聯雙幣信用卡網上繳費唔計"
     ],
-    "caps": null,
-    "validity_text": "未有列明",
-    "start_date": null,
-    "expiry_date": null,
+    "caps": "額外「獎賞錢」只計每年首 HK$100,000 合資格簽賬（即最多額外 $2,000「獎賞錢」）；5X 可以分開放唔同類別，登記後唔可以更改",
+    "validity_text": "2026年1月1日至2026年12月31日（要喺 2026年10月31日或之前登記）",
+    "start_date": "2026-01-01",
+    "expiry_date": "2026-12-31",
     "rebate_pct": 4.4,
     "hkd_per_mile": null,
     "welcome_value_hkd": null,
@@ -571,6 +2358,10 @@
     "source_label": "產品頁",
     "extra_sources": [
       {
+        "label": "「最紅自主獎賞」官方頁（類別及商戶名單）",
+        "url": "https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/"
+      },
+      {
         "label": "鑽石卡額外回贈條款 PDF",
         "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/tc/docs/credit-cards/unionpay-dual-currency/diamond-card-terms-and-conditions.pdf"
       },
@@ -581,11 +2372,33 @@
       {
         "label": "滙豐信用卡產品資料概要（KFS）",
         "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/credit-cards/key-fact-statement.pdf"
+      },
+      {
+        "label": "2026「最紅自主獎賞」條款及細則（PDF）",
+        "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/tc/docs/credit-cards/rewards/2026-red-hot-rewards-of-your-choice-terms-and-conditions.pdf"
+      },
+      {
+        "label": "2026 Red Hot Rewards of Your Choice T&C (PDF, English prevails)",
+        "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/credit-cards/rewards/2026-red-hot-rewards-of-your-choice-terms-and-conditions.pdf"
+      },
+      {
+        "label": "最紅自主獎賞常見問題",
+        "url": "https://www.hsbc.com.hk/zh-hk/help/faq/credit-cards/rewards/"
       }
     ],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-04",
     "source_type": "official",
-    "cat_rates": null,
+    "cat_rates": {
+      "餐飲": 2.4,
+      "海外": 2.4,
+      "日本": 2.4,
+      "內地／澳門": 4.4,
+      "生活": 2.4,
+      "交通": 2.4,
+      "超市": 2.4,
+      "電子產品": 2.4,
+      "購物": 2.4
+    },
     "rebate_cap_hkd": null,
     "cap_period": null,
     "min_spend_for_rate_hkd": null,
@@ -593,8 +2406,534 @@
     "registration_app": "滙豐 Reward+",
     "registration_url": "https://www.hsbc.com.hk/zh-hk/forms/red-hot-rewards-of-your-choice/",
     "registration_deadline": "2026-10-31",
-    "registration_note_zh": "📱 4.4% 要喺「滙豐 Reward+」App（或網上表格）登記「最紅自主獎賞」並分配到「賞世界」；登記限期 31/10/2026",
-    "registration_confirmed": true
+    "registration_note_zh": "📱 要喺「滙豐 Reward+」App（或滙豐網上登記表格）登記「最紅自主獎賞」並揀類別（登記後唔可以改）；5X 全放一個類別先有最高回贈；登記限期 31/10/2026",
+    "registration_confirmed": true,
+    "reward_categories": [
+      {
+        "name": "賞滋味",
+        "name_en": "Dining",
+        "site_cats": [
+          "餐飲"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "香港餐廳及食肆簽賬（按 Visa／Mastercard／銀聯商戶編號）；酒席宴會、私人宴會、包場，以及酒店／百貨公司／會所內餐飲除外",
+        "merchants": null,
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": null
+      },
+      {
+        "name": "賞世界",
+        "name_en": "Overseas & Mainland China",
+        "site_cats": [
+          "海外",
+          "日本",
+          "內地／澳門"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%；內地／澳門二維碼或流動支付再加額外 2%（最高 4.4%）",
+        "desc": "海外、中國內地及澳門簽賬；喺香港或以港幣進行嘅簽賬唔計",
+        "merchants": null,
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": null
+      },
+      {
+        "name": "賞享受",
+        "name_en": "Lifestyle",
+        "site_cats": [
+          "生活",
+          "交通"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "指定商戶：健身中心、電影院、娛樂消閒、旅行社、個人保健、交通運輸（只限名單上商戶嘅香港分店）",
+        "merchants": {
+          "健身中心": [
+            "Be Earth",
+            "Go24 Fitness",
+            "PURE Group",
+            "Snap Fitness",
+            "Square Fitness"
+          ],
+          "電影院": [
+            "CGV Cinemas",
+            "英皇戲院",
+            "Festival Grand Cinema",
+            "康怡戲院",
+            "皇室戲院",
+            "K11 Art House",
+            "MCL 院線",
+            "Movie Town",
+            "STAR Cinema"
+          ],
+          "娛樂消閒": [
+            "焙著你烘焙",
+            "購票通",
+            "太古城中心冰上皇宮",
+            "EF English Centers",
+            "青苗琴行",
+            "快達票",
+            "KKBOX",
+            "KKTix",
+            "Moov",
+            "Neway CEO Karaoke",
+            "康體通",
+            "通利琴行"
+          ],
+          "旅行社": [
+            "hutchgo",
+            "KKDay",
+            "Klook",
+            "美麗華旅遊",
+            "新華旅遊",
+            "Trip.com",
+            "永安旅遊",
+            "油麻地旅遊"
+          ],
+          "個人保健": [
+            "沐館",
+            "靜",
+            "日月按摩",
+            "TONI&GUY HONG KONG",
+            "梔 Zi Massage & Wellness"
+          ],
+          "交通運輸": [
+            "加德士",
+            "城巴",
+            "ESSO",
+            "易通行",
+            "香港電車",
+            "九巴",
+            "MTR",
+            "PIT",
+            "Shell",
+            "Shell Recharge",
+            "SINOPEC",
+            "Tesla"
+          ]
+        },
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": {
+          "Fitness": [
+            "Be Earth",
+            "Go24 Fitness",
+            "PURE Group",
+            "Snap Fitness",
+            "Square Fitness"
+          ],
+          "Cinemas": [
+            "CGV Cinemas",
+            "Emperor Cinemas",
+            "Festival Grand Cinema",
+            "Grand Kornhill Cinema",
+            "Grand Windsor Cinema",
+            "K11 Art House",
+            "MCL Cinemas",
+            "Movie Town",
+            "STAR Cinema"
+          ],
+          "Entertainment": [
+            "bakebe",
+            "Cityline (Hong Kong) Limited",
+            "Cityplaza Ice Palace",
+            "EF English Centers",
+            "Greenery Music",
+            "HKTicketing",
+            "KKBOX",
+            "KKTix",
+            "Moov",
+            "Neway CEO Karaoke",
+            "SmartPlay",
+            "Tom Lee Music"
+          ],
+          "Travel Agents": [
+            "hutchgo",
+            "KKDay",
+            "Klook",
+            "Miramar Travel",
+            "Sunflower Travel",
+            "Trip.com",
+            "Wing On Travel",
+            "YMT Travel"
+          ],
+          "Personal Wellness": [
+            "Moood Massage",
+            "shh massage",
+            "Sun and Moon Massage",
+            "TONI&GUY HONG KONG",
+            "Zi Massage & Wellness"
+          ],
+          "Transportation": [
+            "Caltex",
+            "Citybus",
+            "ESSO",
+            "HKeToll",
+            "HK Tramways",
+            "KMB",
+            "MTR",
+            "PIT",
+            "Shell",
+            "Shell Recharge",
+            "SINOPEC",
+            "Tesla"
+          ]
+        }
+      },
+      {
+        "name": "賞家居",
+        "name_en": "Home",
+        "site_cats": [
+          "超市",
+          "電子產品",
+          "生活"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "指定商戶：超級市場、家居用品、電器、電訊公司、寵物護理（只限名單上商戶嘅香港分店）；電訊公司：用滙豐普通卡、滙豐金卡及滙豐銀聯雙幣信用卡網上繳費唔計",
+        "merchants": {
+          "超級市場": [
+            "759阿信屋",
+            "Big C",
+            "日記士多",
+            "Don Don Donki",
+            "大生生活超市",
+            "新鮮生活",
+            "GreenPrice",
+            "本灣水產",
+            "百佳超級市場",
+            "FUSION",
+            "TASTE",
+            "TASTE x FRESH",
+            "INTERNATIONAL",
+            "food le parc",
+            "GOURMET",
+            "GREAT FOOD HALL",
+            "多來買"
+          ],
+          "家居用品": [
+            "at.home",
+            "生活提案",
+            "生活工房",
+            "JHC真好城",
+            "KeyChain Pay",
+            "生活館",
+            "生活廊",
+            "蓆夢思",
+            "歐化寶",
+            "歐化傢俬"
+          ],
+          "電器": [
+            "生活影音",
+            "百老滙",
+            "BRUNO",
+            "中原電器",
+            "豐澤",
+            "J SELECT",
+            "人気电器店",
+            "Panasonic陳列室",
+            "Price網購",
+            "蘇寧",
+            "偉明電業",
+            "惠而浦網上商店W-Mall",
+            "衛訊",
+            "友和 YOHO"
+          ],
+          "電訊公司": [
+            "1O1O",
+            "3香港",
+            "csl",
+            "Club Sim",
+            "HKT 家居電話",
+            "網上行",
+            "Now TV",
+            "SmarTone",
+            "SUPREME"
+          ],
+          "寵物護理": [
+            "寵寵線",
+            "Petmium寵物百貨",
+            "Q-Pets",
+            "紅蘿蔔",
+            "The Dog’s Garden",
+            "Three Little Meow"
+          ]
+        },
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": {
+          "Supermarkets": [
+            "759 Store",
+            "Big C",
+            "Day Day Store",
+            "Don Don Donki",
+            "DS GROCERIES",
+            "FRESH",
+            "GreenPrice",
+            "Hong Kong Flavour",
+            "PARKnSHOP",
+            "FUSION",
+            "TASTE",
+            "TASTE x FRESH",
+            "INTERNATIONAL",
+            "food le parc",
+            "GOURMET",
+            "GREAT FOOD HALL",
+            "$mart"
+          ],
+          "Home and Furniture": [
+            "at.home",
+            "City Life",
+            "Home+ By Ella",
+            "Japan Home Centre (JHC)",
+            "KeyChain Pay",
+            "Life Kan",
+            "Life@HOME",
+            "SIMMONS",
+            "Ulfenbo",
+            "Ulferts"
+          ],
+          "Electronic Appliances": [
+            "AV Life",
+            "BROADWAY",
+            "BRUNO",
+            "Chung Yuen Electrical",
+            "FORTRESS",
+            "J SELECT",
+            "Ninki Denki",
+            "Panasonic Showroom",
+            "Price.com.hk",
+            "Suning",
+            "Wai Ming Electrical",
+            "Whirlpool Official Online Store W-Mall",
+            "Wilson Communications",
+            "YOHO"
+          ],
+          "Telecom Companies": [
+            "1O1O",
+            "3HK",
+            "csl",
+            "Club Sim",
+            "HKT HOME PHONE",
+            "NETVIGATOR",
+            "Now TV",
+            "SmarTone",
+            "SUPREME"
+          ],
+          "Pet Care": [
+            "Pet Line",
+            "Petmium Superstore",
+            "Q-Pets",
+            "Red Carrot",
+            "The Dog’s Garden",
+            "Three Little Meow"
+          ]
+        }
+      },
+      {
+        "name": "賞購物",
+        "name_en": "Shopping",
+        "site_cats": [
+          "購物"
+        ],
+        "rate_pct": 2.4,
+        "rate_note": "揀咗（5X 全放呢類）：2.4%｜冇揀：0.4%",
+        "desc": "指定商戶：百貨公司、書店、潮流服飾／配件、護膚美妝、保健護理、其他（只限名單上商戶嘅香港分店，百貨公司專櫃及特賣場除外）",
+        "merchants": {
+          "百貨公司": [
+            "AEON",
+            "AEON STYLE",
+            "AEON SUPERMARKET",
+            "APITA",
+            "Bento Express by AEON",
+            "中藝（香港）",
+            "C生活",
+            "千色Citistore",
+            "city'super",
+            "city'super neighbourhood",
+            "city'super LOG-ON",
+            "谷辰",
+            "HKTVmall",
+            "HARVEY NICHOLS",
+            "Living PLAZA by AEON",
+            "LOG-ON",
+            "MARKS & SPENCER",
+            "Mono Mono",
+            "先施百貨",
+            "崇光百貨",
+            "UNY 生活創富",
+            "永安百貨",
+            "一田"
+          ],
+          "書店": [
+            "中華書局",
+            "誠品書店",
+            "三聯書店",
+            "商務印書館"
+          ],
+          "潮流服飾 / 配件": [
+            "7 For All Mankind",
+            "agnès b.",
+            "BIRKENSTOCK",
+            "Brooks Brothers",
+            "Club Monaco",
+            "Columbia",
+            "Crocs",
+            "DECATHLON",
+            "ECCO",
+            "eGG Optical Boutique",
+            "Go Wild",
+            "GU",
+            "MISCH MASCH",
+            "NICAL",
+            "眼鏡88",
+            "ORiental Traffic",
+            "WA ORiental Traffic",
+            "ROCKPORT",
+            "SKECHERS",
+            "SPORT b.",
+            "Teva",
+            "Theory",
+            "TWIST",
+            "UGG",
+            "UNIQLO",
+            "ZALORA",
+            "Zoff"
+          ],
+          "護膚美妝": [
+            "@cosme STORE",
+            "BEAUTY AVENUE",
+            "法國嬌蘭",
+            "IPSA",
+            "JOYCE BEAUTY",
+            "mtm labo",
+            "TIME by mtm labo",
+            "SPA by mtm labo",
+            "NARS",
+            "莎莎",
+            "Serge Lutens",
+            "SHISEIDO",
+            "雪花秀"
+          ],
+          "保健護理": [
+            "南北行",
+            "OSIM",
+            "OTO",
+            "SLOWOOD",
+            "維特健靈",
+            "位元堂",
+            "屈臣氏"
+          ],
+          "其他": [
+            "agnes b. FLEURISTE",
+            "Cantevole",
+            "CASETiFY",
+            "La Bohéme",
+            "ROYCE'",
+            "屈臣氏酒窖"
+          ]
+        },
+        "requires_choice": true,
+        "rate_if_not_chosen_pct": 0.4,
+        "merchants_en": {
+          "Department Store": [
+            "AEON",
+            "AEON STYLE",
+            "AEON SUPERMARKET",
+            "APITA",
+            "Bento Express by AEON",
+            "Chinese Arts & Crafts (H.K.)",
+            "Citilife",
+            "Citistore",
+            "city'super",
+            "city'super neighbourhood",
+            "city'super LOG-ON",
+            "Guu San",
+            "HARVEY NICHOLS",
+            "HKTVmall",
+            "Living PLAZA by AEON",
+            "LOG-ON",
+            "MARKS & SPENCER",
+            "Mono Mono",
+            "Sincere Department Store",
+            "SOGO",
+            "UNY",
+            "Wing On Department Stores / Wing On Plus",
+            "YATA"
+          ],
+          "Bookstores": [
+            "Chung Hwa Book",
+            "eslite bookstore",
+            "Joint Publishing",
+            "The Commercial Press"
+          ],
+          "Fashion / Accessories": [
+            "7 For All Mankind",
+            "agnès b.",
+            "BIRKENSTOCK",
+            "Brooks Brothers",
+            "Club Monaco",
+            "Columbia",
+            "Crocs",
+            "DECATHLON",
+            "ECCO",
+            "eGG Optical Boutique",
+            "Go Wild",
+            "GU",
+            "MISCH MASCH",
+            "NICAL",
+            "OPTICAL 88",
+            "ORiental Traffic",
+            "WA ORiental Traffic",
+            "ROCKPORT",
+            "SKECHERS",
+            "SPORT b.",
+            "Teva",
+            "Theory",
+            "TWIST",
+            "UGG",
+            "UNIQLO",
+            "ZALORA",
+            "Zoff"
+          ],
+          "Beauty": [
+            "@cosme STORE",
+            "BEAUTY AVENUE",
+            "GUERLAIN",
+            "IPSA",
+            "JOYCE BEAUTY",
+            "mtm labo",
+            "TIME by mtm labo",
+            "SPA by mtm labo",
+            "NARS",
+            "Sa Sa",
+            "Serge Lutens",
+            "SHISEIDO",
+            "Sulwhasoo"
+          ],
+          "Wellness Grocery": [
+            "Nam Pei Hong",
+            "OSIM",
+            "OTO",
+            "SLOWOOD",
+            "Vita Green",
+            "Wai Yuen Tong",
+            "Watsons"
+          ],
+          "Others": [
+            "agnes b. FLEURISTE",
+            "Cantevole",
+            "CASETiFY",
+            "La Bohéme",
+            "ROYCE'",
+            "Watson's Wine"
+          ]
+        }
+      }
+    ],
+    "merchant_list_url": "https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/"
   },
   {
     "id": "hsbc-gold-welcome",

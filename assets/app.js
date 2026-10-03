@@ -26,8 +26,15 @@
   function isExpired(o) { return o.expiry_date && daysLeft(o.expiry_date) < 0; }
   function norm(s) { return String(s || '').toLowerCase().replace(/\s+/g, ''); }
 
+  function merchantText(o) {
+    return (o.reward_categories || []).map(function (c) {
+      var m = c.merchants || {};
+      var e = c.merchants_en || {};
+      return c.name + ' ' + (c.name_en || '') + ' ' + Object.keys(m).map(function (g) { return g + ' ' + m[g].join(' '); }).join(' ') + ' ' + Object.keys(e).map(function (g) { return g + ' ' + e[g].join(' '); }).join(' ');
+    }).join(' ');
+  }
   function haystack(o) {
-    return norm([o.bank, o.card, o.title, o.summary_zh, (o.categories || []).join(' '), (o.key_terms || []).join(' '), o.caps, o.offer_type, o.card_type, o.issuer_type, o.validity_text].join(' '));
+    return norm([o.bank, o.card, o.title, o.summary_zh, (o.categories || []).join(' '), (o.key_terms || []).join(' '), o.caps, o.offer_type, o.card_type, o.issuer_type, o.validity_text, merchantText(o)].join(' '));
   }
 
   // ---------- URL hash state ----------
@@ -241,15 +248,38 @@
     var h = '<div class="item' + (isExpired(o) ? ' expired' : '') + '"><div class="keys">';
     if (o.rebate_pct != null) h += '<span class="k big" title="最高回贈率">最高 ' + o.rebate_pct + '%</span>';
     if (o.hkd_per_mile != null) h += '<span class="k mile" title="每里成本">HK$' + o.hkd_per_mile + '/里</span>';
-    var cr = o.cat_rates ? Object.keys(o.cat_rates).sort(function (a, b) { return o.cat_rates[b] - o.cat_rates[a]; }) : [];
+    var covered = {};
+    (o.reward_categories || []).forEach(function (c) { (c.site_cats || []).forEach(function (x) { covered[x] = 1; }); });
+    var cr = o.cat_rates ? Object.keys(o.cat_rates).filter(function (c) { return !covered[c]; }).sort(function (a, b) { return o.cat_rates[b] - o.cat_rates[a]; }) : [];
     cr.forEach(function (c) { h += '<span class="k cr">' + esc(c) + ' ' + o.cat_rates[c] + '%</span>'; });
     if (o.rebate_pct == null && o.hkd_per_mile == null && !cr.length) h += '<span class="muted small">' + esc(o.title) + '</span>';
-    h += '</div>';
+    h += '</div>' + rewardCats(o);
     if (o.caps) h += '<div class="cap">上限／條件：' + esc(o.caps) + '</div>';
     if (o.expiry_date) h += '<div class="meta">⏰ ' + expiryText(o, '回贈計劃至 ') + '</div>';
     h += regNote(o);
     h += '<div class="acts">' + linkBtns(o) + moreBtn(o) + '</div>' + detailHtml(o) + '</div>';
     return h;
+  }
+  // reward categories (e.g. 滙豐「最紅自主獎賞」5 大類別) with expandable official merchant lists
+  function rewardCats(o) {
+    var rc = o.reward_categories;
+    if (!rc || !rc.length) return '';
+    var choice = rc.some(function (c) { return c.requires_choice; });
+    var h = '<div class="rcats"><div class="rc-h">' + (choice ? '🎯 自選類別（喺 Reward+ 揀；額外 5X 全放一類先有最高 %）' : '🏷️ 指定類別／商戶') + '</div>';
+    rc.forEach(function (c) {
+      var m = c.merchants, n = 0;
+      if (m) Object.keys(m).forEach(function (g) { n += m[g].length; });
+      h += '<details class="rc"><summary><b class="rc-name">' + esc(c.name) + '</b>' +
+        (c.rate_pct != null ? ' <span class="rc-rate">' + c.rate_pct + '%</span>' : '') +
+        (c.rate_if_not_chosen_pct != null ? ' <span class="rc-other">冇揀 ' + c.rate_if_not_chosen_pct + '%</span>' : '') +
+        ' <span class="rc-cats">' + esc((c.site_cats || []).join('・')) + '</span>' +
+        ' <span class="rc-more">' + (n ? n + ' 間商戶 ▾' : '詳情 ▾') + '</span></summary>';
+      h += '<div class="rc-body"><p>' + esc(c.desc || '') + '</p>' + (c.rate_note ? '<p class="muted">' + esc(c.rate_note) + '</p>' : '');
+      if (m) Object.keys(m).forEach(function (g) { h += '<div class="rc-g"><b>' + esc(g) + '</b>：' + m[g].map(esc).join('、') + '</div>'; });
+      if (n && o.merchant_list_url) h += '<a class="small" href="' + esc(o.merchant_list_url) + '" target="_blank" rel="noopener">官方商戶名單 ↗</a>';
+      h += '</div></details>';
+    });
+    return h + '</div>';
   }
   function feeLine(g) {
     if (!g.fee) return '';

@@ -5,11 +5,13 @@
   var DATA = null;
   var CAT_SYN = [
     ['網購', ['網購', '網上購物', '網上買', '網店', 'online', 'e-shop', '淘寶', 'taobao', 'amazon', 'hktvmall', '拼多多', '京東', 'jd.com', '小紅書', 'shopee', '網上']],
-    ['餐飲', ['餐飲', '食飯', '食嘢', '食野', '餐廳', '飲食', '外賣', 'foodpanda', 'dining', 'restaurant', '食肆', '飲茶', '晚飯', '午餐']],
+    ['餐飲', ['餐飲', '食飯', '食嘢', '食野', '餐廳', '飲食', '外賣', 'foodpanda', 'dining', 'restaurant', '食肆', '飲茶', '晚飯', '午餐', '晚餐', '茶餐廳', '食店', '賞滋味']],
+    ['購物', ['購物', '百貨', 'shopping', '買衫', '化妝品', '美妝', '護膚', '書店', '賞購物']],
+    ['生活', ['健身', 'gym', '戲院', '睇戲', '電影', '寵物', '傢俬', '家居', '按摩', '賞享受', '賞家居']],
     ['日本', ['日本', 'japan', '日圓', '日元', '東京', '大阪']],
-    ['海外', ['海外', '外幣', '旅行', '旅遊', '去旅', 'overseas', 'travel', 'foreign', '外國', '日本', 'japan', '韓國', 'korea', '台灣', '泰國', '歐洲', '美國', '出國', '出埠']],
+    ['海外', ['海外', '賞世界', '外幣', '旅行', '旅遊', '去旅', 'overseas', 'travel', 'foreign', '外國', '日本', 'japan', '韓國', 'korea', '台灣', '泰國', '歐洲', '美國', '出國', '出埠']],
     ['內地／澳門', ['內地', '大陸', '深圳', '北上', '澳門', '人民幣', 'china', 'mainland', 'macau', '雲閃付', '廣州']],
-    ['超市', ['超市', 'supermarket', '百佳', '惠康', '買餸', 'grocery', '超級市場']],
+    ['超市', ['超市', 'supermarket', '百佳', '惠康', '買餸', 'grocery', '超級市場', '賞家居']],
     ['交通', ['交通', '港鐵', 'mtr', '巴士', '的士', '車費', 'transport', '八達通', 'octopus', '小巴', '渡輪']],
     ['電子錢包', ['電子錢包', 'apple pay', 'google pay', 'samsung pay', 'wechat', 'alipay', '支付寶', 'payme', '手機支付', '流動支付']],
     ['電子產品', ['iphone', '電話', '手機', '電子產品', '數碼', '買機', 'apple store']],
@@ -27,7 +29,7 @@
     mox: ['mox'], primecredit: ['安信', 'wewa', 'earnmore', 'primecredit'], sim: ['sim卡', 'sim credit']
   };
   var STOP = { card: 1, credit: 1, visa: 1, world: 1, mastercard: 1, signature: 1, platinum: 1, infinite: 1, unionpay: 1, the: 1, hsbc: 1, citi: 1, dbs: 1, aeon: 1, bea: 1, mox: 1, sim: 1, bank: 1, express: 1, american: 1 };
-  var CHIPS = ['網購邊張卡最抵', '儲 Asia Miles 用邊張', '去日本簽咩卡', '超市', '迎新最多', '唔使年費', '月簽 $5000 網購', '食飯用邊張'];
+  var CHIPS = ['網購邊張卡最抵', '餐廳回贈', '儲 Asia Miles 用邊張', '去日本簽咩卡', '屈臣氏用邊張卡', '超市', '迎新最多', '唔使年費', '月簽 $5000 網購'];
 
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function num(n) { return Number(n).toLocaleString('en-US', { maximumFractionDigits: 0 }); }
@@ -43,6 +45,61 @@
   function has(t, kw) {
     if (/^[a-z][a-z .\-]*$/.test(kw)) return new RegExp('(^|[^a-z])' + kw.replace(/[.\-]/g, '\\$&') + '([^a-z]|$)').test(t);
     return t.indexOf(kw) >= 0;
+  }
+
+  // ---------- official merchant lists (offers[].reward_categories[].merchants) ----------
+  var MERCH = null;
+  function mnorm(s) { return normalize(s).replace(/[\s'’`.\-（）()·・]/g, ''); }
+  function isLatin(s) { return /^[a-z0-9 .&'’@+$\-]+$/i.test(s); }
+  function buildMerch() {
+    MERCH = [];
+    DATA.forEach(function (o) {
+      (o.reward_categories || []).forEach(function (c) {
+        [c.merchants, c.merchants_en].forEach(function (ml) {
+        if (!ml) return;
+        Object.keys(ml).forEach(function (g) {
+          ml[g].forEach(function (full) {
+            full.split(' / ').forEach(function (alias) {
+              alias = alias.replace(/[（(].*?[）)]/g, '').trim();
+              var n = mnorm(alias);
+              if (n.length >= 2) MERCH.push({ n: n, alias: alias, full: full, latin: isLatin(alias), o: o, c: c, g: g });
+            });
+          });
+        });
+        });
+      });
+    });
+  }
+  var FILLER = /(有冇|有咩|有幾多|幾多|用邊張卡|用邊張|邊張卡|邊張|咩卡|信用卡|簽賬|最抵|抵唔抵|回贈|優惠|獎賞錢|獎賞|自主|最紅|滙豐|匯豐|hsbc|可以|係唔係|算唔算|屬於|邊個|類別|商戶|名單|喺|嘅|去|買嘢|買|食|用|簽|卡|有|咩|呀|啊|㗎|呢|嗎|啲|同|定|or|which|card|cards|for|at|the|best|rebate|cashback)/gi;
+  function matchMerchants(q, allowPartial) {
+    if (!MERCH) buildMerch();
+    var t = normalize(q), qn = mnorm(q), direct = [], partial = [], seen = {};
+    // candidate tokens for partial matching (e.g. 「譚仔」→ 譚仔三哥米線, 「百佳」→ 百佳超級市場)
+    var toks = t.replace(FILLER, ' ').replace(/[?？!！,，。、]/g, ' ').replace(/([a-z0-9])([^\x00-\x7f])/g, '$1 $2').replace(/([^\x00-\x7f])([a-z0-9])/g, '$1 $2')
+      .split(/\s+/).map(mnorm).filter(function (k) { return k.length >= (/^[a-z0-9$]+$/.test(k) ? 4 : 2); });
+    MERCH.forEach(function (m) {
+      var ok, part = false;
+      if (m.latin) {
+        var re = new RegExp('(^|[^a-z0-9])' + m.alias.toLowerCase().replace(/[.*+?^${}()|[\]\\$]/g, '\\$&').replace(/\s+/g, '\\s*') + '([^a-z0-9]|$)');
+        ok = re.test(t) || (m.n.length >= 4 && qn.indexOf(m.n) >= 0);
+      } else ok = qn.indexOf(m.n) >= 0;
+      if (!ok && allowPartial) {
+        // a category word (e.g. 超市) only counts when it starts the merchant name (百佳 → 百佳超級市場)
+        ok = toks.some(function (k) { return m.n.indexOf(k) === 0 || (m.n.indexOf(k) > 0 && !CAT_WORDS[k]); });
+        part = ok;
+      }
+      var key = m.o.id + '|' + m.c.name + '|' + m.full;
+      if (ok && !seen[key]) { seen[key] = 1; (part ? partial : direct).push(m); }
+    });
+    return direct.length ? direct : partial;
+  }
+  var CAT_WORDS = {};
+  CAT_SYN.forEach(function (row) { row[1].forEach(function (k) { CAT_WORDS[mnorm(k)] = 1; }); });
+  // which "choose-a-category" programme category covers a site category for this offer
+  function choiceCat(o, cat) {
+    var rc = o.reward_categories || [];
+    for (var i = 0; i < rc.length; i++) if (rc[i].requires_choice && (rc[i].site_cats || []).indexOf(cat) >= 0) return rc[i];
+    return null;
   }
 
   // ---------- intent parsing ----------
@@ -101,6 +158,11 @@
 
   function answer(q) {
     var r = parse(q);
+    var merch = matchMerchants(q, true);
+    if (r.banks.length) merch = merch.filter(function (m) { return r.banks.indexOf(m.o.bank_key) >= 0; });
+    if (r.cards.length) { var mc = merch.filter(function (m) { return r.cards.indexOf(m.o.card) >= 0; }); if (mc.length) merch = mc; }
+    merch = merch.filter(function (m) { return !expired(m.o); });
+    if (merch.length && !r.spendCats.length && !r.wantWelcome && !r.wantMiles) return merchantAnswer(r, merch);
     var understood = r.cats.length || r.banks.length || r.noFee || r.noReg || r.cards.length;
     if (!understood) return { r: r, items: [], fallback: true };
     var pool = DATA.filter(function (o) { return !expired(o); });
@@ -153,7 +215,29 @@
       if (cards[key]) continue;
       cards[key] = 1; out.push(scored[i]);
     }
-    return { r: r, mode: mode, items: out, total: pool.length };
+    // cards whose higher rate depends on choosing a category (e.g. 滙豐「最紅自主獎賞」) — always mention them
+    var extra = [];
+    if (mode === 'rate' && r.spendCats.length) {
+      scored.forEach(function (s) {
+        var key = s.o.card_id || s.o.card;
+        if (cards[key] || !s.rf || !choiceCat(s.o, s.rf.cat)) return;
+        cards[key] = 1; extra.push(s);
+      });
+      extra = extra.slice(0, 4);
+    }
+    if (!out.length && !extra.length && merch.length) return merchantAnswer(r, merch);
+    return { r: r, mode: mode, items: out, extra: extra, total: pool.length, merch: merch };
+  }
+  function merchantAnswer(r, merch) {
+    // offers whose own text mentions the merchant (other cards / promos), not already covered by a list hit
+    var hitIds = {}; merch.forEach(function (m) { hitIds[m.o.id] = 1; });
+    var aliases = merch.map(function (m) { return mnorm(m.alias); });
+    var text = DATA.filter(function (o) {
+      if (expired(o) || hitIds[o.id] || o.offer_type === '迎新') return false;
+      var hs = mnorm([o.title, o.summary_zh, (o.key_terms || []).join(' ')].join(' '));
+      return aliases.some(function (a) { return a.length >= 2 && hs.indexOf(a) >= 0; });
+    }).slice(0, 3).map(function (o) { return { o: o, rf: null, est: null, metric: 0 }; });
+    return { r: r, mode: 'merchant', merch: merch, items: text, total: text.length };
   }
 
   // ---------- rendering ----------
@@ -184,6 +268,7 @@
     if (s.est.belowMin) return '💡 簽 $' + num(r.amount) + ' 未夠呢個回贈率嘅門檻（要簽滿 $' + num(s.o.min_spend_for_rate_hkd) + per + '）。';
     var t = '💡 簽 $' + num(r.amount) + ' 按 ' + s.rf.rate + '% 粗略計約 $' + num(s.est.raw);
     if (s.est.capped != null) t += '，但受上限限制，最多約 $' + num(s.est.capped) + per;
+    else if ((!s.est.capUsable || s.o.rebate_cap_hkd == null) && s.o.caps) t += '（上限見下面條件）';
     else if (!s.est.capUsable || s.o.rebate_cap_hkd == null) t += '（資料冇列明可用嘅上限數字，實際可能有上限）';
     if (r.period === '年') t += '（你講嘅係全年金額，上限多數按月／期計，請睇條件）';
     return t + '。';
@@ -204,6 +289,8 @@
     var rs = reason(s, mode, r); if (rs) h += '<div class="qa-reason">' + esc(rs) + '</div>';
     var el = estLine(s, r); if (el) h += '<div class="qa-est">' + esc(el) + '</div>';
     if (o.caps) h += '<div class="qa-cap">上限／條件：' + esc(o.caps) + '</div>';
+    var cc = s.rf && s.rf.cat ? choiceCat(o, s.rf.cat) : null;
+    if (cc) h += '<div class="qa-choice">🎯 要喺 Reward+ 揀「' + esc(cc.name) + '」先有 ' + cc.rate_pct + '%' + (cc.rate_if_not_chosen_pct != null ? '（冇揀 ' + cc.rate_if_not_chosen_pct + '%）' : '') + (cc.merchants ? '；只限官方名單上嘅商戶' : '') + '</div>';
     if (o.requires_registration && o.registration_note_zh) {
       h += '<div class="qa-reg">' + esc(o.registration_note_zh) + (o.registration_url ? ' <a href="' + esc(o.registration_url) + '" target="_blank" rel="noopener">去登記 ↗</a>' : '') + '</div>';
     }
@@ -239,16 +326,80 @@
     if (r.amount) parts.push('簽賬 $' + num(r.amount));
     return 'Roc B 理解為：' + (parts.join('｜') || '列出相關優惠') + '。';
   }
+  // compact block for cards whose rate needs choosing a category (grouped by programme category)
+  function extraHtml(res) {
+    var groups = {}, order = [];
+    res.extra.forEach(function (s) {
+      var c = choiceCat(s.o, s.rf.cat), k = s.o.bank + '|' + c.name;
+      if (!groups[k]) { groups[k] = { c: c, list: [] }; order.push(k); }
+      groups[k].list.push(s);
+    });
+    var h = '';
+    order.forEach(function (k) {
+      var gp = groups[k], c = gp.c, o0 = gp.list[0].o;
+      h += '<p class="qa-sub">🎯 ' + esc(o0.bank.split(' ')[0]) + '「最紅自主獎賞」揀「' + esc(c.name) + '」都有：</p><div class="qa-item">';
+      h += '<div class="qa-key">' + gp.list.map(function (s) {
+        var cc = choiceCat(s.o, s.rf.cat);
+        return esc(s.o.card.replace(/^滙豐\s*/, '')) + ' ' + s.rf.rate + '%' + (cc && cc.rate_if_not_chosen_pct != null ? '（冇揀 ' + cc.rate_if_not_chosen_pct + '%）' : '');
+      }).join('、') + '</div>';
+      h += '<div class="qa-choice">🎯 要喺 Reward+ 揀「' + esc(c.name) + '」先有呢個回贈率' + (c.merchants ? '；只限官方名單上嘅商戶' : '') + '（' + esc(c.desc.split('；')[0]) + '）</div>';
+      gp.list.forEach(function (s) { var el = estLine(s, res.r); if (el) h += '<div class="qa-est">' + esc(s.o.card.replace(/^滙豐\s*/, '')) + '：' + esc(el) + '</div>'; });
+      if (o0.caps) h += '<div class="qa-cap">上限／條件：' + esc(o0.caps.replace('；Visa Signature 額外 3X 嘅上限官網未有列明', '')) + '</div>';
+      if (o0.requires_registration && o0.registration_note_zh) h += '<div class="qa-reg">' + esc(o0.registration_note_zh) + (o0.registration_url ? ' <a href="' + esc(o0.registration_url) + '" target="_blank" rel="noopener">去登記 ↗</a>' : '') + '</div>';
+      h += '<div class="qa-meta">⏰ ' + (o0.expiry_date ? fmtDate(o0.expiry_date) : esc(o0.validity_text || '')) + ' · <a href="' + esc(o0.merchant_list_url || o0.source_url) + '" target="_blank" rel="noopener">官方類別／商戶名單 ↗</a></div></div>';
+    });
+    return h;
+  }
+  function merchHtml(res) {
+    if (!res.merch || !res.merch.length) return '';
+    // group by programme category (same list shared by several cards)
+    var groups = {}, order = [];
+    res.merch.forEach(function (m) {
+      var k = m.o.bank + '|' + m.c.name + '|' + m.full;
+      if (!groups[k]) { groups[k] = { m: m, offers: [] }; order.push(k); }
+      if (groups[k].offers.indexOf(m.o) < 0) groups[k].offers.push(m.o);
+    });
+    var h = '<div class="qa-merch"><b>🏪 官方商戶名單配對：</b><ul>';
+    order.slice(0, 6).forEach(function (k) {
+      var gp = groups[k], m = gp.m;
+      h += '<li><b>' + esc(m.full) + '</b> → ' + esc(m.o.bank.split(' ')[0]) + '「' + esc(m.c.name) + '」› ' + esc(m.g) + '：' +
+        gp.offers.map(function (o) {
+          var c = (o.reward_categories || []).filter(function (x) { return x.name === m.c.name; })[0] || m.c;
+          return esc(o.card.replace(/^滙豐\s*/, '')) + ' ' + c.rate_pct + '%' + (c.rate_if_not_chosen_pct != null ? '（冇揀 ' + c.rate_if_not_chosen_pct + '%）' : '');
+        }).join('、');
+      if (m.c.requires_choice) h += '<div class="qa-choice">🎯 要喺 Reward+ 揀「' + esc(m.c.name) + '」先有最高回贈</div>';
+      else if (m.c.rate_note) h += '<div class="qa-cap">' + esc(m.c.rate_note) + '</div>';
+      var o0 = gp.offers[0];
+      if (o0.caps) h += '<div class="qa-cap">上限／條件：' + esc(o0.caps) + '</div>';
+      if (o0.requires_registration && o0.registration_note_zh) h += '<div class="qa-reg">' + esc(o0.registration_note_zh) + (o0.registration_url ? ' <a href="' + esc(o0.registration_url) + '" target="_blank" rel="noopener">去登記 ↗</a>' : '') + '</div>';
+      if (o0.merchant_list_url) h += '<div class="qa-meta"><a href="' + esc(o0.merchant_list_url) + '" target="_blank" rel="noopener">官方商戶名單 ↗</a></div>';
+      h += '</li>';
+    });
+    if (order.length > 6) h += '<li>…另有 ' + (order.length - 6) + ' 個配對，請講得具體啲。</li>';
+    return h + '</ul></div>';
+  }
   function renderAnswer(res) {
+    if (res.mode === 'merchant') {
+      var names = []; res.merch.forEach(function (m) { if (names.indexOf(m.full) < 0) names.push(m.full); });
+      var hm = '<p>Roc B 理解為：商戶「' + esc(names.slice(0, 3).join('、')) + '」。</p>' + merchHtml(res);
+      if (res.items.length) {
+        hm += '<p class="qa-sub">其他提到呢個商戶嘅優惠：</p><ol class="qa-list">';
+        res.items.forEach(function (s, i) { hm += itemHtml(s, 'list', res.r, i); });
+        hm += '</ol>';
+      }
+      hm += '<button type="button" class="qa-apply" data-filter="' + esc(JSON.stringify({ q: res.merch[0].alias, cat: [], bank: [], sort: 'default' })) + '">📋 喺主列表顯示相關卡</button>';
+      return hm;
+    }
     if (res.fallback) {
-      return '<p>喵～Roc B 未識答呢條 😿 試下講清楚類別或者銀行，例如：「網購」、「儲里數」、「日本」、「超市」、「迎新最多」、「唔使年費」、「月簽 $5000 網購」、「滙豐」。</p>';
+      return '<p>喵～Roc B 未識答呢條 😿 試下講清楚類別、銀行或者商戶名，例如：「網購」、「餐廳回贈」、「儲里數」、「日本」、「超市」、「迎新最多」、「唔使年費」、「月簽 $5000 網購」、「滙豐」、「屈臣氏」。</p>';
     }
     if (!res.items.length) {
       return '<p>' + esc(intro(res)) + '</p><p>搵唔到未過期又符合條件嘅優惠 😿 試下減少條件？</p>';
     }
-    var h = '<p>' + esc(intro(res)) + ' 揀咗頭 ' + res.items.length + ' 個（共 ' + res.total + ' 項符合；全部附官方連結）：</p><ol class="qa-list">';
+    var h = merchHtml(res) + '<p>' + esc(intro(res)) + ' 揀咗頭 ' + res.items.length + ' 個（共 ' + res.total + ' 項符合；全部附官方連結）：</p><ol class="qa-list">';
     res.items.forEach(function (s, i) { h += itemHtml(s, res.mode, res.r, i); });
     h += '</ol>';
+    if (res.extra && res.extra.length) h += extraHtml(res);
     var f = filterFor(res);
     h += '<button type="button" class="qa-apply" data-filter="' + esc(JSON.stringify(f)) + '">📋 喺主列表顯示呢類優惠</button>';
     if (res.r.amount) h += '<p class="qa-note">估算只係用資料內嘅回贈率同上限粗略計，未計基本回贈、簽賬門檻細節同其他條件。</p>';
@@ -295,10 +446,10 @@
       window.RocBApp.applyFilter(JSON.parse(b.dataset.filter));
       if (window.matchMedia('(max-width: 820px)').matches) closeP();
     });
-    window.RocBAssistant = { ask: ask, answer: function (q) { return answer(q); }, parse: function (q) { return parse(q); }, open: openP };
+    window.RocBAssistant = { ask: ask, answer: function (q) { return answer(q); }, parse: function (q) { return parse(q); }, merchants: function (q) { return matchMerchants(q, true); }, open: openP };
   }
 
-  document.addEventListener('rocb:data', function (e) { DATA = e.detail; });
+  document.addEventListener('rocb:data', function (e) { DATA = e.detail; MERCH = null; });
   if (window.RocBApp) DATA = window.RocBApp.getData();
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build); else build();
 })();

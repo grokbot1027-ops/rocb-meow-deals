@@ -63,6 +63,20 @@ def main():
             else:
                 for c, v in cr.items():
                     if c not in CATS or not isinstance(v, (int, float)): errs.append(f'{tag}: bad cat_rates entry {c}={v}')
+        rcs = o.get('reward_categories')
+        if rcs is not None:
+            if not isinstance(rcs, list): errs.append(f'{tag}: reward_categories must be array/null')
+            else:
+                for c in rcs:
+                    if not c.get('name'): errs.append(f'{tag}: reward_categories entry without name')
+                    for sc in c.get('site_cats') or []:
+                        if sc not in CATS: errs.append(f'{tag}: reward_categories {c.get("name")} unknown site_cat {sc!r}')
+                    if c.get('rate_pct') is not None and not isinstance(c['rate_pct'], (int, float)): errs.append(f'{tag}: reward_categories rate_pct must be number')
+                    for mk in ('merchants', 'merchants_en'):
+                        m = c.get(mk)
+                        if m is not None and not (isinstance(m, dict) and all(isinstance(v, list) and all(isinstance(x, str) for x in v) for v in m.values())):
+                            errs.append(f'{tag}: reward_categories {c.get("name")} {mk} must be {{group: [names]}}')
+        if o.get('merchant_list_url') and not official(o['merchant_list_url']): errs.append(f'{tag}: merchant_list_url is not an official domain')
         if o.get('cap_period') not in (None, '月', '期', '推廣期'): errs.append(f'{tag}: bad cap_period')
         # links: all must be official
         links = [('source_url', o.get('source_url')), ('promo_url', o.get('promo_url')), ('registration_url', o.get('registration_url'))]

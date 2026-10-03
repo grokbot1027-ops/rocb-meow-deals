@@ -61,6 +61,8 @@ python3 -m http.server 8931
 | `cat_rates` | 類別 → 回贈 % 對照（例如 `{"網購": 4}`），只填官網／來源寫明嘅數字；問答小助手用 |
 | `rebate_cap_hkd` / `cap_period` | 額外回贈上限（HK$）／上限周期：`月`、`期`、`推廣期`；唔知就 `null` |
 | `min_spend_for_rate_hkd` | 要簽滿幾多先有該回贈率（唔知就 `null`） |
+| `reward_categories` | 類別／指定商戶回贈（例如滙豐「最紅自主獎賞」5 大類別、Red 卡指定商戶）：`name`、`name_en`、`site_cats`（對應網站類別）、`rate_pct`（揀咗嘅最高 %）、`rate_if_not_chosen_pct`、`requires_choice`（要喺 App 揀類別）、`rate_note`、`desc`、`merchants`（官方中文商戶名單 `{分組: [商戶]}`）、`merchants_en`（官方英文名單，次序同中文版唔同，所以分開存） |
+| `merchant_list_url` | 官方商戶名單網址 |
 
 ## 資料政策：只用官方來源
 
@@ -77,6 +79,8 @@ python3 -m http.server 8931
 - 同義詞表（`assets/assistant.js` 頂部 `CAT_SYN`、`BANK_SYN`）將字眼對應到 offers.json 嘅類別同銀行；亦識「免年費」、「唔使登記」同金額（$5000、5k、5千）。
 - 排序：按回贈 %／每里成本／迎新價值／估算回贈排；每張卡最多出一次；已過期唔會出。
 - 每個答案項目都會顯示登記備註（有就附「去登記」連結）同「官方推廣頁／官方來源」連結。
+- 要揀類別先有高回贈嘅卡（例如滙豐「最紅自主獎賞」）：問餐飲／超市／海外等類別時，就算唔入頭 5 名都會另外列出，並寫明「要喺 Reward+ 揀「賞滋味」」、冇揀時嘅回贈率、上限同登記限期。
+- 商戶名問題（例如「屈臣氏」、「Klook」、「百佳」、「壽司郎」）：用 `reward_categories[].merchants`／`merchants_en` 嘅官方名單配對，答邊張卡、邊個類別、幾多 %；亦會列出其他喺官方條款文字提到呢個商戶嘅優惠。
 - 有金額時用 `cat_rates` × 金額粗略估算，有 `rebate_cap_hkd` 就封頂；未達 `min_spend_for_rate_hkd` 會提示。所有數字都直接嚟自 offers.json。
 - 每個答案有「📋 喺主列表顯示呢類優惠」掣，會套用相應篩選。
 - 唔明嘅問題會出提示；底部有免責一句：答案由規則自動配對，只供參考。
