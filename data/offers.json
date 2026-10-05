@@ -6180,7 +6180,7 @@
         "url": "https://www.americanexpress.com/hk/en/credit-cards/explorer-credit-card/"
       }
     ],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -6234,7 +6234,7 @@
         "url": "https://www.americanexpress.com/hk/en/credit-cards/explorer-credit-card/"
       }
     ],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -6286,7 +6286,7 @@
         "url": "https://www.americanexpress.com/content/dam/amex/hk/ch/staticassets/pdf/BlueCash_Welcome_Offers_Terms_and_Conditions_CH.pdf"
       }
     ],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -6338,7 +6338,7 @@
         "url": "https://www.americanexpress.com/content/dam/amex/hk/ch/staticassets/pdf/BlueCash_Welcome_Offers_Terms_and_Conditions_CH.pdf"
       }
     ],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -6383,7 +6383,7 @@
     "source_url": "https://www.americanexpress.com/hk/en/credit-cards/platinum-credit-card/",
     "source_label": "產品頁",
     "extra_sources": [],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -6411,7 +6411,7 @@
       "里數",
       "超市"
     ],
-    "summary_zh": "指定商戶每 HK$1 最高賺 6 分 Membership Rewards 積分。",
+    "summary_zh": "基本每 HK$1 最高 3 分 Membership Rewards 積分；指定超市、油站及便利店每 HK$1 最高 6 分。",
     "key_terms": [
       "登記要求及推廣期官網未有列明"
     ],
@@ -6431,7 +6431,7 @@
     "source_url": "https://www.americanexpress.com/hk/en/credit-cards/platinum-credit-card/",
     "source_label": "產品頁",
     "extra_sources": [],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -6457,7 +6457,7 @@
     "categories": [
       "迎新"
     ],
-    "summary_zh": "全新卡會員首 6 個月累積簽 HK$60,000 → 最高 1,320,000 分；第 15–17 個月內一筆合資格簽賬再得 660,000 分；合共可兌換 73,333 里。現有卡會員最高 640,000 分。首 3 個月手機單筆增值八達通 HK$600 → HK$50 回贈。",
+    "summary_zh": "全新卡會員首 6 個月累積簽 HK$60,000 → 最高 660,000 分；第 15–17 個月內做一筆任何金額合資格簽賬 → 再得 660,000 分；合共最高 1,320,000 分（約 73,333 里）。現有卡會員最高 640,000 分（320,000 + 320,000，同樣條件）。首 3 個月單筆增值八達通 HK$600 → HK$50 回贈。",
     "key_terms": [
       "積分分兩期發放（第 15–17 個月有一部分）"
     ],
@@ -6477,7 +6477,7 @@
     "source_url": "https://www.americanexpress.com/hk/en/charge-cards/platinum-card/",
     "source_label": "產品頁",
     "extra_sources": [],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -6526,7 +6526,7 @@
     "source_url": "https://www.americanexpress.com/hk/en/charge-cards/platinum-card/",
     "source_label": "產品頁",
     "extra_sources": [],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -6570,7 +6570,7 @@
     "source_url": "https://www.americanexpress.com/hk/en/credit-cards/essential-credit-card/",
     "source_label": "產品頁",
     "extra_sources": [],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -6617,7 +6617,7 @@
     "source_url": "https://www.americanexpress.com/hk/en/credit-cards/essential-credit-card/",
     "source_label": "產品頁",
     "extra_sources": [],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -8273,8 +8273,12 @@
     "categories": [
       "超市"
     ],
-    "summary_zh": "登記優惠：喺 city'super 簽賬享 HK$50 簽賬回贈；白金卡及白金信用卡另享 City Super Group 全年 97 折。",
-    "key_terms": [],
+    "summary_zh": "登記合資格卡後，喺參與 City Super Group 分店單一簽賬淨值滿 HK$500 → HK$50 簽賬回贈；每張已登記卡推廣期內一次，只限首 25,000 張成功登記嘅美國運通基本卡及附屬卡（公司卡及合作夥伴發行卡除外）。白金卡及白金信用卡另享 City Super Group 全年 97 折（2026年2月1日至2027年1月31日）。",
+    "key_terms": [
+      "單一簽賬淨值滿 HK$500",
+      "每張已登記卡限一次",
+      "只限首 25,000 張成功登記卡"
+    ],
     "caps": "HK$50 簽賬回贈",
     "validity_text": "推廣期：2026年9月15日至10月14日",
     "start_date": "2026-09-15",
@@ -8283,7 +8287,7 @@
     "hkd_per_mile": null,
     "welcome_value_hkd": null,
     "welcome_miles": null,
-    "min_spend_hkd": null,
+    "min_spend_hkd": 500,
     "annual_fee_hkd": null,
     "annual_fee_note": null,
     "fx_fee_pct": null,
@@ -8291,7 +8295,7 @@
     "source_url": "https://www.americanexpress.com/hk/ch/benefits/shopping/offers/shopping/city-super.html",
     "source_label": "美國運通 city'super 優惠頁",
     "extra_sources": [],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -8339,7 +8343,7 @@
     "source_url": "https://www.americanexpress.com/zh-hk/benefits/offers/dining/hk-dining-offers/index.html",
     "source_label": "美國運通香港餐飲優惠頁",
     "extra_sources": [],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -8434,7 +8438,7 @@
     "source_url": "https://www.samsung.com/hk/offer/unfold-your-big-moment-with-galaxy/",
     "source_label": "Samsung 香港官方推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-10-03",
+    "last_checked": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
     "rebate_cap_hkd": null,
