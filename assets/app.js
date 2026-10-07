@@ -24,6 +24,12 @@
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function num(n) { return Number(n).toLocaleString('en-US'); }
   function isExpired(o) { return o.expiry_date && daysLeft(o.expiry_date) < 0; }
+  // 「⚠️ 條款有變」: official T&C changes recorded in offers[].changes in the current month or the last 30 days (same window as the 🆕 panel)
+  var CHANGE_DAYS = 30;
+  var FIELD_ZH = { welcome: '迎新', validity: '有效期', rebate_pct: '回贈率', cap: '上限', min_spend: '簽賬要求', registration: '登記', other: '其他條款' };
+  function recentChanges(o) {
+    return (o.changes || []).filter(function (c) { var d = daysLeft(c.date); return d <= 0 && (d > -CHANGE_DAYS || c.date.slice(0, 7) === TODAY.slice(0, 7)); });
+  }
   function norm(s) { return String(s || '').toLowerCase().replace(/\s+/g, ''); }
 
   function merchantText(o) {
@@ -198,6 +204,13 @@
     if (!o.promo_url || o.promo_url !== o.source_url) h += '<a class="btn btn-src" href="' + esc(o.source_url) + '" target="_blank" rel="noopener">' + (o.promo_url ? '官方條款／來源 ↗' : '官方來源 ↗') + '</a>';
     return h;
   }
+  function changeNote(o) {
+    var rc = recentChanges(o);
+    if (!rc.length) return '';
+    var f = []; rc.forEach(function (c) { var z = FIELD_ZH[c.field] || '條款'; if (f.indexOf(z) < 0) f.push(z); });
+    var last = rc.map(function (c) { return c.date; }).sort().pop();
+    return '<button type="button" class="chg-note" data-chg="' + esc(o.id) + '">⚠️ ' + fmtDate(last).slice(0, 5) + ' 條款有變：' + esc(f.join('、')) + ' ›</button>';
+  }
   function moreBtn(o) { return '<button type="button" class="more" data-oid="' + esc(o.id) + '" aria-expanded="' + !!open[o.id] + '">' + (open[o.id] ? '收起 ▴' : '詳情 ▾') + '</button>'; }
   function srcLinks(list) {
     return (list || []).map(function (s) { return '<li><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '</a></li>'; }).join('');
@@ -210,6 +223,12 @@
     if (o.key_terms && o.key_terms.length) h += '<h4>重要條款</h4><ul>' + o.key_terms.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>';
     h += '<h4>有效期</h4><p>' + esc(o.validity_text || '未有列明') + '</p>';
     if (o.fx_fee_pct != null) h += '<h4>外幣手續費</h4><p>' + o.fx_fee_pct + '%</p>';
+    if (o.changes && o.changes.length) {
+      h += '<h4>⚠️ 條款變更紀錄</h4><ul>' + o.changes.map(function (c) {
+        return '<li>' + fmtDate(c.date) + '｜' + esc(FIELD_ZH[c.field] || '條款') + '：' + esc(c.old_zh) + ' → <b>' + esc(c.new_zh) + '</b>' + (c.note_zh ? '（' + esc(c.note_zh) + '）' : '') +
+          ' <a href="' + esc(c.source_url) + '" target="_blank" rel="noopener">官方條款 ↗</a></li>';
+      }).join('') + '</ul>';
+    }
     h += '<h4>官方資料來源</h4><ul class="src"><li><a href="' + esc(o.source_url) + '" target="_blank" rel="noopener">' + esc(o.source_label || '官方網頁') + '</a></li>' + srcLinks(o.extra_sources) + '</ul>';
     h += '<p class="muted">最後檢查：' + fmtDate(o.last_checked) + '（香港時間）</p></div>';
     return h;
@@ -240,6 +259,7 @@
     var g = giftChips(o);
     h += '<div class="keys">' + (g || '<span class="muted small">' + esc(o.title) + '</span>') + '</div>';
     h += '<div class="meta">⏰ ' + expiryText(o, '申請／推廣至 ') + '</div>';
+    h += changeNote(o);
     h += regNote(o);
     h += '<div class="acts">' + linkBtns(o) + moreBtn(o) + '</div>' + detailHtml(o) + '</div>';
     return h;
@@ -256,6 +276,7 @@
     h += '</div>' + rewardCats(o);
     if (o.caps) h += '<div class="cap">上限／條件：' + esc(o.caps) + '</div>';
     if (o.expiry_date) h += '<div class="meta">⏰ ' + expiryText(o, '回贈計劃至 ') + '</div>';
+    h += changeNote(o);
     h += regNote(o);
     h += '<div class="acts">' + linkBtns(o) + moreBtn(o) + '</div>' + detailHtml(o) + '</div>';
     return h;
@@ -297,6 +318,7 @@
     var h = '<div class="pitem' + (isExpired(o) ? ' expired' : '') + '">';
     h += '<div class="pline"><span class="ptitle">' + esc(o.title) + '</span> ' + promoKey(o) + ' <span class="pexp">⏰ ' + expiryText(o, '至 ') + '</span></div>';
     if (showCard) h += '<div class="small muted">適用：' + esc(o.card) + '</div>';
+    h += changeNote(o);
     h += regNote(o);
     h += '<div class="acts">' + linkBtns(o) + moreBtn(o) + '</div>' + detailHtml(o) + '</div>';
     return h;
@@ -310,7 +332,9 @@
     var cats = union(vis, 'categories');
     var tags = CAT_ORDER.filter(function (c) { return cats[c]; });
     var h = '<article class="row cardrow" role="row" data-gid="' + esc(g.id) + '">';
+    var chg = vis.filter(function (o) { return recentChanges(o).length; });
     h += '<div class="c-card" role="cell"><div class="card-name">' + esc(g.card) + '</div>';
+    if (chg.length) h += '<button type="button" class="chg-badge" data-chg="' + esc(chg[0].id) + '" title="銀行最近改咗呢張卡嘅條款">⚠️ 條款有變</button>';
     h += '<div class="bankline"><span class="bank-name">' + esc(g.bank) + '</span> <span class="ctype">' + esc(g.card_type) + '</span></div>';
     h += '<div class="tags">' + tags.map(function (c) { return '<span class="tag">' + esc(c) + '</span>'; }).join('') + '</div></div>';
     h += '<section class="blk wel" role="cell"><h3 class="blk-h">🎁 迎新</h3>' + (wel.length ? wel.map(welcomeItem).join('') : '<div class="none">暫無迎新</div>') + '</section>';
@@ -386,6 +410,8 @@
       b.addEventListener('click', function () { state.sort = b.dataset.sort; $('sort').value = state.sort; update(); });
     });
     var onClick = function (e) {
+      var cb = e.target.closest('[data-chg]');
+      if (cb) { if (window.RocBMonthly) window.RocBMonthly.open('changes', cb.dataset.chg); return; }
       var b = e.target.closest('button.more'); if (!b) return;
       var id = b.dataset.oid; open[id] = !open[id]; render();
       var nb = document.querySelector('button.more[data-oid="' + id + '"]'); if (nb) nb.focus({ preventScroll: true });

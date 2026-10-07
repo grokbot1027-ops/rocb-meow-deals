@@ -33,10 +33,29 @@ grep -n -E "%|HK\$|港元|202[67]" page.txt
 - 更新 `last_checked` 做當日日期（香港時間，YYYY-MM-DD）。
 - 已過期嘅推廣可以刪走（網站預設會隱藏已過期項目）。
 
+### 3a. 新優惠：`added_date`（「🆕 本月新優惠」橫額靠佢）
+- **每個新加嘅優惠**（特別係 `限時推廣`）都要填 `added_date` ＝ 今日（香港時間，`TZ=Asia/Hong_Kong date +%F`）。
+- 已有優惠嘅 `added_date` **永遠唔好改**（就算更新咗內容、延長咗期）。換咗 `id` 就當新優惠。
+- 懶人法：加完新優惠之後行 `python3 scripts/set_added_dates.py`，佢會幫冇 `added_date` 嘅優惠補日期（git 歷史有就用第一次出現嗰日，冇就用今日）。
+- 網站自動計：`限時推廣` + `added_date` 喺今個月 + 未過期 ＝ 本月新優惠；下個月自動轉。
+
+### 3b. 銀行改咗條款：`changes`（「⚠️ 條款有變」靠佢）
+- 對比官方頁面同現有資料，如果**銀行官方**改咗已有優惠嘅重要條款，就喺嗰項優惠嘅 `changes` array 加一項：
+  ```json
+  {"date": "YYYY-MM-DD", "field": "rebate_pct", "old_zh": "網購 5%", "new_zh": "網購 4%",
+   "note_zh": "（選填）一句解釋", "source_url": "https://官方新條款", "old_source_url": "https://官方舊條款（選填）"}
+  ```
+  `field`：`welcome`（迎新金額／禮品）、`validity`（有效期／新一期）、`rebate_pct`（回贈率）、`cap`（上限）、`min_spend`（簽賬要求／門檻）、`registration`（登記方法／限期）、`other`。
+- 同時照常更新嗰項優惠本身嘅欄位（`summary_zh`、`expiry_date`、`cat_rates`…）做新數字。
+- **唔好記**：自己之前抄錯／漏咗而家補返（資料更正）、只係改字眼或連結、補充細節。唔肯定係銀行改定係自己更正，就**唔好記**，喺匯報度講返。
+- 舊紀錄唔好刪；網站會自動只顯示本月或 30 日內嘅改動。
+- 有新 `限時推廣` 或者新 `changes`，每日匯報要列出嚟（橫額會自動顯示，唔使改 HTML／JS）。
+
 ## 4. 驗證同預覽
 ```bash
 cd /workspace/rocb-meow-deals
-python3 scripts/validate_offers.py          # 0 errors 先好 commit
+python3 scripts/set_added_dates.py          # 幫新優惠補 added_date
+python3 scripts/validate_offers.py          # 0 errors 先好 commit（會順便印出本月新限時推廣同條款變更數目）
 cd .. && python3 -m http.server 8931         # http://127.0.0.1:8931/rocb-meow-deals/
 ```
 
@@ -45,7 +64,7 @@ cd .. && python3 -m http.server 8931         # http://127.0.0.1:8931/rocb-meow-d
 cd /workspace/rocb-meow-deals
 git add data/offers.json && git commit -m "data: refresh offers $(TZ=Asia/Hong_Kong date +%F)"
 ```
-（未確認發佈前唔好 push。）
+之後 push `main`（GitHub Pages 會自動重新發佈）。只 commit `data/offers.json`；HTML／JS／CSS 改動要先喺獨立 branch 俾 Jonson 預覽。
 
 ## 問答小助手相關（2026-10-03 新增）
 

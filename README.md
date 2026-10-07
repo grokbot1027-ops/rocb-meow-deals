@@ -6,6 +6,8 @@
 篩選以卡為單位：一張卡嘅（未過期）優惠合埋符合條件就會顯示；「優惠類型」＝有呢類優惠嘅卡；排序用每張卡最好嘅相關數字（揀咗消費類別時用該類別回贈率）。
 貓貓吉祥物叫 **Roc B** 🐱。
 
+標題下面有「🆕 本月新優惠」橫額（唔係自動彈出嘅 pop-up）：顯示今個月新加入、仲未完嘅限時推廣數目、月底前完嘅數目同最近條款有變嘅優惠數目，撳落去打開面板（手機係由底部彈上嚟嘅 sheet）。詳見下面「🆕 本月新優惠／⚠️ 條款有變」。
+
 > ⚠️ 資料只供參考，全部整理自各銀行／發卡機構官方網頁及條款（每項優惠都附官方連結）；優惠受銀行條款約束，隨時可能更改；唔構成理財建議。申請前請到官方網頁核實。
 
 ## 結構
@@ -14,10 +16,12 @@
 index.html              # 單頁，全部用相對路徑（可放喺 GitHub Pages 子路徑 /rocb-meow-deals/）
 assets/style.css        # 樣式（桌面＝表格，手機＝精簡卡片）
 assets/app.js           # 讀取 data/offers.json、篩選、搜尋、排序、展開詳情（無 build step）；提供 window.RocBApp
+assets/monthly.js       # 「🆕 本月新優惠」橫額＋面板、「⚠️ 條款有變」；提供 window.RocBMonthly
 assets/assistant.js     # 「問 Roc B」規則式問答小助手（純前端，冇 API、冇伺服器）
 assets/rocb-cat.svg     # Roc B 貓貓標誌（亦係 favicon）
 data/offers.json        # ★ 唯一資料來源（array of objects）
-scripts/validate_offers.py   # 更新資料後驗證 schema
+scripts/validate_offers.py   # 更新資料後驗證 schema（包括 added_date、changes）
+scripts/set_added_dates.py   # 幫冇 added_date 嘅優惠補日期（用 git 歷史搵第一次出現嘅日子；新優惠用今日）
 scripts/REFRESH.md           # 每日更新流程
 .nojekyll
 ```
@@ -58,6 +62,8 @@ python3 -m http.server 8931
 | `source_url` / `source_label` / `source_type` | 官方來源（`source_type` 一定係 `official`） |
 | `extra_sources` | 其他官方來源（例如條款 PDF、產品資料概要） |
 | `last_checked` | 最後檢查日期（香港時間） |
+| `added_date` | **必填**。呢項優惠第一次加入網站嘅日期（香港時間，YYYY-MM-DD）。之後唔好改。「🆕 本月新優惠」靠呢個欄位：`限時推廣` 而且 `added_date` 喺今個月就算「本月新」。首次建立網站時已有嘅優惠＝`2026-10-03` |
+| `changes` | 選填。**銀行官方改咗條款**嘅紀錄（array），每項：`date`（記錄日期，香港時間）、`field`（`welcome` 迎新、`validity` 有效期、`rebate_pct` 回贈率、`cap` 上限、`min_spend` 簽賬要求、`registration` 登記、`other`）、`old_zh`／`new_zh`（改之前／之後，繁中）、`note_zh`（選填，一句解釋）、`source_url`（官方新條款）、`old_source_url`（選填，官方舊條款）。**自己資料出錯而更正唔算**，唔好記 |
 | `cat_rates` | 類別 → 回贈 % 對照（例如 `{"網購": 4}`），只填官網／來源寫明嘅數字；問答小助手用 |
 | `rebate_cap_hkd` / `cap_period` | 額外回贈上限（HK$）／上限周期：`月`、`期`、`推廣期`；唔知就 `null` |
 | `min_spend_for_rate_hkd` | 要簽滿幾多先有該回贈率（唔知就 `null`） |
@@ -70,6 +76,15 @@ python3 -m http.server 8931
 - 只有官方頁面寫明嘅數字先會顯示；官方頁面搵唔到嘅數字（例如上限、年費）會留空或者寫「未有列明」，唔會估。
 - 官方頁面確認唔到嘅優惠會直接刪走，唔會顯示。
 - 要登記嘅優惠一定有登記備註（喺表格同手機卡片直接顯示，唔使撳「詳情」）；有官方登記網址就有「去登記」掣。
+
+## 🆕 本月新優惠／⚠️ 條款有變（`assets/monthly.js`）
+
+- **本月新優惠**＝`offer_type` 係 `限時推廣`、`added_date` 喺今個月（香港時間）、而且未過期嘅優惠。迎新同簽賬回贈唔計。下個月 1 號自動轉新一期（例如 11 月就只計 11 月加入嘅）。
+- 橫額：「🆕 10 月新優惠：X 個限時推廣 · Y 個月底前完 · ⚠️ Z 個優惠條款有變」。撳落去打開面板。
+- 面板每項：銀行／卡、標題、重點數字（回贈 %、金額、簽賬要求、上限）、到期日同仲有幾多日、加入日期、登記備註（📱）、「去登記 ↗」（`registration_url`）同「官方推廣頁 ↗」（`promo_url`）。**月底前完或者 7 日內完**嘅會有 ⏰ 紅框，排最頂。
+- **⚠️ 條款有變**：讀 `changes`，顯示本月或者 30 日內記錄嘅改動（之前 → 而家，附官方新／舊條款連結）。主列表受影響嘅卡會有「⚠️ 條款有變」小 badge，優惠入面亦有一行提示，撳落去直接跳去面板嗰項；「詳情」入面有完整變更紀錄。
+- **記住睇過**：用 `localStorage`（key `rocb-monthly-seen-v1`）記低睇過嘅項目。睇過之後橫額縮細做一粒小 badge；有新推廣或者新條款改動先會再大大個亮返，仲會顯示「N 個新」，面板入面新嘢有 NEW 標記。
+- 測試：`RocBMonthly.compute()`（今日）或者 `RocBMonthly.compute('2026-11-02')`（模擬另一日）；`RocBMonthly.resetSeen()` 清除「睇過」紀錄。
 
 ## 「問 Roc B」問答小助手
 
@@ -84,9 +99,13 @@ python3 -m http.server 8931
 - 有金額時用 `cat_rates` × 金額粗略估算，有 `rebate_cap_hkd` 就封頂；未達 `min_spend_for_rate_hkd` 會提示。所有數字都直接嚟自 offers.json。
 - 每個答案有「📋 喺主列表顯示呢類優惠」掣，會套用相應篩選。
 - 唔明嘅問題會出提示；底部有免責一句：答案由規則自動配對，只供參考。
+- 「今個月有咩新優惠」、「中銀有咩新推廣」、「今個月網購有咩新優惠」：列出本月新限時推廣（快完嘅排先，可以按銀行／類別篩），附登記備註同官方連結，仲有掣打開「🆕 本月新優惠」面板。
+- 「有咩條款改咗」、「DBS 條款有變」：列出最近官方條款改動（之前 → 而家），附官方新條款連結。
 - 測試：`window.RocBAssistant.answer('網購')` 會回傳結構化結果。
 
 ## 發佈
 
-**未發佈。** 呢個 repo 只喺本機 `git init` 咗，冇建立 GitHub repo、冇 push、冇開 GitHub Pages。
-將來確認發佈後，可以建立 repo `rocb-meow-deals`，push `main`，喺 Settings → Pages 揀 `main` / root，網址會係 `https://<user>.github.io/rocb-meow-deals/`。
+**已發佈。** 網站：https://grokbot1027-ops.github.io/rocb-meow-deals/ （GitHub Pages，`main` 分支 root）。
+Repo：https://github.com/grokbot1027-ops/rocb-meow-deals 。
+每朝香港時間大約 7:31 有自動更新流程：跟 `scripts/REFRESH.md` 去官網 check 優惠、更新 `data/offers.json`、驗證之後 commit 同 push `main`，GitHub Pages 自動重新發佈。
+新功能（例如改 HTML／JS／CSS）會先喺獨立 branch 做，俾 Jonson 預覽確認先 merge 入 `main`。

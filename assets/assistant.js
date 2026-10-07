@@ -29,7 +29,7 @@
     mox: ['mox'], primecredit: ['安信', 'wewa', 'earnmore', 'primecredit'], sim: ['sim卡', 'sim credit']
   };
   var STOP = { card: 1, credit: 1, visa: 1, world: 1, mastercard: 1, signature: 1, platinum: 1, infinite: 1, unionpay: 1, the: 1, hsbc: 1, citi: 1, dbs: 1, aeon: 1, bea: 1, mox: 1, sim: 1, bank: 1, express: 1, american: 1 };
-  var CHIPS = ['網購邊張卡最抵', '餐廳回贈', '儲 Asia Miles 用邊張', '去日本簽咩卡', '屈臣氏用邊張卡', '超市', '迎新最多', '唔使年費', '月簽 $5000 網購'];
+  var CHIPS = ['今個月有咩新優惠', '有咩條款改咗', '網購邊張卡最抵', '餐廳回贈', '儲 Asia Miles 用邊張', '去日本簽咩卡', '屈臣氏用邊張卡', '超市', '迎新最多', '唔使年費', '月簽 $5000 網購'];
 
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function num(n) { return Number(n).toLocaleString('en-US', { maximumFractionDigits: 0 }); }
@@ -156,7 +156,38 @@
     return e;
   }
 
+  // 「今個月有咩新優惠」「有咩條款改咗」 → 🆕️ monthly panel data (assets/monthly.js)
+  var CHG_RE = /(條款|細則|t\s*&\s*c|tnc|terms|回贈率|上限|迎新|簽賬要求|門檻).{0,6}(改|變|更新|調整|update|change)|改咗|改左|有變|變咗|變左|改動|變動|更改|terms?\s*changed?/;
+  var NEW_RE = /(新增|新加|新出|最新|有咩新|有乜新|有冇新|新(嘅|的)?(優惠|推廣|著數|promo|offer|deal)|what'?s\s*new|new\s*(offers?|promos?|promotions?|deals?))/;
+  var MONTH_RE = /(今個月|呢個月|本月|this\s*month).{0,4}(優惠|推廣|著數|promo|offer|deal)/;
+  function monthlyIntent(q) {
+    var t = normalize(q);
+    if (!window.RocBMonthly) return null;
+    if (CHG_RE.test(t)) return 'changes';
+    if (/迎新/.test(t)) return null; // welcome offers aren't part of 「新優惠」 (only 限時推廣 count)
+    var t2 = t;
+    if (NEW_RE.test(t2) || (MONTH_RE.test(t2) && !/\d{3,}|\d\s*(k|千|萬)/.test(t2))) return 'new';
+    return null;
+  }
+  function matchesR(o, r) {
+    if (r.banks.length && r.banks.indexOf(o.bank_key) < 0) return false;
+    if (r.spendCats.length && !r.spendCats.some(function (c) { return o.categories.indexOf(c) >= 0 || (o.cat_rates && o.cat_rates[c] != null); })) return false;
+    if (r.noReg && o.requires_registration) return false;
+    return true;
+  }
+  function monthlyAnswer(kind, q) {
+    var r = parse(q), m = window.RocBMonthly.compute();
+    if (kind === 'changes') {
+      var ch = m.changes.filter(function (x) { return matchesR(x.o, { banks: r.banks, spendCats: [], noReg: false }); });
+      return { r: r, mode: 'changes', m: m, changes: ch, filtered: r.banks.length > 0, items: [] };
+    }
+    var list = m.promos.filter(function (p) { return matchesR(p.o, r); });
+    return { r: r, mode: 'new', m: m, promos: list, filtered: !!(r.banks.length || r.spendCats.length || r.noReg), items: [] };
+  }
+
   function answer(q) {
+    var mi = monthlyIntent(q);
+    if (mi) return monthlyAnswer(mi, q);
     var r = parse(q);
     var merch = matchMerchants(q, true);
     if (r.banks.length) merch = merch.filter(function (m) { return r.banks.indexOf(m.o.bank_key) >= 0; });
@@ -378,7 +409,76 @@
     if (order.length > 6) h += '<li>…另有 ' + (order.length - 6) + ' 個配對，請講得具體啲。</li>';
     return h + '</ul></div>';
   }
+  function regHtml(o) {
+    if (!o.requires_registration || !o.registration_note_zh) return '';
+    return '<div class="qa-reg">' + esc(o.registration_note_zh) + (o.registration_deadline && o.registration_note_zh.indexOf(fmtDate(o.registration_deadline)) < 0 ? '（登記限期 ' + fmtDate(o.registration_deadline) + '）' : '') +
+      (o.registration_url ? ' <a href="' + esc(o.registration_url) + '" target="_blank" rel="noopener">去登記 ↗</a>' : '') + '</div>';
+  }
+  function filterLabel(r) {
+    var parts = [];
+    if (r.banks.length) parts.push(r.banks.map(function (k) { var o = DATA.find(function (x) { return x.bank_key === k; }); return o ? o.bank : k; }).join('、'));
+    if (r.spendCats.length) parts.push(r.spendCats.join('、'));
+    if (r.noReg) parts.push('唔使登記');
+    return parts.join('｜');
+  }
+  function renderMonthly(res) {
+    var m = res.m, h;
+    if (res.mode === 'changes') {
+      if (!res.changes.length) {
+        h = '<p>' + (res.filtered ? '「' + esc(filterLabel(res.r)) + '」' : '') + '最近（' + m.month + ' 月或 30 日內）暫時未有記錄到銀行改咗重大條款 😺</p>';
+      } else {
+        var grp = [], gi = {};
+        res.changes.forEach(function (x) { if (gi[x.o.id] == null) { gi[x.o.id] = grp.length; grp.push([]); } grp[gi[x.o.id]].push(x); });
+        h = '<p>⚠️ 最近（' + m.month + ' 月或 30 日內）' + (res.filtered ? '「' + esc(filterLabel(res.r)) + '」' : '') + '有 ' + grp.length + ' 個優惠嘅條款改咗：</p><ol class="qa-list">';
+        grp.slice(0, 6).forEach(function (list, i) {
+          var o = list[0].o, srcs = [];
+          h += '<li class="qa-item"><div class="qa-title"><b>' + (i + 1) + '. ' + esc(o.card) + '</b> <span class="qa-bank">' + esc(o.bank) + ' · ' + esc(o.offer_type) + '</span></div>';
+          list.forEach(function (x) {
+            var c = x.c;
+            h += '<div class="qa-warn">⚠️ ' + esc((m.fieldZh[c.field] || '條款')) + '有變（' + fmtDate(c.date) + ' 記錄）</div>';
+            h += '<div class="qa-cap">之前：' + esc(c.old_zh) + '</div><div class="qa-key">而家：' + esc(c.new_zh) + '</div>';
+            if (c.note_zh) h += '<div class="qa-reason">💡 ' + esc(c.note_zh) + '</div>';
+            if (srcs.indexOf(c.source_url) < 0) srcs.push(c.source_url);
+          });
+          h += '<div class="qa-meta">' + srcs.map(function (u) { return '<a href="' + esc(u) + '" target="_blank" rel="noopener">官方新條款 ↗</a>'; }).join(' · ') + '</div></li>';
+        });
+        h += '</ol>';
+        if (grp.length > 6) h += '<p class="qa-note">仲有 ' + (grp.length - 6) + ' 個，撳下面個掣睇晒。</p>';
+      }
+      h += '<button type="button" class="qa-apply qa-monthly" data-section="changes">⚠️ 打開「條款有變」清單</button>';
+      return h;
+    }
+    var total = m.promos.length;
+    h = '<p>🆕️ ' + m.month + ' 月新加入、仲未完嘅限時推廣共 ' + total + ' 個' + (m.soon ? '（' + m.soon + ' 個月底前完）' : '') +
+      (res.filtered ? '；符合「' + esc(filterLabel(res.r)) + '」嘅有 ' + res.promos.length + ' 個' : '') + '。</p>';
+    if (!res.promos.length) {
+      h += '<p>' + (total ? '冇符合條件嘅新推廣 😿 試下唔加條件問「今個月有咩新優惠」。' : '今個月暫時未有新加入嘅限時推廣，每朝更新後會再睇 😺') + '</p>';
+    } else {
+      h += '<p class="qa-sub">⏰ 快完嘅排先：</p><ol class="qa-list">';
+      res.promos.slice(0, 8).forEach(function (p, i) {
+        var o = p.o, keys = [];
+        if (o.rebate_pct != null) keys.push('最高 ' + o.rebate_pct + '%');
+        if (o.welcome_value_hkd) keys.push('HK$' + num(o.welcome_value_hkd));
+        if (o.welcome_miles) keys.push(num(o.welcome_miles) + ' 里');
+        if (o.min_spend_hkd) keys.push('簽 HK$' + num(o.min_spend_hkd));
+        keys.push(o.requires_registration ? '要登記' : '唔使登記');
+        h += '<li class="qa-item"><div class="qa-title"><b>' + (i + 1) + '. ' + esc(o.title) + '</b></div>';
+        h += '<div class="qa-bank">' + esc(o.bank) + ' · ' + esc(o.card) + '</div>';
+        h += '<div class="qa-key">' + esc(keys.join(' · ')) + '</div>';
+        if (o.caps) h += '<div class="qa-cap">上限／條件：' + esc(o.caps) + '</div>';
+        h += regHtml(o);
+        var exp = o.expiry_date ? (p.urgent ? '⏰ ' : '') + '至 ' + fmtDate(o.expiry_date) + '（仲有 ' + p.days + ' 日）' : (o.validity_text || '到期日未有列明');
+        h += '<div class="qa-meta' + (p.urgent ? ' qa-warn' : '') + '">' + esc(exp) + ' · 🆕️ ' + esc(fmtDate(o.added_date).slice(0, 5)) + ' 加入 · <a href="' + esc(o.promo_url || o.source_url) + '" target="_blank" rel="noopener">官方推廣頁 ↗</a></div></li>';
+      });
+      h += '</ol>';
+      if (res.promos.length > 8) h += '<p class="qa-note">仲有 ' + (res.promos.length - 8) + ' 個，撳下面個掣睇晒。</p>';
+    }
+    h += '<button type="button" class="qa-apply qa-monthly" data-section="promos">🆕️ 打開「' + m.month + ' 月新優惠」清單</button>';
+    if (m.changes.length) h += '<p class="qa-note">另外最近有 ' + m.changedOffers + ' 個優惠條款有變，可以問「有咩條款改咗」。</p>';
+    return h;
+  }
   function renderAnswer(res) {
+    if (res.mode === 'new' || res.mode === 'changes') return renderMonthly(res);
     if (res.mode === 'merchant') {
       var names = []; res.merch.forEach(function (m) { if (names.indexOf(m.full) < 0) names.push(m.full); });
       var hm = '<p>Roc B 理解為：商戶「' + esc(names.slice(0, 3).join('、')) + '」。</p>' + merchHtml(res);
@@ -391,7 +491,7 @@
       return hm;
     }
     if (res.fallback) {
-      return '<p>喵～Roc B 未識答呢條 😿 試下講清楚類別、銀行或者商戶名，例如：「網購」、「餐廳回贈」、「儲里數」、「日本」、「超市」、「迎新最多」、「唔使年費」、「月簽 $5000 網購」、「滙豐」、「屈臣氏」。</p>';
+      return '<p>喵～Roc B 未識答呢條 😿 試下講清楚類別、銀行或者商戶名，例如：「網購」、「餐廳回贈」、「儲里數」、「日本」、「超市」、「迎新最多」、「唔使年費」、「月簽 $5000 網購」、「滙豐」、「屈臣氏」、「今個月有咩新優惠」、「有咩條款改咗」。</p>';
     }
     if (!res.items.length) {
       return '<p>' + esc(intro(res)) + '</p><p>搵唔到未過期又符合條件嘅優惠 😿 試下減少條件？</p>';
@@ -435,13 +535,15 @@
       add(renderAnswer(answer(q)), 'bot');
       input.value = '';
     }
-    function openP() { panel.hidden = false; document.getElementById('qaFab').setAttribute('aria-expanded', 'true'); if (!msgs.children.length) add('<p>喵！我係 Roc B 🐱 想知邊張卡最抵？可以用廣東話、中文或者英文問我，例如「網購邊張卡最抵」、「儲 Asia Miles 用邊張」。</p>', 'bot'); setTimeout(function () { input.focus(); }, 50); }
+    function openP() { panel.hidden = false; document.getElementById('qaFab').setAttribute('aria-expanded', 'true'); if (!msgs.children.length) add('<p>喵！我係 Roc B 🐱 想知邊張卡最抵？可以用廣東話、中文或者英文問我，例如「網購邊張卡最抵」、「儲 Asia Miles 用邊張」、「今個月有咩新優惠」。</p>', 'bot'); setTimeout(function () { input.focus(); }, 50); }
     function closeP() { panel.hidden = true; document.getElementById('qaFab').setAttribute('aria-expanded', 'false'); }
     document.getElementById('qaFab').addEventListener('click', function () { panel.hidden ? openP() : closeP(); });
     document.getElementById('qaClose').addEventListener('click', closeP);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) closeP(); });
     document.getElementById('qaForm').addEventListener('submit', function (e) { e.preventDefault(); ask(input.value); });
     msgs.addEventListener('click', function (e) {
+      var mb = e.target.closest('.qa-monthly');
+      if (mb && window.RocBMonthly) { closeP(); window.RocBMonthly.open(mb.dataset.section); return; }
       var b = e.target.closest('.qa-apply'); if (!b || !window.RocBApp) return;
       window.RocBApp.applyFilter(JSON.parse(b.dataset.filter));
       if (window.matchMedia('(max-width: 820px)').matches) closeP();
