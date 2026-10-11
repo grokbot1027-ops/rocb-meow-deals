@@ -4844,14 +4844,17 @@
       "餐飲",
       "網購"
     ],
-    "summary_zh": "當月簽滿 HK$3,800：食肆及網上簽賬 6%（01/07–31/12/2026）；其他 0.4%",
+    "summary_zh": "當月合資格零售簽滿 HK$3,800：同一曆月食肆及／或網上簽賬 6% 現金回贈（含基本回贈；額外部分每月上限 HK$200；01/07–31/12/2026）。無須登記。其他簽賬回贈以獨立現金回贈計劃為準（今晚條款 PDF 無列 0.4%）。",
     "key_terms": [
-      "每月要簽滿 HK$3,800",
-      "八達通增值冇回贈"
+      "每月合資格零售要簽滿 HK$3,800 先有 6%",
+      "6% 含基本回贈；額外部分每曆月上限 HK$200",
+      "食肆唔計酒店餐飲／酒席／美食廣場／超巿或百貨內食肆等；網上唔計超巿網上平台",
+      "八達通自動增值、WeChat／Alipay／PayMe／轉數快等唔計",
+      "適用 Motion 實體卡同虛擬版、主卡及附屬卡"
     ],
-    "caps": "額外 6% 現金回贈每曆月上限 HK$200",
-    "validity_text": "01/07/2026–31/12/2026",
-    "start_date": null,
+    "caps": "6%（含基本）之額外現金回贈每曆月上限 HK$200",
+    "validity_text": "推廣期 2026年7月1日至2026年12月31日",
+    "start_date": "2026-07-01",
     "expiry_date": "2026-12-31",
     "rebate_pct": 6,
     "hkd_per_mile": null,
@@ -4897,13 +4900,16 @@
       "內地／澳門",
       "海外"
     ],
-    "summary_zh": "人民幣／雲閃付 4%；單筆 ≥CNY4,000 額外 6%",
+    "summary_zh": "01/07–31/12/2026：人民幣零售／網購及／或雲閃付 App 商戶掃碼 4%（含基本），每月上限 HK$150；單一人民幣簽賬 ≥CNY4,000 額外 6%，每月上限 HK$250。只限主卡；無須登記。",
     "key_terms": [
-      "上限低"
+      "只限主卡",
+      "4%（含基本）每月上限 HK$150；單筆 ≥CNY4,000 額外 6% 每月上限 HK$250",
+      "雲閃付只計商戶掃碼，唔計用戶掃商戶碼／賬單／交通／網購",
+      "同一筆同時人民幣＋雲閃付只計一次；人民幣按 1 CNY=1 HKD 計額外回贈"
     ],
-    "caps": "4% 每月上限 HK$150；單筆 ≥CNY4,000 額外 6% 上限 HK$250",
-    "validity_text": "01/07/2026–31/12/2026",
-    "start_date": null,
+    "caps": "4% 每月上限 HK$150；單筆 ≥CNY4,000 額外 6% 每月上限 HK$250",
+    "validity_text": "推廣期 2026年7月1日至2026年12月31日",
+    "start_date": "2026-07-01",
     "expiry_date": "2026-12-31",
     "rebate_pct": 4,
     "hkd_per_mile": null,
@@ -4921,8 +4927,8 @@
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
-    "rebate_cap_hkd": null,
-    "cap_period": null,
+    "rebate_cap_hkd": 150,
+    "cap_period": "月",
     "min_spend_for_rate_hkd": null,
     "registration_method": null,
     "registration_app": null,
@@ -4945,13 +4951,15 @@
       "迎新",
       "里數"
     ],
-    "summary_zh": "150 日內簽 HK$25,000／40,000／55,000／70,000 → 最高 104,000 FWC 積分（兌換費 HK$0／800／1,600／2,400）。",
+    "summary_zh": "申請至 31/12/2026。全新客戶發卡後首 150 日零售簽賬：HK$25,000→26,000 FWC（免費）、HK$40,000→52,000（換領費 HK$800）、HK$55,000→78,000（HK$1,600）、HK$70,000→104,000（HK$2,400）；未達標行政費分別 HK$1,800／3,600／5,400／7,200。現有客戶：150 日內簽滿 HK$25,000 → 20,000 FWC。可先喺 inMotion 換領再累積簽賬；豁免首年年費。",
     "key_terms": [
-      "高級迎新要付兌換費",
-      "積分只限香港航空"
+      "高級迎新要付換領費；未達簽賬有行政費",
+      "積分只限香港航空 Fortune Wings Club",
+      "全新＝批核月起計過去 12 個月未曾持有信銀國際信用卡主卡；過去 12 個月取消過此卡唔適用",
+      "可先 inMotion 換領迎新，後累積簽賬"
     ],
     "caps": null,
-    "validity_text": "申請推廣期至 31/12/2026",
+    "validity_text": "迎新申請推廣期即日起至 2026年12月31日；簽賬期為發卡日起計首 150 日",
     "start_date": null,
     "expiry_date": "2026-12-31",
     "rebate_pct": null,
@@ -4960,12 +4968,17 @@
     "welcome_miles": 104000,
     "min_spend_hkd": 70000,
     "annual_fee_hkd": null,
-    "annual_fee_note": null,
+    "annual_fee_note": "豁免首年年費（推廣頁）",
     "fx_fee_pct": 1.95,
     "requires_registration": false,
     "source_url": "https://www.cncbinternational.com/personal/promotions/hka_credit_card/tc/index.html",
     "source_label": "推廣頁",
-    "extra_sources": [],
+    "extra_sources": [
+      {
+        "label": "香港航空 Mastercard 迎新條款 PDF",
+        "url": "https://www.cncbinternational.com/personal/credit-cards/hka_welcome_tnc_tc.pdf"
+      }
+    ],
     "last_checked": "2026-10-11",
     "added_date": "2026-10-03",
     "source_type": "official",
@@ -4992,19 +5005,23 @@
     "offer_type": "簽賬回贈",
     "title": "信銀國際香港航空 Mastercard 簽賬回贈",
     "categories": [
-      "里數"
+      "里數",
+      "海外",
+      "網購"
     ],
-    "summary_zh": "香港航空 HK$2/分；海外及網上 HK$4/分；本地 HK$6/分",
+    "summary_zh": "01/07–31/12/2026：香港航空官網／App 機票 HK$2=1 FWC（唔計 OTA／其他旅遊平台）；海外（非港幣）及網上 HK$4=1；本地零售／郵購／電話 HK$6=1。15 卡積分 = 1 FWC，自動兌換；無須登記、無每月上限。",
     "key_terms": [
-      "高級迎新要付兌換費",
-      "積分只限香港航空"
+      "香港航空簽賬只計官方網頁及 App，其他旅遊平台機票唔計",
+      "15 卡積分 = 1 FWC；額外積分約於簽賬月起計第 3 個月內存入並自動兌換",
+      "無須登記、無每月上限",
+      "WeChat／Alipay／PayMe／轉數快、八達通自動增值、繳費、分期等唔計"
     ],
     "caps": null,
-    "validity_text": "未有列明",
-    "start_date": null,
-    "expiry_date": null,
+    "validity_text": "推廣期 2026年7月1日至2026年12月31日",
+    "start_date": "2026-07-01",
+    "expiry_date": "2026-12-31",
     "rebate_pct": null,
-    "hkd_per_mile": 4,
+    "hkd_per_mile": 2,
     "welcome_value_hkd": null,
     "welcome_miles": null,
     "min_spend_hkd": null,
@@ -5012,9 +5029,14 @@
     "annual_fee_note": null,
     "fx_fee_pct": 1.95,
     "requires_registration": false,
-    "source_url": "https://www.cncbinternational.com/personal/promotions/hka_credit_card/tc/index.html",
-    "source_label": "推廣頁",
-    "extra_sources": [],
+    "source_url": "https://www.cncbinternational.com/_document/personal/credit-cards/tc/hka_cvp_tnc_tc.pdf",
+    "source_label": "香港航空簽賬獎賞條款 PDF",
+    "extra_sources": [
+      {
+        "label": "推廣頁",
+        "url": "https://www.cncbinternational.com/personal/promotions/hka_credit_card/tc/index.html"
+      }
+    ],
     "last_checked": "2026-10-11",
     "added_date": "2026-10-03",
     "source_type": "official",
