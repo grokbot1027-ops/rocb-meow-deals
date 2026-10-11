@@ -6008,13 +6008,15 @@
       "迎新",
       "現金回贈"
     ],
-    "summary_zh": "迎新三選一：HK$1,000 現金回贈、LG PuriCare AeroHit 寵物版空氣清新機或 Dreame F20 掃地機械人；推廣期內簽滿 HK$12,000 另有 2%（HK$240）現金回贈，揀現金合共最高 HK$1,240。",
+    "summary_zh": "迎新四選一（1/7–31/12/2026，經官網或 OmyCard 申請；過去 12 個月唔可以持有過任何安信卡）：（1）現金—發卡後 90 日內簽滿 HK$12,000 得 HK$1,000，或滿 HK$7,000–11,999.99 得 HK$500（官網例子連持續 2% 回贈合共約 HK$1,240）；（2）LG PuriCare AeroHit 寵物版空氣清新機或 Dreame F20 掃拖機械人（90 日內簽滿 HK$8,800；官網例子另加約 HK$176 基本回贈）；（3）最高 HK$90,000 免息免手續費 6 個月現金分期（無簽賬要求）；（4）全日制學生：簽滿 HK$2,000 得 HK$200。",
     "key_terms": [
-      "八達通自動增值 0.4%"
+      "過去 12 個月唔可以持有過任何安信卡；每位只可享一次",
+      "現金門檻分兩級；禮品門檻 HK$8,800；現金分期無簽賬要求",
+      "八達通自動增值基本回贈每 HK$250 回 HK$1（0.4%）"
     ],
     "caps": null,
-    "validity_text": "未有列明",
-    "start_date": null,
+    "validity_text": "迎新申請期 2026年7月1日至2026年12月31日；簽賬／禮品要求為發卡後首 90 日",
+    "start_date": "2026-07-01",
     "expiry_date": "2026-12-31",
     "rebate_pct": null,
     "hkd_per_mile": null,
@@ -6027,7 +6029,16 @@
     "requires_registration": false,
     "source_url": "https://www.primecredit.com/credit-card/earnmore/",
     "source_label": "安信 EarnMORE 產品頁",
-    "extra_sources": [],
+    "extra_sources": [
+      {
+        "label": "EarnMORE 迎新及回贈條款 PDF（2026H2）",
+        "url": "https://www.primecredit.com/wp-content/uploads/2026/06/EarnMORE-Acq-_20260701_MKT_Web.pdf"
+      },
+      {
+        "label": "安信信用卡 hub",
+        "url": "https://www.primecredit.com/credit-card/"
+      }
+    ],
     "last_checked": "2026-10-11",
     "added_date": "2026-10-03",
     "source_type": "official",
@@ -6056,14 +6067,16 @@
     "categories": [
       "現金回贈"
     ],
-    "summary_zh": "簽賬最高 2% 現金回贈（無須登記、不限商戶類別、港幣及外幣簽賬都計、不設最低簽賬要求）；分期簽賬額外 2%（合共最高 4%，見另一項推廣）。",
+    "summary_zh": "基本銀聯零售簽賬 1% 現金回贈（每 HK$100 回 HK$1，無每月上限；八達通自動增值每 HK$250 回 HK$1）。推廣期 1/7/2026–30/6/2027 額外加碼 1%（合共最高 2%），加碼部分每月上限 HK$1,500；無須登記。加碼唔計 Alipay／WeChat／八達通自動增值／賭場／P2P／電子錢包充值／現金透支／費用／分期金額；交易須於 7/7/2027 或之前入賬。",
     "key_terms": [
-      "2% 無須登記、不設最低簽賬要求"
+      "基本 1% 無每月上限；加碼 1% 每月上限 HK$1,500",
+      "無須登記、不設最低簽賬要求",
+      "加碼期完結後基本 1% 仍繼續"
     ],
     "caps": null,
-    "validity_text": "未有列明",
-    "start_date": null,
-    "expiry_date": null,
+    "validity_text": "基本 1% 持續；加碼至合共最高 2% 之推廣期 2026年7月1日至2027年6月30日（交易須於 2027年7月7日或之前入賬）",
+    "start_date": "2026-07-01",
+    "expiry_date": "2027-06-30",
     "rebate_pct": 2,
     "hkd_per_mile": null,
     "welcome_value_hkd": null,
@@ -6075,13 +6088,18 @@
     "requires_registration": false,
     "source_url": "https://www.primecredit.com/credit-card/earnmore/",
     "source_label": "安信 EarnMORE 產品頁",
-    "extra_sources": [],
+    "extra_sources": [
+      {
+        "label": "EarnMORE 迎新及回贈條款 PDF（2026H2）",
+        "url": "https://www.primecredit.com/wp-content/uploads/2026/06/EarnMORE-Acq-_20260701_MKT_Web.pdf"
+      }
+    ],
     "last_checked": "2026-10-11",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
-    "rebate_cap_hkd": null,
-    "cap_period": null,
+    "rebate_cap_hkd": 1500,
+    "cap_period": "月",
     "min_spend_for_rate_hkd": null,
     "registration_method": null,
     "registration_app": null,
@@ -8867,40 +8885,51 @@
       "分期",
       "現金回贈"
     ],
-    "summary_zh": "單筆簽賬 HK$1,500 或以上並申請 6 個月或以上分期，額外 2% 現金回贈，合共最高 4%。",
+    "summary_zh": "1/7/2026–30/6/2027：單筆合資格零售簽賬 ≥ HK$1,500，喺 OmyCard App 申請 6／12／18／24 個月簽賬分期，額外 2% 現金回贈（以批核分期金額計），每個計劃上限 HK$200；連持續回贈合共最高 4%。無須另行登記。",
     "key_terms": [
-      "要申請 6 個月或以上分期，分期有手續費／利息請睇官網"
+      "只可喺 OmyCard App 設定分期",
+      "額外 2% 以批核分期金額計，每個計劃上限 HK$200",
+      "單筆零售 ≥ HK$1,500；手續費／實際年利率以 App 顯示為準"
     ],
     "caps": null,
-    "validity_text": "有效至 2027年6月30日",
-    "start_date": null,
+    "validity_text": "推廣期 2026年7月1日至2027年6月30日",
+    "start_date": "2026-07-01",
     "expiry_date": "2027-06-30",
     "rebate_pct": 4,
     "hkd_per_mile": null,
     "welcome_value_hkd": null,
     "welcome_miles": null,
-    "min_spend_hkd": null,
+    "min_spend_hkd": 1500,
     "annual_fee_hkd": 1500,
     "annual_fee_note": "首 2 年免年費；之後銀聯鑽石卡年費 HK$1,500",
     "fx_fee_pct": null,
     "requires_registration": false,
-    "source_url": "https://www.primecredit.com/credit-card/earnmore/",
-    "source_label": "安信 EarnMORE 產品頁",
-    "extra_sources": [],
+    "source_url": "https://www.primecredit.com/credit-card/instalment-rebate/",
+    "source_label": "安信 EarnMORE 分期再回贈頁",
+    "extra_sources": [
+      {
+        "label": "安信 EarnMORE 產品頁",
+        "url": "https://www.primecredit.com/credit-card/earnmore/"
+      },
+      {
+        "label": "EarnMORE 迎新及回贈條款 PDF（2026H2）",
+        "url": "https://www.primecredit.com/wp-content/uploads/2026/06/EarnMORE-Acq-_20260701_MKT_Web.pdf"
+      }
+    ],
     "last_checked": "2026-10-11",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
-    "rebate_cap_hkd": null,
+    "rebate_cap_hkd": 200,
     "cap_period": null,
-    "min_spend_for_rate_hkd": null,
+    "min_spend_for_rate_hkd": 1500,
     "registration_method": null,
     "registration_app": null,
     "registration_url": null,
     "registration_deadline": null,
     "registration_note_zh": null,
     "registration_confirmed": null,
-    "promo_url": "https://www.primecredit.com/credit-card/earnmore/"
+    "promo_url": "https://www.primecredit.com/credit-card/instalment-rebate/"
   },
   {
     "id": "bea-up-welcome",
