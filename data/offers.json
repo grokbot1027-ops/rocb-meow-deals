@@ -3894,7 +3894,7 @@
         "url": "https://www.bochk.com/tc/creditcard/details/chillcard.html"
       }
     ],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-19",
     "source_type": "official",
     "cat_rates": {
@@ -7751,7 +7751,7 @@
     "source_url": "https://www.hsbc.com.hk/zh-hk/credit-cards/products/unionpay-dual-currency-diamond/",
     "source_label": "產品頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -7856,7 +7856,7 @@
     "source_url": "https://www.hangseng.com/cms/emkt/pmo/grp05/p30/chi/index.html",
     "source_label": "推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -7916,7 +7916,7 @@
     "source_url": "https://www.hangseng.com/cms/emkt/pmo/grp04/p33/chi/index.html",
     "source_label": "推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -7962,7 +7962,7 @@
     "source_url": "https://www.bochk.com/dam/boccreditcard/latestpromotions/gobill26/tnc_tc.pdf",
     "source_label": "條款 PDF",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -8081,7 +8081,7 @@
         "url": "https://www.bochk.com/tc/creditcard/promotions/offers/mf_2h26.html"
       }
     ],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-05",
     "source_type": "official",
     "cat_rates": {
@@ -8139,7 +8139,7 @@
         "url": "https://www.bochk.com/dam/boccreditcard/apple2609/tnc_tc.pdf"
       }
     ],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -8185,7 +8185,7 @@
     "source_url": "https://www.citibank.com.hk/chinese/credit-cards/octopus-cards.htm",
     "source_label": "產品頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -8232,7 +8232,7 @@
     "source_url": "https://www.dbs.com.hk/iwov-resources/pdf/creditcards/TnC_CV_SuperWed2026_zh_Jul-Dec26.pdf",
     "source_label": "條款 PDF",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": {
@@ -8297,7 +8297,7 @@
         "url": "https://www.dbs.com.hk/personal-zh/credit-cards/credit-cards/black-mc"
       }
     ],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-05",
     "source_type": "official",
     "cat_rates": null,
@@ -8311,55 +8311,6 @@
     "registration_note_zh": "📱 簽賬前要喺 DBS Card+ App 登記及啟動帳戶，並喺「更多」>「程式設定」>「推送通知」開啟「一扣即享」；合資格簽賬顯示後撳紅色「一扣即享」掣領 HK$40",
     "registration_confirmed": true,
     "promo_url": "https://www.dbs.com.hk/iwov-resources/pdf/creditcards/subscription-acq-tnc-2026Q2-tc.pdf"
-  },
-  {
-    "id": "p-aeon-2for1",
-    "bank": "AEON",
-    "bank_key": "aeon",
-    "issuer_type": "非銀行發卡機構",
-    "card": "AEON 指定信用卡",
-    "card_id": null,
-    "card_type": "不限／多款",
-    "offer_type": "限時推廣",
-    "title": "AEON 秋日簽賬「2」賞1：海洋公園門票或最高 HK$1,000",
-    "categories": [
-      "購物",
-      "生活"
-    ],
-    "summary_zh": "登記後於簽賬期內累積指定簽賬，可揀海洋公園門票或現金回贈（獎賞 C、D、E 登記及簽賬期至 01/11/2026）。",
-    "key_terms": [
-      "揀門票但簽唔夠要付行政費 HK$498–680／張"
-    ],
-    "caps": "最高 HK$1,000",
-    "validity_text": "至 01/11/2026",
-    "start_date": null,
-    "expiry_date": "2026-11-01",
-    "rebate_pct": null,
-    "hkd_per_mile": null,
-    "welcome_value_hkd": null,
-    "welcome_miles": null,
-    "min_spend_hkd": null,
-    "annual_fee_hkd": null,
-    "annual_fee_note": null,
-    "fx_fee_pct": null,
-    "requires_registration": true,
-    "source_url": "https://www.aeon.com.hk/tc/privilege/promotion-p1f2-0926.html",
-    "source_label": "推廣頁",
-    "extra_sources": [],
-    "last_checked": "2026-11-01",
-    "added_date": "2026-10-03",
-    "source_type": "official",
-    "cat_rates": null,
-    "rebate_cap_hkd": null,
-    "cap_period": null,
-    "min_spend_for_rate_hkd": null,
-    "registration_method": "app",
-    "registration_app": "AEON HK",
-    "registration_url": null,
-    "registration_deadline": "2026-11-01",
-    "registration_note_zh": "📱 要喺「AEON HK」App 登記一次（獎賞 C／D／E 登記期至 01/11/2026），登記後唔可以更改",
-    "registration_confirmed": true,
-    "promo_url": "https://www.aeon.com.hk/tc/privilege/promotion-p1f2-0926.html"
   },
   {
     "id": "p-wewa-online",
@@ -8393,7 +8344,7 @@
     "source_url": "https://www.wewacard.com/online-rebate/",
     "source_label": "推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": {
@@ -8498,7 +8449,7 @@
     "source_url": "https://mox.com/zh/promotions/mox-samsung-HKT/",
     "source_label": "推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -8553,7 +8504,7 @@
         "url": "https://mox.com/static/Mox_HKT_2026_Phone_of_the_Year_Promotion_TnCs.pdf"
       }
     ],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": {
@@ -8604,7 +8555,7 @@
     "source_url": "https://www.americanexpress.com/zh-hk/benefits/offers/dining/hk-dining-offers/index.html",
     "source_label": "美國運通香港餐飲優惠頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -8656,7 +8607,7 @@
     "source_url": "https://www.icbcasia.com/hk/tc/promotion/supermarket-creditcard-cashrebate.html",
     "source_label": "工銀亞洲推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": {
@@ -8709,7 +8660,7 @@
     "source_url": "https://www.icbcasia.com/hk/tc/promotion/unionpay-overseas-cash-rebate.html",
     "source_label": "工銀亞洲推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": {
@@ -8764,7 +8715,7 @@
     "source_url": "https://www.icbcasia.com/hk/tc/promotion/unionpay-mainland-cash-rebate.html",
     "source_label": "工銀亞洲推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": {
@@ -8934,7 +8885,7 @@
         "url": "https://www.bochk.com/dam/boccreditcard/cmhk2026/CMHK_T&C_TC.pdf"
       }
     ],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
@@ -9123,7 +9074,7 @@
     ],
     "promo_url": "https://www.bochk.com/tc/creditcard/promotions/offers/aavs202609.html",
     "source_type": "official",
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-09"
   },
   {
@@ -9182,7 +9133,7 @@
     ],
     "promo_url": "https://www.bochk.com/tc/creditcard/promotions/offers/gompq126.html",
     "source_type": "official",
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-09"
   },
   {
@@ -9241,7 +9192,7 @@
     ],
     "promo_url": "https://www.bochk.com/tc/creditcard/promotions/offers/tbklook2026.html",
     "source_type": "official",
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-09"
   },
   {
@@ -9291,7 +9242,7 @@
         "url": "https://mox.com/static/0_interest_Split_Purchase_Xiaomi_Promotion_TnC.pdf"
       }
     ],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-10",
     "source_type": "official",
     "cat_rates": {
@@ -9356,7 +9307,7 @@
     "source_url": "https://www.aeon.com.hk/tc/privilege/promotion-ftf-0826.html",
     "source_label": "AEON 推廣頁（內附條款及細則）",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-10",
     "source_type": "official",
     "cat_rates": {
@@ -9492,7 +9443,7 @@
         "url": "https://www.bochk.com/dam/boccreditcard/shkp2026/SHKP_Tactical_2026_TC_tnc.pdf"
       }
     ],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-13",
     "source_type": "official",
     "cat_rates": null,
@@ -9544,7 +9495,7 @@
     "source_url": "https://www.aeon.com.hk/tc/privilege/promotion-klook-1026.html",
     "source_label": "AEON 推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-13",
     "source_type": "official",
     "cat_rates": null,
@@ -9599,7 +9550,7 @@
     "source_url": "https://www.aeon.com.hk/tc/privilege/promotion_upi_0226.html",
     "source_label": "AEON 推廣頁（內附條款及細則）",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-14",
     "source_type": "official",
     "cat_rates": {
@@ -9686,7 +9637,7 @@
       }
     ],
     "source_type": "official",
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-15",
     "cat_rates": null,
     "rebate_cap_hkd": null,
@@ -9741,7 +9692,7 @@
       }
     ],
     "source_type": "official",
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-15",
     "cat_rates": null,
     "rebate_cap_hkd": 100,
@@ -9848,7 +9799,7 @@
         "url": "https://www.bochk.com/dam/boccreditcard/taobao2026/bocxtaobaooct-nov2026tnc_tc.pdf"
       }
     ],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-21",
     "source_type": "official",
     "cat_rates": null,
@@ -9905,7 +9856,7 @@
         "url": "https://www.bochk.com/dam/boccreditcard/merchant/cineart2026/tnc_tc.pdf"
       }
     ],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-16",
     "source_type": "official",
     "cat_rates": null,
@@ -9958,7 +9909,7 @@
     "source_url": "https://www.aeon.com.hk/tc/privilege/promotion_purplejcb.html",
     "source_label": "AEON 推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-16",
     "source_type": "official",
     "cat_rates": {
@@ -10012,7 +9963,7 @@
     "source_url": "https://www.dbs.com.hk/personal-zh/promotion/hanglungmalls",
     "source_label": "星展推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-16",
     "source_type": "official",
     "cat_rates": null,
@@ -10064,7 +10015,7 @@
     "source_url": "https://www.dbs.com.hk/personal-zh/promotion/eminent-swire",
     "source_label": "星展推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-16",
     "source_type": "official",
     "cat_rates": null,
@@ -10114,7 +10065,7 @@
     "source_url": "https://www.icbcasia.com/hk/tc/promotion/tax-payment-cash-rebate.html",
     "source_label": "工銀亞洲推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-16",
     "source_type": "official",
     "cat_rates": null,
@@ -10166,7 +10117,7 @@
     "source_url": "https://www.asia.ccb.com/hongkong_tc/personal/credit_cards/promotions/aia_insurance/index.html",
     "source_label": "建行(亞洲)推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-16",
     "source_type": "official",
     "cat_rates": null,
@@ -10217,7 +10168,7 @@
     "source_url": "https://mox.com/zh/promotions/mox-emirates/",
     "source_label": "Mox 推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-16",
     "source_type": "official",
     "cat_rates": null,
@@ -10263,7 +10214,7 @@
     "source_type": "official",
     "start_date": "2026-07-01",
     "added_date": "2026-10-17",
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "offer_type": "限時推廣",
     "id": "p-boc-upitravel",
     "bank": "中銀香港 BOCHK",
@@ -10382,7 +10333,7 @@
     "source_type": "official",
     "start_date": null,
     "added_date": "2026-10-17",
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "offer_type": "限時推廣",
     "id": "p-mox-trip",
     "bank": "Mox Bank",
@@ -10497,7 +10448,7 @@
     "extra_sources": [],
     "source_type": "official",
     "added_date": "2026-10-18",
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "requires_registration": true,
     "id": "p-dahsing-autumn",
     "bank": "大新 Dah Sing",
@@ -10556,7 +10507,7 @@
     ],
     "source_type": "official",
     "added_date": "2026-10-18",
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "requires_registration": true,
     "id": "p-boc-shkpyro",
     "bank": "中銀香港 BOCHK",
@@ -10607,7 +10558,7 @@
     "extra_sources": [],
     "source_type": "official",
     "added_date": "2026-10-18",
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "requires_registration": true,
     "id": "p-aeon-foodstory",
     "bank": "AEON",
@@ -10677,7 +10628,7 @@
     "source_label": "建行(亞洲)官方推廣頁",
     "source_type": "official",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-22",
     "cat_rates": null,
     "rebate_cap_hkd": 360,
@@ -10824,7 +10775,7 @@
     "source_url": "https://www.dbs.com.hk/personal-zh/credit-cards/dbs-cardplus/payntransfer",
     "source_label": "星展「繳款及轉賬」",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-23",
     "source_type": "official",
     "cat_rates": null,
@@ -10938,7 +10889,7 @@
     "promo_url": "https://www.americanexpress.com/hk/en/campaigns/explorer-credit-card/",
     "source_label": "美國運通 Explorer 推廣頁（Apple Store Online Limited Time Offer）",
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-10-29",
     "source_type": "official",
     "cat_rates": null,
@@ -11038,7 +10989,7 @@
     "source_type": "official",
     "start_date": null,
     "added_date": "2026-10-31",
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "offer_type": "限時推廣",
     "id": "p-sc-cathay-d11",
     "bank": "渣打 Standard Chartered",
@@ -11080,7 +11031,7 @@
         "url": "https://www.dbs.com.hk/iwov-resources/pdf/creditcards/DBS-Visa-Insurance-TnC-202611-zh.pdf"
       }
     ],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-11-01",
     "source_type": "official",
     "cat_rates": null,
@@ -11132,7 +11083,7 @@
     "annual_fee_note": null,
     "fx_fee_pct": null,
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-11-01",
     "source_type": "official",
     "cat_rates": null,
@@ -11184,7 +11135,7 @@
     "annual_fee_note": null,
     "fx_fee_pct": null,
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-11-01",
     "source_type": "official",
     "cat_rates": null,
@@ -11236,7 +11187,7 @@
     "annual_fee_note": null,
     "fx_fee_pct": null,
     "extra_sources": [],
-    "last_checked": "2026-11-01",
+    "last_checked": "2026-11-02",
     "added_date": "2026-11-01",
     "source_type": "official",
     "cat_rates": null,
