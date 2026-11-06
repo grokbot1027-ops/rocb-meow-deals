@@ -48,7 +48,7 @@
         "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/credit-cards/offers/welcome-terms-and-conditions.pdf"
       }
     ],
-    "last_checked": "2026-11-06",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -109,7 +109,7 @@
         "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/tc/docs/credit-cards/offers/welcome-terms-and-conditions.pdf"
       }
     ],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": {
@@ -355,7 +355,7 @@
         "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/tc/docs/credit-cards/offers/welcome-terms-and-conditions.pdf"
       }
     ],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -436,7 +436,7 @@
         "url": "https://www.hsbc.com.hk/zh-hk/help/faq/credit-cards/rewards/"
       }
     ],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": {
@@ -2305,7 +2305,7 @@
         "url": "https://www.hsbc.com.hk/content/dam/hsbc/hk/docs/credit-cards/key-fact-statement.pdf"
       }
     ],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -2396,7 +2396,7 @@
         "url": "https://www.hsbc.com.hk/zh-hk/help/faq/credit-cards/rewards/"
       }
     ],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": {
@@ -3051,7 +3051,7 @@
         "url": "https://www.hangseng.com/content/dam/hase/rwd/personal/cards/pdfs/Credit_Card_KFS.pdf"
       }
     ],
-    "last_checked": "2026-11-06",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -3116,7 +3116,7 @@
         "url": "https://www.hangseng.com/content/dam/hase/rwd/personal/cards/pdfs/Credit_Card_KFS.pdf"
       }
     ],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": {
@@ -3182,7 +3182,7 @@
         "url": "https://www.hangseng.com/content/dam/hase/rwd/personal/cards/pdfs/Credit_Card_KFS.pdf"
       }
     ],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -4274,7 +4274,7 @@
         "url": "https://www.bochk.com/dam/boccreditcard/BLISS_WG_TnC_TC.pdf"
       }
     ],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -6857,7 +6857,7 @@
     "source_url": "https://www.americanexpress.com/hk/en/credit-cards/platinum-card/",
     "source_label": "產品頁",
     "extra_sources": [],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -6907,7 +6907,7 @@
     "source_url": "https://www.americanexpress.com/hk/en/credit-cards/platinum-card/",
     "source_label": "產品頁",
     "extra_sources": [],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -6952,7 +6952,7 @@
     "source_url": "https://www.americanexpress.com/hk/en/credit-cards/essential-credit-card/",
     "source_label": "產品頁",
     "extra_sources": [],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -7000,7 +7000,7 @@
     "source_url": "https://www.americanexpress.com/hk/en/credit-cards/essential-credit-card/",
     "source_label": "產品頁",
     "extra_sources": [],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -7888,9 +7888,14 @@
     "categories": [
       "繳費／保險"
     ],
-    "summary_zh": "登記後，繳費 ≤HK$10,000 額外 1X，>HK$10,000 額外 2.5X；當月零售要滿 HK$2,000。",
-    "key_terms": [],
-    "caps": "每月上限 50,000 分",
+    "summary_zh": "登記後（首 20,000 名），合資格繳費 ≤HK$10,000 額外 1X、>HK$10,000 額外 2.5X；當月零售要滿 HK$2,000。每月額外積分上限 50,000、全期 100,000（約等值 HK$400）。稅務局／銀行信用卡還款等唔計。",
+    "key_terms": [
+      "推廣期／登記期 2026年10月1日至11月30日；名額首 20,000 名",
+      "當月要另有合資格零售簽賬滿 HK$2,000，該月繳費先計額外積分",
+      "稅務局、銀行／信用卡／財務／證券／借貸還款同電子錢包繳費唔計",
+      "額外積分預計 2027年1月31日或之前誌賬"
+    ],
+    "caps": "每月上限 50,000 分；全期上限 100,000 分（約等值 HK$400）",
     "validity_text": "01/10/2026–30/11/2026",
     "start_date": "2026-10-01",
     "expiry_date": "2026-11-30",
@@ -7906,7 +7911,7 @@
     "source_url": "https://www.bochk.com/dam/boccreditcard/latestpromotions/gobill26/tnc_tc.pdf",
     "source_label": "條款 PDF",
     "extra_sources": [],
-    "last_checked": "2026-11-06",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-03",
     "source_type": "official",
     "cat_rates": null,
@@ -7919,7 +7924,7 @@
     "registration_deadline": "2026-11-30",
     "registration_note_zh": "📱 要經 BoC Pay+、中銀香港 App 或網頁登記（首 20,000 名），登記期至 30/11/2026 23:59",
     "registration_confirmed": true,
-    "promo_url": "https://www.bochk.com/dam/boccreditcard/latestpromotions/gobill26/tnc_tc.pdf"
+    "promo_url": "https://www.bochk.com/tc/creditcard/promotions/offers/gobill26.html"
   },
   {
     "id": "p-boc-kuangshang",
@@ -8025,7 +8030,7 @@
         "url": "https://www.bochk.com/tc/creditcard/promotions/offers/mf_2h26.html"
       }
     ],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-05",
     "source_type": "official",
     "cat_rates": {
@@ -8042,61 +8047,6 @@
     "registration_note_zh": "📱 要用合資格卡（或已綁定嘅 BoC Pay+）喺 BoC Pay+ App、中銀香港 App 或推廣網頁登記一次；第二階段登記期 01/10/2026 10:00 至 30/11/2026 23:59，首 40,000 名，額滿即止；登記當月所屬階段起計",
     "registration_confirmed": true,
     "promo_url": "https://www.bochk.com/tc/creditcard/promotions/offers/mf_2h26.html"
-  },
-  {
-    "id": "p-boc-apple",
-    "bank": "中銀香港 BOCHK",
-    "bank_key": "boc",
-    "issuer_type": "銀行",
-    "card": "中銀香港 指定信用卡",
-    "card_id": null,
-    "card_type": "不限／多款",
-    "offer_type": "限時推廣",
-    "title": "Apple Store 網店簽滿 HK$10,000 回贈 HK$500，分期再 HK$300",
-    "categories": [
-      "電子產品"
-    ],
-    "summary_zh": "登記後用中銀 Visa 信用卡喺香港 Apple Store 網店／Apple Store App 簽賬淨額滿 HK$10,000，回贈 HK$500；單筆 HK$10,000 或以上辦理 12 個月或以上「月結單分期」，再額外 HK$300。每人全期最高 HK$800。實體店簽賬唔計。",
-    "key_terms": [
-      "只限網店／App，門市唔計",
-      "只限中銀 Visa 信用卡",
-      "登記名額有限"
-    ],
-    "caps": "每人全期最高 HK$800（HK$500 一次 + HK$300 一次）；登記名額首 14,000 名",
-    "validity_text": "2026年9月8日至2026年11月6日",
-    "start_date": "2026-09-08",
-    "expiry_date": "2026-11-06",
-    "rebate_pct": null,
-    "hkd_per_mile": null,
-    "welcome_value_hkd": null,
-    "welcome_miles": null,
-    "min_spend_hkd": 10000,
-    "annual_fee_hkd": null,
-    "annual_fee_note": null,
-    "fx_fee_pct": null,
-    "requires_registration": true,
-    "source_url": "https://www.bochk.com/tc/creditcard/promotions/offers/apple2609.html",
-    "source_label": "中銀香港推廣頁",
-    "extra_sources": [
-      {
-        "label": "條款及細則 PDF",
-        "url": "https://www.bochk.com/dam/boccreditcard/apple2609/tnc_tc.pdf"
-      }
-    ],
-    "last_checked": "2026-11-06",
-    "added_date": "2026-10-03",
-    "source_type": "official",
-    "cat_rates": null,
-    "rebate_cap_hkd": null,
-    "cap_period": null,
-    "min_spend_for_rate_hkd": null,
-    "registration_method": "app",
-    "registration_app": "BoC Pay+／中銀香港 App",
-    "registration_url": "https://www.bochk.com/s/a/apple2026",
-    "registration_deadline": "2026-11-06",
-    "registration_note_zh": "📱 要經 BoC Pay+、中銀香港 App 或網頁登記（首 14,000 名，登記期至 06/11/2026 23:59）；官方頁顯示「推廣登記名額已滿」",
-    "registration_confirmed": true,
-    "promo_url": "https://www.bochk.com/tc/creditcard/promotions/offers/apple2609.html"
   },
   {
     "id": "p-citi-applewallet",
@@ -8829,7 +8779,7 @@
         "url": "https://www.bochk.com/dam/boccreditcard/cmhk2026/CMHK_T&C_TC.pdf"
       }
     ],
-    "last_checked": "2026-11-04",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-06",
     "source_type": "official",
     "cat_rates": null,
@@ -9439,7 +9389,7 @@
     "source_url": "https://www.aeon.com.hk/tc/privilege/promotion-klook-1026.html",
     "source_label": "AEON 推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-06",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-13",
     "source_type": "official",
     "cat_rates": null,
@@ -9959,7 +9909,7 @@
     "source_url": "https://www.dbs.com.hk/personal-zh/promotion/eminent-swire",
     "source_label": "星展推廣頁",
     "extra_sources": [],
-    "last_checked": "2026-11-06",
+    "last_checked": "2026-11-07",
     "added_date": "2026-10-16",
     "source_type": "official",
     "cat_rates": null,
@@ -10933,7 +10883,7 @@
     "source_type": "official",
     "start_date": null,
     "added_date": "2026-10-31",
-    "last_checked": "2026-11-06",
+    "last_checked": "2026-11-07",
     "offer_type": "限時推廣",
     "id": "p-sc-cathay-d11",
     "bank": "渣打 Standard Chartered",
@@ -11355,7 +11305,7 @@
         "url": "https://www.hangseng.com/content/dam/wpb/hase/rwd/personal/cards/spending-instalment/pdfs/SI_Normal_TC_promotion_tc.pdf"
       }
     ],
-    "last_checked": "2026-11-06",
+    "last_checked": "2026-11-07",
     "added_date": "2026-11-03",
     "changes": null
   },
@@ -11413,7 +11363,7 @@
         "url": "https://www.bochk.com/tc/creditcard/promotions/offers/cardact2611promo.html"
       }
     ],
-    "last_checked": "2026-11-06",
+    "last_checked": "2026-11-07",
     "added_date": "2026-11-06",
     "changes": null
   },
@@ -11466,7 +11416,7 @@
     "source_label": "AEON 官方推廣頁",
     "source_type": "official",
     "extra_sources": [],
-    "last_checked": "2026-11-06",
+    "last_checked": "2026-11-07",
     "added_date": "2026-11-06",
     "changes": null
   },
